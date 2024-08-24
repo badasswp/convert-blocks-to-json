@@ -26,21 +26,32 @@ add_action( 'rest_api_init', function() {
 		'/(?P<id>\d+)',
 		[
 			'methods' => 'GET',
-			'callback' => function( $request ) {
-				$post_id      = (int) $request->get_param( 'id' );
-				$post_content = get_post_field( 'post_content', $post_id );
-
-				$response = [
-					'title'   => get_the_title( $post_id ),
-					'content' => get_blocks( $post_content ),
-				];
-
-				return rest_ensure_response( $response );
-			},
+			'callback' => __NAMESPACE__ . '\get_rest_response',
 			'permission_callback' => '__return_true'
 		],
 	);
 } );
+
+/**
+ * Get REST Response.
+ *
+ * This method grabs the REST Response needed
+ * for generating the JSON.
+ *
+ * @param \WP_REST_Request $request Request Object.
+ * @return \WP_REST_Response
+ */
+function get_rest_response( $request ): \WP_REST_Response {
+	$post_id      = (int) $request->get_param( 'id' );
+	$post_content = get_post_field( 'post_content', $post_id );
+
+	$response = [
+		'title'   => get_the_title( $post_id ),
+		'content' => get_blocks( $post_content ),
+	];
+
+	return rest_ensure_response( $response );
+}
 
 /**
  * Get Blocks.
