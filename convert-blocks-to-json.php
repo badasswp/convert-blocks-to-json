@@ -38,6 +38,8 @@ add_action( 'rest_api_init', function() {
  * This method grabs the REST Response needed
  * for generating the JSON.
  *
+ * @since 1.0.0
+ *
  * @param \WP_REST_Request $request Request Object.
  * @return \WP_REST_Response
  */
@@ -58,6 +60,8 @@ function get_rest_response( $request ): \WP_REST_Response {
  *
  * This method is responsible for getting WP
  * valid blocks.
+ *
+ * @since 1.0.0
  *
  * @param string $post_content Post Content.
  * @return mixed[]
@@ -83,6 +87,8 @@ function get_blocks( $post_content ): array {
  *
  * Get all JSON block arrays and recursively
  * add children.
+ *
+ * @since 1.0.0
  *
  * @param mixed[] $block WP Blocks.
  * @return mixed[]
