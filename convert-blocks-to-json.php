@@ -66,3 +66,30 @@ function get_blocks( $post_content ): array {
 
 	return array_values( $valid_blocks );
 }
+
+/**
+ * Get JSON.
+ *
+ * Get all JSON block arrays and recursively
+ * add children.
+ *
+ * @param mixed[] $block WP Blocks.
+ * @return mixed[]
+ */
+function get_json( $block ): array {
+	$children = [];
+
+	if ( ! empty( $block['innerBlocks'] ) ) {
+		foreach( $block['innerBlocks'] as $child_block ) {
+			$children[] = get_json( $child_block );
+		}
+	}
+
+	return [
+		'name'       => $block['blockName'],
+		'content'    => $block['innerHTML'],
+		'filtered'   => wp_strip_all_tags( $block['innerHTML'] ),
+		'attributes' => $block['attrs'],
+		'children'   => $children
+	];
+}
