@@ -41,3 +41,28 @@ add_action( 'rest_api_init', function() {
 		],
 	);
 } );
+
+/**
+ * Get Blocks.
+ *
+ * This method is responsible for getting WP
+ * valid blocks.
+ *
+ * @param string $post_content Post Content.
+ * @return mixed[]
+ */
+function get_blocks( $post_content ): array {
+	$all_blocks = array_map(
+		__NAMESPACE__ . '\get_json',
+		parse_blocks( $post_content )
+	);
+
+	$valid_blocks = array_filter(
+		$all_blocks,
+		function( $block ) {
+			return ! is_null ( $block['name'] );
+		}
+	);
+
+	return array_values( $valid_blocks );
+}
