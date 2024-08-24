@@ -52,6 +52,18 @@ function get_rest_response( $request ): \WP_REST_Response {
 		'content' => get_blocks( $post_content ),
 	];
 
+	/**
+	 * Filter JSON Response.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param mixed[] $response Response Object.
+	 * @param integer $post_id  Post ID.
+	 *
+	 * @return mixed[]
+	 */
+	$response = apply_filters( 'cbtj_json', $response, $post_id );
+
 	return rest_ensure_response( $response );
 }
 
