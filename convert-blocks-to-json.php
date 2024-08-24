@@ -19,3 +19,25 @@ namespace badasswp\ConvertBlocksToJSON;
 if ( ! defined( 'WPINC' ) ) {
 	die;
 }
+
+add_action( 'rest_api_init', function() {
+	register_rest_route(
+		'cbtj/v1',
+		'/(?P<id>\d+)',
+		[
+			'methods' => 'GET',
+			'callback' => function( $request ) {
+				$post_id      = (int) $request->get_param( 'id' );
+				$post_content = get_post_field( 'post_content', $post_id );
+
+				$response = [
+					'title'   => get_the_title( $post_id ),
+					'content' => get_blocks( $post_content ),
+				];
+
+				return rest_ensure_response( $response );
+			},
+			'permission_callback' => '__return_true'
+		],
+	);
+} );
