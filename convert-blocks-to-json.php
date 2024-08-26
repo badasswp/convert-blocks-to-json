@@ -47,6 +47,14 @@ add_action( 'enqueue_block_editor_assets', function() {
 		false,
 	);
 
+	wp_localize_script(
+		'convert-blocks-to-json',
+		'cbtj',
+		[
+			'url' => get_home_url(),
+		]
+	);
+
 	wp_set_script_translations(
 		'convert-blocks-to-json',
 		'convert-blocks-to-json',
