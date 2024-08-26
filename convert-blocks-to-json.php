@@ -54,6 +54,21 @@ add_action( 'enqueue_block_editor_assets', function() {
 	);
 } );
 
+/**
+ * Add Translation.
+ *
+ * @since 1.0.0
+ *
+ * @wp-hook 'init'
+ */
+add_action( 'init', function() {
+	load_plugin_textdomain(
+		'convert-blocks-to-json',
+		false,
+		dirname( plugin_basename( __FILE__ ) ) . '/languages'
+	);
+} );
+
 add_action( 'rest_api_init', function() {
 	register_rest_route(
 		'cbtj/v1',
