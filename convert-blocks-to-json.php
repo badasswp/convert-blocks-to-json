@@ -20,6 +20,40 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
+/**
+ * Load Scripts.
+ *
+ * @since 1.0.0
+ *
+ * @wp-hook 'enqueue_block_editor_assets'
+ */
+add_action( 'enqueue_block_editor_assets', function() {
+	wp_enqueue_script(
+		'convert-blocks-to-json',
+		trailingslashit( plugin_dir_url( __FILE__ ) ) . 'dist/app.js',
+		[
+			'wp-i18n',
+			'wp-element',
+			'wp-blocks',
+			'wp-components',
+			'wp-editor',
+			'wp-hooks',
+			'wp-compose',
+			'wp-plugins',
+			'wp-edit-post',
+			'wp-edit-site',
+		],
+		'1.0.0',
+		false,
+	);
+
+	wp_set_script_translations(
+		'convert-blocks-to-json',
+		'convert-blocks-to-json',
+		plugin_dir_path( __FILE__ ) . 'languages'
+	);
+} );
+
 add_action( 'rest_api_init', function() {
 	register_rest_route(
 		'cbtj/v1',
