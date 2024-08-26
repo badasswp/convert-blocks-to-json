@@ -69,6 +69,13 @@ add_action( 'init', function() {
 	);
 } );
 
+/**
+ * Setup REST routes.
+ *
+ * @since 1.0.0
+ *
+ * @wp-hook 'rest_api_init'
+ */
 add_action( 'rest_api_init', function() {
 	register_rest_route(
 		'cbtj/v1',
