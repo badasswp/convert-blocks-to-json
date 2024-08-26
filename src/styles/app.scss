@@ -1,4 +1,17 @@
 #cbtj {
 	position: absolute;
 	right: 300px;
+
+	img {
+		width: 15px;
+		height: 15px;
+	}
+
+	a {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+	}
 }
