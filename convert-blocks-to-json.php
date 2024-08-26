@@ -62,7 +62,7 @@ function get_rest_response( $request ): \WP_REST_Response {
 	 *
 	 * @return mixed[]
 	 */
-	$response = apply_filters( 'cbtj_json', $response, $post_id );
+	$response = (array) apply_filters( 'cbtj_rest_response', $response, $post_id );
 
 	return rest_ensure_response( $response );
 }
