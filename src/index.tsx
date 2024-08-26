@@ -3,11 +3,11 @@ import {
 } from '@wordpress/edit-post';
 import { __ } from '@wordpress/i18n';
 import { select } from '@wordpress/data';
-import { search } from '@wordpress/icons';
 import { Button } from '@wordpress/components';
 import { registerPlugin } from '@wordpress/plugins';
 
 import './styles/app.scss';
+import logo from './assets/icon.png';
 
 /**
  * Convert Blocks To JSON.
@@ -26,11 +26,21 @@ const ConvertBlocksToJSON = () => {
     window.location.href = `${cbtj.url}/wp-json/cbtj/v1/${postID}`
   }
 
+  const Logo = () => {
+    return (
+      <img
+        src={logo}
+        style={{ width: 15, height: 15 }}
+        alt="Convert Blocks to JSON"
+      />
+    )
+  }
+
   return (
     <MainDashboardButton>
       <Button
         id="cbtj"
-        icon={search}
+        icon={Logo}
         onClick={openModal}
       />
     </MainDashboardButton>
