@@ -22,15 +22,10 @@ import logo from './assets/icon.png';
 const ConvertBlocksToJSON = () => {
   const postID = select('core/editor').getCurrentPostId();
 
-  const openModal = () => {
-    window.location.href = `${cbtj.url}/wp-json/cbtj/v1/${postID}`
-  }
-
   const Logo = () => {
     return (
       <img
         src={logo}
-        style={{ width: 15, height: 15 }}
         alt="Convert Blocks to JSON"
       />
     )
@@ -38,11 +33,9 @@ const ConvertBlocksToJSON = () => {
 
   return (
     <MainDashboardButton>
-      <Button
-        id="cbtj"
-        icon={Logo}
-        onClick={openModal}
-      />
+      <Button id="cbtj" icon={Logo}>
+        <a href={`${cbtj.url}/wp-json/cbtj/v1/${postID}`} target="_blank"></a>
+      </Button>
     </MainDashboardButton>
   );
 };
