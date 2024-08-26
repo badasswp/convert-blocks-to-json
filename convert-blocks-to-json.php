@@ -98,6 +98,8 @@ add_action( 'rest_api_init', function() {
  *
  * @param \WP_REST_Request $request Request Object.
  * @return \WP_REST_Response
+ *
+ * @wp-hook 'rest_api_init'
  */
 function get_rest_response( $request ): \WP_REST_Response {
 	$post_id      = (int) $request->get_param( 'id' );
