@@ -1,6 +1,8 @@
 # convert-blocks-to-json
 Convert your WP blocks to JSON.
 
+<img src="https://github.com/user-attachments/assets/875acd91-b2ed-4832-8df7-9ebe013e9c35" alt="Convert Blocks to JSON" height="300">
+
 ## Download
 
 You can also get the latest version from any of our [release tags](https://github.com/badasswp/convert-blocks-to-json/releases).
