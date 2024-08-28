@@ -35,6 +35,17 @@ const ConvertBlocksToJSON = () => {
         icon="editor-code"
       >
         <PanelBody>
+          <div id="cbtj">
+            <p>{ __( 'View JSON' ) }</p>
+            <a href={`${cbtj.url}/wp-json/cbtj/v1/${postID}`} target="_blank">
+              <Button
+                variant="primary"
+                onClick={ () => { } }
+              >
+                { __( 'View JSON' ) }
+              </Button>
+            </a>
+          </div>
         </PanelBody>
       </PluginSidebar>
     </Fragment>
