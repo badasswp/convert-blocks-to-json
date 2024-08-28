@@ -55,6 +55,45 @@ const ConvertBlocksToJSON = () => {
             >
               { __( 'Import Blocks' ) }
             </Button>
+
+            <hr />
+
+            <p>{ __( 'Export Blocks to JSON' ) }</p>
+            <Button
+              variant="primary"
+              onClick={
+                async () => {
+                  const blocks = await apiFetch(
+                    {
+                      path: `cbtj/v1/${postID}`
+                    }
+                  );
+
+                  const jsonString = JSON.stringify( blocks, null, 2 );
+                  const jsonURL = URL.createObjectURL(
+                    new Blob(
+                      [jsonString],
+                      { type: 'application/json' }
+                    )
+                  );
+
+                  // Define Anchor.
+                  const a    = document.createElement( 'a' );
+                  a.href     = jsonURL;
+                  a.download = `convert-blocks-to-json-${postID}.json`;
+
+                  // Fire Anchor.
+                  document.body.appendChild( a );
+                  a.click();
+
+                  // Clear Anchor.
+                  URL.revokeObjectURL( jsonURL );
+                  document.body.removeChild( a );
+                }
+              }
+            >
+              { __( 'Export Blocks' ) }
+            </Button>
           </div>
         </PanelBody>
       </PluginSidebar>
