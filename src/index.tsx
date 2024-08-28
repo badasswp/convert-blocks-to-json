@@ -48,7 +48,7 @@ const ConvertBlocksToJSON = () => {
 
             <hr />
 
-            <p>{ __( 'Import Blocks to JSON' ) }</p>
+            <p>{ __( 'Import Blocks from JSON' ) }</p>
             <Button
               variant="primary"
               onClick={ () => { } }
