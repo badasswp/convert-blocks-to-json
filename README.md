@@ -13,6 +13,8 @@ This plugin offers a powerful solution for __exporting and importing WordPress b
 
 With the ability to seamlessly transfer block data between environments, you can maintain consistency, streamline content updates, and enhance the efficiency of your development workflow.
 
+https://github.com/user-attachments/assets/9dedf30f-9df0-4307-b634-cecef930a6e5
+
 ### Hooks
 
 #### `cbtj_rest_response`
