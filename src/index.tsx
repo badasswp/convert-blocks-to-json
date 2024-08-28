@@ -1,13 +1,12 @@
-import {
-    __experimentalMainDashboardButton as MainDashboardButton,
-} from '@wordpress/edit-post';
 import { __ } from '@wordpress/i18n';
 import { select } from '@wordpress/data';
-import { Button } from '@wordpress/components';
+import apiFetch from '@wordpress/api-fetch';
+import { Fragment } from '@wordpress/element';
+import { PanelBody, Button } from '@wordpress/components';
 import { registerPlugin } from '@wordpress/plugins';
+import { PluginSidebar, PluginSidebarMoreMenuItem } from '@wordpress/edit-post';
 
 import './styles/app.scss';
-import logo from './assets/icon.png';
 
 /**
  * Convert Blocks To JSON.
@@ -22,24 +21,27 @@ import logo from './assets/icon.png';
 const ConvertBlocksToJSON = () => {
   const postID = select('core/editor').getCurrentPostId();
 
-  const Logo = () => {
-    return (
-      <img
-        src={logo}
-        alt="Convert Blocks to JSON"
-      />
-    )
-  }
-
   return (
-    <MainDashboardButton>
-      <Button id="cbtj" icon={Logo}>
-        <a href={`${cbtj.url}/wp-json/cbtj/v1/${postID}`} target="_blank"></a>
-      </Button>
-    </MainDashboardButton>
+    <Fragment>
+      <PluginSidebarMoreMenuItem
+        target="cbtj-sidebar"
+        icon="editor-code"
+      >
+        { __( 'Convert Blocks to JSON' ) }
+      </PluginSidebarMoreMenuItem>
+      <PluginSidebar
+        name="cbtj-sidebar"
+        title={ __( 'Convert Blocks to JSON' ) }
+        icon="editor-code"
+      >
+        <PanelBody>
+        </PanelBody>
+      </PluginSidebar>
+    </Fragment>
   );
 };
 
-registerPlugin('convert-blocks-to-json', {
+registerPlugin( 'convert-blocks-to-json', {
   render: ConvertBlocksToJSON,
-});
+} );
+
