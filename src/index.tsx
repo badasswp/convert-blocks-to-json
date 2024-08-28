@@ -45,6 +45,16 @@ const ConvertBlocksToJSON = () => {
                 { __( 'View JSON' ) }
               </Button>
             </a>
+
+            <hr />
+
+            <p>{ __( 'Import Blocks to JSON' ) }</p>
+            <Button
+              variant="primary"
+              onClick={ () => { } }
+            >
+              { __( 'Import Blocks' ) }
+            </Button>
           </div>
         </PanelBody>
       </PluginSidebar>
