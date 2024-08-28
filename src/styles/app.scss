@@ -1,17 +1,13 @@
 #cbtj {
-	position: absolute;
-	right: 300px;
-
-	img {
-		width: 15px;
-		height: 15px;
+	p {
+		margin-bottom: 5px !important;
 	}
 
-	a {
-		position: absolute;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
+	button {
+		width: 100px;
+		min-width: 100px;
+		height: auto;
+		padding: 11.5px 0;
+		justify-content: center;
 	}
 }
