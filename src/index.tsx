@@ -1,12 +1,13 @@
 import { __ } from '@wordpress/i18n';
-import { select } from '@wordpress/data';
-import apiFetch from '@wordpress/api-fetch';
 import { Fragment } from '@wordpress/element';
 import { PanelBody, Button } from '@wordpress/components';
 import { registerPlugin } from '@wordpress/plugins';
 import { PluginSidebar, PluginSidebarMoreMenuItem } from '@wordpress/edit-post';
 
 import './styles/app.scss';
+import ViewJSON from './components/ViewJSON';
+import ImportJSON from './components/ImportJSON';
+import ExportJSON from './components/ExportJSON';
 
 /**
  * Convert Blocks To JSON.
@@ -19,7 +20,6 @@ import './styles/app.scss';
  * @returns {JSX.Element}
  */
 const ConvertBlocksToJSON = () => {
-  const postID = select('core/editor').getCurrentPostId();
 
   return (
     <Fragment>
@@ -27,73 +27,20 @@ const ConvertBlocksToJSON = () => {
         target="cbtj-sidebar"
         icon="editor-code"
       >
-        { __( 'Convert Blocks to JSON' ) }
+        { __( 'Convert Blocks to JSON', 'convert-blocks-to-json' ) }
       </PluginSidebarMoreMenuItem>
       <PluginSidebar
         name="cbtj-sidebar"
-        title={ __( 'Convert Blocks to JSON' ) }
+        title={ __( 'Convert Blocks to JSON', 'convert-blocks-to-json' ) }
         icon="editor-code"
       >
         <PanelBody>
           <div id="cbtj">
-            <p>{ __( 'View JSON' ) }</p>
-            <a href={`${cbtj.url}/wp-json/cbtj/v1/${postID}`} target="_blank">
-              <Button
-                variant="primary"
-                onClick={ () => { } }
-              >
-                { __( 'View JSON' ) }
-              </Button>
-            </a>
-
-            <hr />
-
-            <p>{ __( 'Import Blocks by JSON' ) }</p>
-            <Button
-              variant="primary"
-              onClick={ () => { } }
-            >
-              { __( 'Import Blocks' ) }
-            </Button>
-
-            <hr />
-
-            <p>{ __( 'Export Blocks to JSON' ) }</p>
-            <Button
-              variant="primary"
-              onClick={
-                async () => {
-                  const blocks = await apiFetch(
-                    {
-                      path: `cbtj/v1/${postID}`
-                    }
-                  );
-
-                  const jsonString = JSON.stringify( blocks, null, 2 );
-                  const jsonURL = URL.createObjectURL(
-                    new Blob(
-                      [jsonString],
-                      { type: 'application/json' }
-                    )
-                  );
-
-                  // Define Anchor.
-                  const a    = document.createElement( 'a' );
-                  a.href     = jsonURL;
-                  a.download = `convert-blocks-to-json-${postID}.json`;
-
-                  // Fire Anchor.
-                  document.body.appendChild( a );
-                  a.click();
-
-                  // Clear Anchor.
-                  URL.revokeObjectURL( jsonURL );
-                  document.body.removeChild( a );
-                }
-              }
-            >
-              { __( 'Export Blocks' ) }
-            </Button>
+            <ul>
+              <li><ViewJSON/></li>
+              <li><ImportJSON/></li>
+              <li><ExportJSON/></li>
+            </ul>
           </div>
         </PanelBody>
       </PluginSidebar>
