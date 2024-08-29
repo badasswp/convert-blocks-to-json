@@ -4,10 +4,11 @@ import { PanelBody, Button } from '@wordpress/components';
 import { registerPlugin } from '@wordpress/plugins';
 import { PluginSidebar, PluginSidebarMoreMenuItem } from '@wordpress/edit-post';
 
-import './styles/app.scss';
 import ViewJSON from './components/ViewJSON';
 import ImportJSON from './components/ImportJSON';
 import ExportJSON from './components/ExportJSON';
+
+import './styles/app.scss';
 
 /**
  * Convert Blocks To JSON.
@@ -37,9 +38,15 @@ const ConvertBlocksToJSON = () => {
         <PanelBody>
           <div id="cbtj">
             <ul>
-              <li><ViewJSON/></li>
-              <li><ImportJSON/></li>
-              <li><ExportJSON/></li>
+              <li>
+                <ViewJSON />
+              </li>
+              <li>
+                <ImportJSON />
+              </li>
+              <li>
+                <ExportJSON />
+              </li>
             </ul>
           </div>
         </PanelBody>
