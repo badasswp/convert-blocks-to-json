@@ -43,8 +43,14 @@ add_action( 'enqueue_block_editor_assets', function() {
 			'wp-edit-post',
 			'wp-edit-site',
 		],
-		'1.0.0',
+		mt_rand(),
 		false,
+	);
+
+	wp_set_script_translations(
+		'convert-blocks-to-json',
+		'convert-blocks-to-json',
+		plugin_dir_path( __FILE__ ) . 'languages'
 	);
 
 	wp_localize_script(
@@ -53,12 +59,6 @@ add_action( 'enqueue_block_editor_assets', function() {
 		[
 			'url' => get_home_url(),
 		]
-	);
-
-	wp_set_script_translations(
-		'convert-blocks-to-json',
-		'convert-blocks-to-json',
-		plugin_dir_path( __FILE__ ) . 'languages'
 	);
 } );
 
