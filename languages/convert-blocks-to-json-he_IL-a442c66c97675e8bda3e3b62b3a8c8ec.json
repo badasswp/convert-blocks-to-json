@@ -1,0 +1,45 @@
+{
+    "translation-revision-date": "2024-08-29 02:16+0100",
+    "generator": "WP-CLI/2.6.0",
+    "source": "dist/app.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "he_IL\\n",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "Convert Blocks to JSON": [
+                "המרת בלוקים ל- JSON"
+            ],
+            "View JSON": [
+                "הצג JSON"
+            ],
+            "Import Blocks by JSON": [
+                "ייבוא בלוקים על ידי JSON"
+            ],
+            "Import Blocks": [
+                "ייבוא בלוקים"
+            ],
+            "Import": [
+                "ייבוא"
+            ],
+            "Export Blocks to JSON": [
+                "ייצוא בלוקים ל- JSON"
+            ],
+            "Export Blocks": [
+                "בלוקים לייצוא"
+            ],
+            "Export": [
+                "ייצוא"
+            ],
+            "Importing blocks...": [
+                "ייבוא בלוקים..."
+            ],
+            "Unable to import blocks by JSON": [
+                "אין אפשרות לייבא בלוקים מאת JSON"
+            ]
+        }
+    }
+}
