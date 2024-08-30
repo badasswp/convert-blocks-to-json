@@ -1,0 +1,45 @@
+{
+  "translation-revision-date": "2024-08-29 02:16+0100",
+  "generator": "WP-CLI\/2.6.0",
+  "source": "dist\/app.js",
+  "domain": "messages",
+  "locale_data": {
+    "messages": {
+      "": {
+        "domain": "messages",
+        "lang": "hr",
+        "plural-forms": "nplurals=2; plural=(n != 1);"
+      },
+      "Convert Blocks to JSON": [
+        "Pretvorite blokove u JSON"
+      ],
+      "View JSON": [
+        "Pogledajte JSON"
+      ],
+      "Import Blocks by JSON": [
+        "Uvoz blokova putem JSON"
+      ],
+      "Import Blocks": [
+        "Uvoz blokova"
+      ],
+      "Import": [
+        "Uvoz"
+      ],
+      "Export Blocks to JSON": [
+        "Izvoz blokova u JSON"
+      ],
+      "Export Blocks": [
+        "Izvoz blokova"
+      ],
+      "Export": [
+        "Izvoz"
+      ],
+      "Importing blocks...": [
+        "Uvoz blokova..."
+      ],
+      "Unable to import blocks by JSON": [
+        "Nije moguće uvesti blokove putem JSON-a"
+      ]
+    }
+  }
+}
