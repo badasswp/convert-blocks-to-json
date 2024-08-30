@@ -1,0 +1,45 @@
+{
+  "translation-revision-date": "2024-08-29 02:16+0100",
+  "generator": "WP-CLI\/2.6.0",
+  "source": "dist\/app.js",
+  "domain": "messages",
+  "locale_data": {
+    "messages": {
+      "": {
+        "domain": "messages",
+        "lang": "it_IT\\n",
+        "plural-forms": "nplurals=2; plural=(n != 1);"
+      },
+      "Convert Blocks to JSON": [
+        "Converti blocchi in JSON"
+      ],
+      "View JSON": [
+        "Visualizza JSON"
+      ],
+      "Import Blocks by JSON": [
+        "Importa blocchi tramite JSON"
+      ],
+      "Import Blocks": [
+        "Importa Blocchi"
+      ],
+      "Import": [
+        "Importa"
+      ],
+      "Export Blocks to JSON": [
+        "Esporta blocchi in JSON"
+      ],
+      "Export Blocks": [
+        "Esporta blocchi"
+      ],
+      "Export": [
+        "Esporta"
+      ],
+      "Importing blocks...": [
+        "Importazione di blocchi..."
+      ],
+      "Unable to import blocks by JSON": [
+        "Impossibile importare blocchi tramite JSON"
+      ]
+    }
+  }
+}
