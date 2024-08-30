@@ -14,14 +14,13 @@ import './styles/app.scss';
  * Convert Blocks To JSON.
  *
  * This function returns a JSX component that comprises
- * the WP Main dashboard, & the Convert Blocks To JSON button.
+ * the Plugin Sidebar and the JSON components.
  *
  * @since 1.0.0
  *
  * @returns {JSX.Element}
  */
 const ConvertBlocksToJSON = () => {
-
   return (
     <Fragment>
       <PluginSidebarMoreMenuItem
