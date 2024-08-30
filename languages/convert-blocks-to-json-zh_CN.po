@@ -1,0 +1,77 @@
+# Copyright (C) badasswp
+# This file is distributed under the GPL v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Convert Blocks to JSON\n"
+"POT-Creation-Date: 2024-08-29 02:17+0100\n"
+"PO-Revision-Date: 2024-08-30 13:16+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Domain: convert-blocks-to-json\n"
+"X-Generator: Poedit 3.4.4\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: convert-blocks-to-json.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.min.js\n"
+
+#. Plugin Name
+msgid "Convert Blocks to JSON"
+msgstr "将区块转换为 JSON"
+
+#. Plugin URI
+msgid "https://github.com/badasswp/convert-blocks-to-json"
+msgstr "https://github.com/badasswp/convert-blocks-to-json"
+
+#. Description
+msgid "Convert your WP blocks to JSON."
+msgstr "将您的 WP 块转换为 JSON。"
+
+#. Author
+msgid "badasswp"
+msgstr "badasswp"
+
+#. Author URI
+msgid "https://github.com/badasswp"
+msgstr "https://github.com/badasswp"
+
+#. dist/app.js
+msgid "View JSON"
+msgstr "查看 JSON"
+
+#. dist/app.js
+msgid "Import Blocks by JSON"
+msgstr "通过 JSON 导入区块"
+
+#. dist/app.js
+msgid "Import Blocks"
+msgstr "导出区块"
+
+#. dist/app.js
+msgid "Import"
+msgstr "导入"
+
+#. dist/app.js
+msgid "Export Blocks to JSON"
+msgstr "将数据块导出为 JSON"
+
+#. dist/app.js
+msgid "Export Blocks"
+msgstr "导入模块"
+
+#. dist/app.js
+msgid "Export"
+msgstr "导出"
+
+#. dist/app.js
+msgid "Importing blocks..."
+msgstr "正在导入块..."
+
+#. dist/app.js
+msgid "Unable to import blocks by JSON"
+msgstr "无法通过 JSON 导入区块"

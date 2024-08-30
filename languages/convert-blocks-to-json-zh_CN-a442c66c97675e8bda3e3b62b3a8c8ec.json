@@ -1,0 +1,45 @@
+{
+  "translation-revision-date": "2024-08-29 02:16+0100",
+  "generator": "WP-CLI\/2.6.0",
+  "source": "dist\/app.js",
+  "domain": "messages",
+  "locale_data": {
+    "messages": {
+      "": {
+        "domain": "messages",
+        "lang": "zh_CN",
+        "plural-forms": "nplurals=2; plural=(n != 1);"
+      },
+      "Convert Blocks to JSON": [
+        "将区块转换为 JSON"
+      ],
+      "View JSON": [
+        "查看 JSON"
+      ],
+      "Import Blocks by JSON": [
+        "通过 JSON 导入区块"
+      ],
+      "Import Blocks": [
+        "导出区块"
+      ],
+      "Import": [
+        "导入"
+      ],
+      "Export Blocks to JSON": [
+        "将数据块导出为 JSON"
+      ],
+      "Export Blocks": [
+        "导入模块"
+      ],
+      "Export": [
+        "导出"
+      ],
+      "Importing blocks...": [
+        "正在导入块..."
+      ],
+      "Unable to import blocks by JSON": [
+        "无法通过 JSON 导入区块"
+      ]
+    }
+  }
+}
