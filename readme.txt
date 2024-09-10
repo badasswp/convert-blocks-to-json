@@ -17,12 +17,19 @@ Convert your WP blocks to JSON.
 3. Click 'Install Now' and then 'Activate'.
 
 == Description ==
-TBD
+
+This plugin offers a powerful solution for exporting and importing WordPress blocks in JSON format, making it easier to manage and reuse block structures across different projects. It is particularly beneficial for developers and site owners who are adopting a Headless CMS approach on the front-end that is powered by tools like React, Vue & so on.
+
+With the ability to seamlessly transfer block data between environments, you can maintain consistency, streamline content updates, and enhance the efficiency of your development workflow.
 
 == Changelog ==
 
 = 1.0.0 =
-* TBD
+* Convert & Export Blocks to JSON.
+* Custom Hooks - `cbtj_rest_response`.
+* Provided support for Arabic, Chinese, Hebrew, Hindi, Russian, German, Italian, Croatian, Spanish & French languages.
+* Unit Tests coverage.
+* Tested up to WP 6.6.1.
 
 == Contribute ==
 
