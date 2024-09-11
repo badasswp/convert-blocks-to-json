@@ -3,6 +3,8 @@ import { select } from '@wordpress/data';
 import apiFetch from '@wordpress/api-fetch';
 import { Button } from '@wordpress/components';
 
+import { getBlocks } from '../utils';
+
 /**
  * Export JSON.
  *
@@ -14,17 +16,10 @@ import { Button } from '@wordpress/components';
  * @returns {JSX.Element}
  */
 const ExportJSON = () => {
-  const postID = select('core/editor').getCurrentPostId();
-
   const handleExport = async () => {
-    const blocks = await apiFetch(
-      {
-        path: `cbtj/v1/${postID}`
-      }
-    );
-
-    const jsonString = JSON.stringify( blocks, null, 2 );
-    const jsonURL = URL.createObjectURL(
+    const jsonBlocks = await getBlocks();
+    const jsonString = JSON.stringify( jsonBlocks, null, 2 );
+    const jsonURL    = URL.createObjectURL(
       new Blob(
         [jsonString],
         { type: 'application/json' }
@@ -34,7 +29,7 @@ const ExportJSON = () => {
     // Define Anchor.
     const a    = document.createElement( 'a' );
     a.href     = jsonURL;
-    a.download = `convert-blocks-to-json-${postID}.json`;
+    a.download = `convert-blocks-to-json-${Date.now}.json`;
 
     // Fire Anchor.
     document.body.appendChild( a );
@@ -50,7 +45,7 @@ const ExportJSON = () => {
       <p>{ __( 'Export Blocks to JSON', 'convert-blocks-to-json' ) }</p>
       <Button
         variant="primary"
-        onClick={handleExport}
+        onClick={ handleExport }
       >
         { __( 'Export Blocks', 'convert-blocks-to-json' ) }
       </Button>

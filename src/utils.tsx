@@ -1,7 +1,18 @@
 import { select } from '@wordpress/data';
 import apiFetch from '@wordpress/api-fetch';
 
-const getBlocks = async () => {
+/**
+ * Get Blocks.
+ *
+ * This function reaches out to the custom endpoint
+ * and grabs the list of blocks available to the Post
+ * with the current ID.
+ *
+ * @since 1.0.0
+ *
+ * @returns {mixed[]}
+ */
+export const getBlocks = async () => {
   const postID = select('core/editor').getCurrentPostId();
 
   return await apiFetch(
