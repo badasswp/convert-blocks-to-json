@@ -10,3 +10,24 @@ const getBlocks = async () => {
     }
   );
 }
+
+/**
+ * Get Modal Params.
+ *
+ * This function is responsible for getting the
+ * Modal params values for the WP Media Window Frame
+ * displayed to the user.
+ *
+ * @since 1.0.1
+ *
+ * @returns {Object} Modal Params.
+ */
+export const getModalParams = () => {
+  return {
+    title: 'Select JSON File',
+    button: {
+      text: 'Use JSON'
+    },
+    multiple: false
+  };
+}

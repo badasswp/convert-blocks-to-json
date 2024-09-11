@@ -1,6 +1,8 @@
 import { __ } from '@wordpress/i18n';
 import { Button } from '@wordpress/components';
 
+import { getModalParams } from '../utils';
+
 /**
  * Import JSON.
  *
@@ -12,17 +14,9 @@ import { Button } from '@wordpress/components';
  * @returns {JSX.Element}
  */
 const ImportJSON = (): JSX.Element => {
-  const modalParams = {
-    title: 'Select JSON File',
-    button: {
-      text: 'Use JSON'
-    },
-    multiple: false
-  };
-
   const handleImport = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
-    const wpMediaModal = wp.media( modalParams );
+    const wpMediaModal = wp.media( getModalParams() );
 
     const doImport = () => {
       const attachment = wpMediaModal.state().get('selection').first().toJSON();
@@ -46,5 +40,3 @@ const ImportJSON = (): JSX.Element => {
     </>
   )
 }
-
-export default ImportJSON;
