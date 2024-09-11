@@ -29,7 +29,7 @@ const ExportJSON = () => {
     // Define Anchor.
     const a    = document.createElement( 'a' );
     a.href     = jsonURL;
-    a.download = `convert-blocks-to-json-${Date.now}.json`;
+    a.download = `convert-blocks-to-json-${Date.now()}.json`;
 
     // Fire Anchor.
     document.body.appendChild( a );
