@@ -11,28 +11,35 @@ import { Button } from '@wordpress/components';
  *
  * @returns {JSX.Element}
  */
-const ImportJSON = () => {
-  const handleImport = () => {
-    const JSONUploader = wp.media(
-      {
-        title: 'Select JSON File',
-        button: {
-          text: 'Use JSON'
-        },
-        multiple: false,
-        library: {
-          type: 'json'
-        }
+const ImportJSON = (): JSX.Element => {
+  const modalParams = {
+    title: 'Select JSON File',
+    button: {
+      text: 'Use JSON'
+    },
+    multiple: false
+  };
+
+  const handleImport = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.preventDefault();
+    const wpMediaModal = wp.media( modalParams );
+
+    const doImport = () => {
+      const attachment = wpMediaModal.state().get('selection').first().toJSON();
+      if ( 'application/json' !== attachment.mime ) {
+        console.log( 'Selected file:', attachment );
       }
-    );
-  }
+    };
+
+    wpMediaModal.on( 'select', doImport ).open();
+  };
 
   return (
     <>
       <p>{ __( 'Import Blocks by JSON', 'convert-blocks-to-json' ) }</p>
       <Button
         variant="primary"
-        onClick={ () => { } }
+        onClick={ handleImport }
       >
         { __( 'Import Blocks', 'convert-blocks-to-json' ) }
       </Button>
