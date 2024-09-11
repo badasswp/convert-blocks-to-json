@@ -14,7 +14,7 @@ import { getModalParams } from '../utils';
  * @returns {JSX.Element}
  */
 const ImportJSON = (): JSX.Element => {
-  const handleImport = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const handleImport = (e) => {
     e.preventDefault();
     const wpMediaModal = wp.media( getModalParams() );
 
@@ -40,3 +40,5 @@ const ImportJSON = (): JSX.Element => {
     </>
   )
 }
+
+export default ImportJSON;
