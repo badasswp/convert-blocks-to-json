@@ -12,6 +12,20 @@ import { Button } from '@wordpress/components';
  * @returns {JSX.Element}
  */
 const ImportJSON = () => {
+  const handleImport = () => {
+    const customUploader = wp.media(
+      {
+        title: 'Select JSON File',
+        button: {
+          text: 'Use JSON'
+        },
+        multiple: false,
+        library: {
+          type: 'json'
+        }
+      }
+    );
+  }
   return (
     <>
       <p>{ __( 'Import Blocks by JSON', 'convert-blocks-to-json' ) }</p>
