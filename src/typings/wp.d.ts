@@ -6,9 +6,6 @@ declare namespace wp {
       text: string;
     };
     multiple: boolean;
-    library: {
-      type: string;
-    };
   }
 
   function media(options: MediaOptions): any;
