@@ -97,6 +97,16 @@ add_action( 'rest_api_init', function() {
 			'permission_callback' => '__return_true'
 		],
 	);
+
+	register_rest_route(
+		'cbtj/v1',
+		'/import',
+		[
+			'methods' => 'POST',
+			'callback' => __NAMESPACE__ . '\get_json_import',
+			'permission_callback' => '__return_true'
+		],
+	);
 } );
 
 /**
@@ -206,4 +216,56 @@ function get_json( $block ): array {
 		'attributes' => $block['attrs'],
 		'children'   => $children
 	];
+}
+
+/**
+ * Get REST Response.
+ *
+ * This method grabs the JSON attachment
+ * that has been imported.
+ *
+ * @since 1.0.1
+ *
+ * @param \WP_REST_Request $request Request Object.
+ * @return \WP_REST_Response
+ *
+ * @wp-hook 'rest_api_init'
+ */
+function get_json_import( $request ): \WP_REST_Response {
+	$args      = $request->get_json_params();
+	$json_file = get_attached_file( (int) ( $args['id'] ?? '' ) );
+
+	//Bail out, if it does NOT exists.
+	if ( ! file_exists( $json_file ) ) {
+		return new \WP_Error(
+			'cbtj-bad-request',
+			sprintf(
+				'Fatal Error: Bad Request, File does not exists for ID: %s',
+				(int) ( $args['id'] ?? '' )
+			),
+			[
+				'status'  => 400,
+				'request' => $args,
+			]
+		);
+	}
+
+	//Bail out, if it is not JSON.
+	if ( 'json' !== wp_check_filetype( $json_file )['ext'] ?? '' ) {
+		return new \WP_Error(
+			'cbtj-bad-request',
+			sprintf(
+				'Fatal Error: Wrong file type: %s',
+				$args['filename'] ?? ''
+			),
+			[
+				'status'  => 400,
+				'request' => $args,
+			]
+		);
+	}
+
+	$json = file_get_contents( $json_file );
+
+	return json_decode( get_json_content( $json ), true );
 }
