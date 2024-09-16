@@ -47,6 +47,9 @@ add_action( 'enqueue_block_editor_assets', function() {
 		false,
 	);
 
+	// Handle undefined (reading 'limitExceeded') issue.
+	wp_enqueue_media();
+
 	wp_set_script_translations(
 		'convert-blocks-to-json',
 		'convert-blocks-to-json',
@@ -93,6 +96,22 @@ add_action( 'rest_api_init', function() {
 			'callback' => __NAMESPACE__ . '\get_rest_response',
 			'permission_callback' => '__return_true'
 		],
+	);
+} );
+
+/**
+ * Register Mimes.
+ *
+ * @since 1.0.1
+ *
+ * @wp-hook 'upload_mimes'
+ */
+add_filter( 'upload_mimes', function( $mimes ) {
+	return wp_parse_args(
+		[
+			'json' => 'application/json',
+		],
+		$mimes
 	);
 } );
 
