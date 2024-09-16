@@ -25,7 +25,7 @@ const ImportJSON = (): JSX.Element => {
 
     const jsonImport = await apiFetch(
       {
-        path: '/cbtj-import/v1/import',
+        path: '/cbtj/v1/import',
         method: 'POST',
         data: {
           ...attachment
