@@ -84,6 +84,7 @@ add_action( 'init', function() {
  * Setup REST routes.
  *
  * @since 1.0.0
+ * @since 1.0.1 Added `import` REST endpoint.
  *
  * @wp-hook 'rest_api_init'
  */
