@@ -14,18 +14,13 @@ import { getModalParams } from '../utils';
  * @returns {JSX.Element}
  */
 const ImportJSON = (): JSX.Element => {
-  const handleImport = (e) => {
-    e.preventDefault();
+  const handleModal = () => {
     const wpMediaModal = wp.media( getModalParams() );
+    wpMediaModal.on( 'select', () => handleImport( wpMediaModal ) ).open();
+  }
 
-    const doImport = () => {
-      const attachment = wpMediaModal.state().get('selection').first().toJSON();
-      if ( 'application/json' !== attachment.mime ) {
-        console.log( 'Selected file:', attachment );
-      }
-    };
-
-    wpMediaModal.on( 'select', doImport ).open();
+  const handleImport = ( wpMediaModal ) => {
+    const attachment = wpMediaModal.state().get( 'selection' ).first().toJSON();
   };
 
   return (
@@ -33,7 +28,7 @@ const ImportJSON = (): JSX.Element => {
       <p>{ __( 'Import Blocks by JSON', 'convert-blocks-to-json' ) }</p>
       <Button
         variant="primary"
-        onClick={ handleImport }
+        onClick={ handleModal }
       >
         { __( 'Import Blocks', 'convert-blocks-to-json' ) }
       </Button>
