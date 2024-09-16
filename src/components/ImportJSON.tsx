@@ -1,5 +1,6 @@
 import { __ } from '@wordpress/i18n';
 import { Button } from '@wordpress/components';
+import apiFetch from '@wordpress/api-fetch';
 
 import { getModalParams } from '../utils';
 
@@ -19,8 +20,20 @@ const ImportJSON = (): JSX.Element => {
     wpMediaModal.on( 'select', () => handleImport( wpMediaModal ) ).open();
   }
 
-  const handleImport = ( wpMediaModal ) => {
-    const attachment = wpMediaModal.state().get( 'selection' ).first().toJSON();
+  const handleImport = async ( wpMediaModal ) => {
+    const attachment = wpMediaModal.state().get('selection').first().toJSON();
+
+    const jsonImport = await apiFetch(
+      {
+        path: '/cbtj-import/v1/import',
+        method: 'POST',
+        data: {
+          ...attachment
+        },
+      }
+    );
+
+    console.log( jsonImport );
   };
 
   return (
