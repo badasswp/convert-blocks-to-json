@@ -127,6 +127,17 @@ add_filter( 'upload_mimes', function( $mimes ) {
 } );
 
 /**
+ * Flush Permalinks.
+ *
+ * @since 1.0.1
+ *
+ * @wp-hook 'register_activation_hook'
+ */
+register_activation_hook( __FILE__, function() {
+    flush_rewrite_rules();
+} );
+
+/**
  * Get REST Response.
  *
  * This method grabs the REST Response needed
@@ -268,5 +279,39 @@ function get_json_import( $request ): \WP_REST_Response {
 
 	$json = file_get_contents( $json_file );
 
-	return json_decode( get_json_content( $json ), true );
+	return new \WP_REST_Response(
+		[
+			'response' => get_json_content( json_decode( $json, true ) )
+		]
+	);
+}
+
+/**
+ * Get JSON Content.
+ *
+ * Loop throught the JSON array of blocks
+ * and render as string.
+ *
+ * @param 1.0.1
+ *
+ * @param array $json JSON Array of Blocks.
+ * @return string
+ */
+function get_json_content( $json ): string {
+	$response = '';
+
+	foreach( $json['content'] ?? [] as $block ) {
+		$block = [
+			'blockName'    => $block['name'] ?? '',
+			'attrs'        => $block['attributes'] ?? [],
+			'innerHTML'    => $block['content'] ?? '',
+			'innerContent' => [
+				$block['content'] ?? '',
+			]
+		];
+
+		$response .= render_block( $block );
+	}
+
+	return $response;
 }
