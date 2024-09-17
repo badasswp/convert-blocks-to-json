@@ -42,3 +42,25 @@ export const getModalParams = () => {
     multiple: false
   };
 }
+
+/**
+ * Get Import.
+ *
+ * This function reaches out to the import endpoint
+ * and gets the list of JSON blocks.
+ *
+ * @since 1.0.1
+ *
+ * @returns {any[]}
+ */
+export const getImport = async ( attachment ): Promise<[]> => {
+  return await apiFetch(
+    {
+      path: '/cbtj/v1/import',
+      method: 'POST',
+      data: {
+        ...attachment
+      },
+    }
+  );
+}
