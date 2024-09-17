@@ -13,6 +13,7 @@ import { getModalParams, getImport } from '../utils';
  * label and button.
  *
  * @since 1.0.0
+ * @since 1.0.1 Implement handleModal callback.
  *
  * @returns {JSX.Element}
  */
