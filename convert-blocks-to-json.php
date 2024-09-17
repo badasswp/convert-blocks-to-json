@@ -291,23 +291,17 @@ function get_json_import( $request ): \WP_REST_Response {
  * @param 1.0.1
  *
  * @param array $json JSON Array of Blocks.
- * @return string
+ * @return mixed[]
  */
-function get_json_content( $json ): string {
-	$response = '';
-
-	foreach( $json['content'] ?? [] as $block ) {
-		$block = [
-			'blockName'    => $block['name'] ?? '',
-			'attrs'        => $block['attributes'] ?? [],
-			'innerHTML'    => $block['content'] ?? '',
-			'innerContent' => [
-				$block['content'] ?? '',
-			]
-		];
-
-		$response .= render_block( $block );
-	}
-
-	return $response;
+function get_json_content( $json ): array {
+	return array_map(
+		function( $block ) {
+			return [
+				'name'       => $block['name'] ?? '',
+				'attributes' => wp_json_encode( $block['attributes'] ?? [] ),
+				'content'    => $block['content'] ?? '',
+			];
+		},
+		$json['content'] ?? []
+	);
 }
