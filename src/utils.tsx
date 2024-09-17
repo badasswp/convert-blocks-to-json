@@ -10,7 +10,7 @@ import apiFetch from '@wordpress/api-fetch';
  *
  * @since 1.0.0
  *
- * @returns {mixed[]}
+ * @returns {any[]}
  */
 export const getBlocks = async () => {
   const postID = select('core/editor').getCurrentPostId();
@@ -53,7 +53,7 @@ export const getModalParams = () => {
  *
  * @returns {any[]}
  */
-export const getImport = async ( attachment ): Promise<[]> => {
+export const getImport = async ( attachment ) => {
   return await apiFetch(
     {
       path: '/cbtj/v1/import',

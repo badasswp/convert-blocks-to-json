@@ -4,7 +4,7 @@ import { Button } from '@wordpress/components';
 import { createBlock } from '@wordpress/blocks';
 import apiFetch from '@wordpress/api-fetch';
 
-import { getModalParams } from '../utils';
+import { getModalParams, getImport } from '../utils';
 
 /**
  * Import JSON.
@@ -24,15 +24,7 @@ const ImportJSON = (): JSX.Element => {
 
   const handleImport = async ( wpMediaModal ) => {
     const attachment = wpMediaModal.state().get('selection').first().toJSON();
-    const jsonImport: any[] = await apiFetch(
-      {
-        path: '/cbtj/v1/import',
-        method: 'POST',
-        data: {
-          ...attachment
-        },
-      }
-    );
+    const jsonImport = await getImport( attachment ) as any[];
 
     jsonImport.forEach( ( { name, content } ) => {
       dispatch( 'core/block-editor' ).insertBlocks(
