@@ -299,8 +299,8 @@ function get_json_import( $request ): \WP_REST_Response {
  *
  * @return mixed[]
  */
-function get_json_content( $json ): array {
-	return array_map(
+function get_json_content( $json, $post_id ): array {
+	$import = array_map(
 		function( $block ) {
 			return [
 				'name'       => $block['name'] ?? '',
@@ -310,4 +310,16 @@ function get_json_content( $json ): array {
 		},
 		$json['content'] ?? []
 	);
+
+	/**
+	 * Filter JSON Import.
+	 *
+	 * @since 1.0.1
+	 *
+	 * @param mixed[] $response Import Blocks.
+	 * @param integer $post_id  Post ID.
+	 *
+	 * @return mixed[]
+	 */
+	return (array) apply_filters( 'cbtj_rest_import', $import, $post_id );
 }
