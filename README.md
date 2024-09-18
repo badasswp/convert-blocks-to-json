@@ -47,6 +47,28 @@ public function custom_rest_response( $response, $post_id ): array {
 - response _`{mixed[]}`_ REST Response.
 - post_id _`{int}`_ Post ID.
 
+#### `cbtj_rest_import`
+
+This custom hook (filter) provides the ability to customise the REST import. For e.g To import only paragraphs, you can do:
+
+```php
+add_filter( 'cbtj_rest_import', [ $this, 'custom_rest_import' ], 10, 2 );
+
+public function custom_rest_import( $import, $post_id ): array {
+    return array_filter(
+        $import,
+        function( $block ) {
+            return ( 'core/paragraph' === ( $block['name'] ?? '' ) );
+        }
+    );
+}
+```
+
+**Parameters**
+
+- import _`{mixed[]}`_ REST Import. By default this is an array of Blocks.
+- post_id _`{int}`_ Post ID.
+
 ## Development
 
 ### Setup
