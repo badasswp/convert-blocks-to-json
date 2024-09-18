@@ -294,7 +294,9 @@ function get_json_import( $request ): \WP_REST_Response {
  *
  * @param 1.0.1
  *
- * @param array $json JSON Array of Blocks.
+ * @param array $json    JSON Array of Blocks.
+ * @param int   $post_id Post ID.
+ *
  * @return mixed[]
  */
 function get_json_content( $json ): array {
