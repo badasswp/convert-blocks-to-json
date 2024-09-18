@@ -244,8 +244,11 @@ function get_json( $block ): array {
  * @wp-hook 'rest_api_init'
  */
 function get_json_import( $request ): \WP_REST_Response {
-	$args      = $request->get_json_params();
-	$json_file = get_attached_file( (int) ( $args['id'] ?? '' ) );
+	$args = $request->get_json_params();
+
+	// Get Post ID & JSON file.
+	$post_id   = (int) ( $args['id'] ?? '' );
+	$json_file = get_attached_file( $post_id );
 
 	//Bail out, if it does NOT exists.
 	if ( ! file_exists( $json_file ) ) {
@@ -253,7 +256,7 @@ function get_json_import( $request ): \WP_REST_Response {
 			'cbtj-bad-request',
 			sprintf(
 				'Fatal Error: Bad Request, File does not exists for ID: %s',
-				(int) ( $args['id'] ?? '' )
+				$post_id
 			),
 			[
 				'status'  => 400,
@@ -276,6 +279,8 @@ function get_json_import( $request ): \WP_REST_Response {
 			]
 		);
 	}
+
+	$import = get_json_content( json_decode( $json, true ), $post_id );
 
 	$json = file_get_contents( $json_file );
 
