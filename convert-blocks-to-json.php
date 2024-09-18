@@ -280,11 +280,10 @@ function get_json_import( $request ): \WP_REST_Response {
 		);
 	}
 
+	$json   = file_get_contents( $json_file );
 	$import = get_json_content( json_decode( $json, true ), $post_id );
 
-	$json = file_get_contents( $json_file );
-
-	return new \WP_REST_Response( get_json_content( json_decode( $json, true ) ) );
+	return new \WP_REST_Response( $import );
 }
 
 /**
