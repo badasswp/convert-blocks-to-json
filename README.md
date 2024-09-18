@@ -75,5 +75,5 @@ public function custom_rest_import( $import, $post_id ): array {
 
 - Clone the repository.
 - Make sure you have [Node](https://nodejs.org) installed on your computer.
-- Run `npm install && npm run build` to build JS dependencies.
+- Run `yarn install && yarn build` to build JS dependencies.
 - For local development, you can use [Docker](https://docs.docker.com/install/) or [Local by Flywheel](https://localwp.com/).
