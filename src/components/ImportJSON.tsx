@@ -2,7 +2,6 @@ import { __ } from '@wordpress/i18n';
 import { dispatch } from '@wordpress/data';
 import { Button } from '@wordpress/components';
 import { createBlock } from '@wordpress/blocks';
-import apiFetch from '@wordpress/api-fetch';
 
 import { getModalParams, getImport } from '../utils';
 
