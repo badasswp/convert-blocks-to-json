@@ -29,7 +29,7 @@ const ImportJSON = (): JSX.Element => {
     jsonImport.forEach( ( { name, attributes, innerBlocks } ) => {
       attributes = JSON.parse( attributes );
       dispatch( 'core/block-editor' ).insertBlocks(
-        createBlock( name, { content } )
+        createBlock( name, { ...attributes }, innerBlocks )
       );
     } )
   };
