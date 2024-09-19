@@ -305,9 +305,9 @@ function get_json_content( $json, $post_id ): array {
 			$block['attributes']['content'] = $block['filtered'];
 
 			return [
-				'name'       => $block['name'] ?? '',
-				'attributes' => wp_json_encode( $block['attributes'] ?? [] ),
-				'content'    => $block['content'] ?? '',
+				'name'        => $block['name'] ?? '',
+				'attributes'  => wp_json_encode( $block['attributes'] ?? [] ),
+				'innerBlocks' => $block['children'] ?? [],
 			];
 		},
 		$json['content'] ?? []
