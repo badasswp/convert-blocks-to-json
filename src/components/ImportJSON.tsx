@@ -26,7 +26,8 @@ const ImportJSON = (): JSX.Element => {
     const attachment = wpMediaModal.state().get('selection').first().toJSON();
     const jsonImport = await getImport( attachment ) as any[];
 
-    jsonImport.forEach( ( { name, content } ) => {
+    jsonImport.forEach( ( { name, attributes, innerBlocks } ) => {
+      attributes = JSON.parse( attributes );
       dispatch( 'core/block-editor' ).insertBlocks(
         createBlock( name, { content } )
       );
