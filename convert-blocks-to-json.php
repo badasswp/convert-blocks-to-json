@@ -222,11 +222,11 @@ function get_json( $block ): array {
 	}
 
 	return [
-		'name'       => $block['blockName'],
-		'content'    => $block['innerHTML'],
-		'filtered'   => wp_strip_all_tags( $block['innerHTML'] ),
-		'attributes' => $block['attrs'],
-		'children'   => $children
+		'name'        => $block['blockName'],
+		'content'     => $block['innerHTML'],
+		'filtered'    => wp_strip_all_tags( $block['innerHTML'] ),
+		'attributes'  => $block['attrs'],
+		'innerBlocks' => $children
 	];
 }
 
@@ -294,22 +294,14 @@ function get_json_import( $request ): \WP_REST_Response {
  *
  * @param 1.0.1
  *
- * @param array $json    JSON Array of Blocks.
- * @param int   $post_id Post ID.
+ * @param array   $json    JSON Array of Blocks.
+ * @param integer $post_id Post ID.
  *
  * @return mixed[]
  */
 function get_json_content( $json, $post_id ): array {
 	$import = array_map(
-		function( $block ) {
-			$block['attributes']['content'] = $block['filtered'];
-
-			return [
-				'name'        => $block['name'] ?? '',
-				'attributes'  => wp_json_encode( $block['attributes'] ?? [] ),
-				'innerBlocks' => $block['children'] ?? [],
-			];
-		},
+		__NAMESPACE__ . '\get_content',
 		$json['content'] ?? []
 	);
 
@@ -324,4 +316,14 @@ function get_json_content( $json, $post_id ): array {
 	 * @return mixed[]
 	 */
 	return (array) apply_filters( 'cbtj_rest_import', $import, $post_id );
+}
+
+function get_content( $block ) {
+	$block['attributes']['content'] = $block['filtered'];
+
+	return [
+		'name'        => $block['name'] ?? '',
+		'attributes'  => wp_json_encode( $block['attributes'] ?? [] ),
+		'innerBlocks' => $block['innerBlocks'] ?? [],
+	];
 }
