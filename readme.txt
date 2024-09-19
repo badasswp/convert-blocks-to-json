@@ -35,4 +35,4 @@ With the ability to seamlessly transfer block data between environments, you can
 
 If you'd like to contribute to the development of this plugin, you can find it on [GitHub](https://github.com/badasswp/convert-blocks-to-json).
 
-To build, clone repo and run `npm install && npm run build`
+To build, clone repo and run `yarn install && yarn build`
