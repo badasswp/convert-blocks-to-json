@@ -28,7 +28,7 @@ const ImportJSON = (): JSX.Element => {
 
     jsonImport.forEach( ( { name, attributes, innerBlocks } ) => {
       attributes = JSON.parse( attributes );
-      dispatch( 'core/block-editor' ).insertBlocks(
+      ( dispatch('core/block-editor') as { insertBlocks: any } ).insertBlocks(
         createBlock( name, { ...attributes }, innerBlocks )
       );
     } )
