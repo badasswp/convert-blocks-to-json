@@ -302,6 +302,8 @@ function get_json_import( $request ): \WP_REST_Response {
 function get_json_content( $json, $post_id ): array {
 	$import = array_map(
 		function( $block ) {
+			$block['attributes']['content'] = $block['filtered'];
+
 			return [
 				'name'       => $block['name'] ?? '',
 				'attributes' => wp_json_encode( $block['attributes'] ?? [] ),
