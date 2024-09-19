@@ -31,7 +31,7 @@ const ImportJSON = (): JSX.Element => {
       ( dispatch('core/block-editor') as { insertBlocks: any } ).insertBlocks(
         createBlock( name, { ...attributes }, innerBlocks )
       );
-    } )
+    } );
   };
 
   return (
