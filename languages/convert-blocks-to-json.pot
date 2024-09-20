@@ -75,3 +75,11 @@ msgstr ""
 #. dist/app.js
 msgid "Unable to import blocks by JSON"
 msgstr ""
+
+#. dist/app.js
+msgid "Select JSON File"
+msgstr ""
+
+#. dist/app.js
+msgid "Use JSON"
+msgstr ""
