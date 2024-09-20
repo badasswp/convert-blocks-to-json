@@ -39,6 +39,12 @@
       ],
       "Unable to import blocks by JSON": [
         "Impossibile importare blocchi tramite JSON"
+      ],
+      "Select JSON File": [
+        "Seleziona il file JSON"
+      ],
+      "Use JSON": [
+        "Usare JSON"
       ]
     }
   }
