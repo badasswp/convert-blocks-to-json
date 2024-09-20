@@ -31,7 +31,7 @@ jest.mock( '@wordpress/api-fetch', () => jest.fn( ( options ) => {
       ]
     );
   }
-  return Promise.reject(new Error( 'Unknown path' ) );
+  return Promise.reject( new Error( 'Unknown path' ) );
 } ) );
 
 describe( 'Utilities', () => {
