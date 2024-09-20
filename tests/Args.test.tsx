@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 
-import { getBlocks } from '../src/utils';
+import { getBlocks, getModalParams } from '../src/utils';
 
 jest.mock( '@wordpress/data', () => ( {
   select: jest.fn( ( arg ) => {
@@ -50,6 +50,19 @@ describe( 'Utilities', () => {
           innerBlocks: [],
         }
       ]
+    );
+  } );
+
+  it( 'gets the Modal Params', () => {
+    const params = getModalParams();
+    expect( params ).toEqual(
+      {
+        title: 'Select JSON File',
+        button: {
+          text: 'Use JSON',
+        },
+        multiple: false
+      }
     );
   } );
 } );
