@@ -14,7 +14,15 @@ import { getBlocks } from '../utils';
  * @returns {JSX.Element}
  */
 const ExportJSON = () => {
-  const handleExport = async () => {
+  /**
+   * Generates the JSON export file
+   * and nothing more.
+   *
+   * @since 1.0.1
+   *
+   * @returns {Promise<void>}
+   */
+  const handleExport = async(): Promise<void> => {
     const jsonBlocks = await getBlocks();
     const jsonString = JSON.stringify( jsonBlocks, null, 2 );
     const jsonURL    = URL.createObjectURL(
