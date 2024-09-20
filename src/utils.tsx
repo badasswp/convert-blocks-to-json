@@ -11,12 +11,12 @@ import apiFetch from '@wordpress/api-fetch';
  *
  * @since 1.0.0
  *
- * @returns {any[]}
+ * @returns {Promise<any[]>}
  */
-export const getBlocks = async () => {
+export const getBlocks = (): Promise<any[]> => {
   const postID = select('core/editor').getCurrentPostId();
 
-  return await apiFetch(
+  return apiFetch(
     {
       path: `cbtj/v1/${postID}`
     }
