@@ -39,6 +39,12 @@
       ],
       "Unable to import blocks by JSON": [
         "Не удается импортировать блоки по JSON"
+      ],
+      "Select JSON File": [
+        "Выберите файл JSON"
+      ],
+      "Use JSON": [
+        "Использование JSON"
       ]
     }
   }
