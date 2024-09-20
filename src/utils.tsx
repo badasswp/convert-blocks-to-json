@@ -52,10 +52,10 @@ export const getModalParams = () => {
  *
  * @since 1.0.1
  *
- * @returns {any[]}
+ * @returns {Promise<any[]>}
  */
-export const getImport = async ( attachment ) => {
-  return await apiFetch(
+export const getImport = ( attachment ): Promise<any[]> => {
+  return apiFetch(
     {
       path: '/cbtj/v1/import',
       method: 'POST',
