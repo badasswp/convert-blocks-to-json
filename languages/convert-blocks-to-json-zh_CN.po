@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Convert Blocks to JSON\n"
 "POT-Creation-Date: 2024-08-29 02:17+0100\n"
-"PO-Revision-Date: 2024-08-30 13:16+0100\n"
+"PO-Revision-Date: 2024-09-20 12:28+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: zh_CN\n"
@@ -75,3 +75,11 @@ msgstr "正在导入块..."
 #. dist/app.js
 msgid "Unable to import blocks by JSON"
 msgstr "无法通过 JSON 导入区块"
+
+#. dist/app.js
+msgid "Select JSON File"
+msgstr "选择 JSON 文件"
+
+#. dist/app.js
+msgid "Use JSON"
+msgstr "使用 JSON"

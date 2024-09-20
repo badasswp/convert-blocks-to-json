@@ -39,6 +39,12 @@
       ],
       "Unable to import blocks by JSON": [
         "无法通过 JSON 导入区块"
+      ],
+      "Select JSON File": [
+        "选择 JSON 文件"
+      ],
+      "Use JSON": [
+        "使用 JSON"
       ]
     }
   }
