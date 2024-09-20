@@ -1,45 +1,51 @@
 {
-    "translation-revision-date": "2024-08-29 02:16+0100",
-    "generator": "WP-CLI/2.6.0",
-    "source": "dist/app.js",
-    "domain": "messages",
-    "locale_data": {
-        "messages": {
-            "": {
-                "domain": "messages",
-                "lang": "ar\\n",
-                "plural-forms": "nplurals=2; plural=(n != 1);"
-            },
-            "Convert Blocks to JSON": [
-                "تحويل الكتل إلى JSON"
-            ],
-            "View JSON": [
-                "عرض JSON"
-            ],
-            "Import Blocks by JSON": [
-                "استيراد الكتل بواسطة JSON"
-            ],
-            "Import Blocks": [
-                "إستيراد المكونات"
-            ],
-            "Import": [
-                "استيراد"
-            ],
-            "Export Blocks to JSON": [
-                "تصدير الكتل إلى JSON"
-            ],
-            "Export Blocks": [
-                "كتل التصدير"
-            ],
-            "Export": [
-                "تصدير"
-            ],
-            "Importing blocks...": [
-                "استيراد الكتل..."
-            ],
-            "Unable to import blocks by JSON": [
-                "تعذر استيراد الكتل بواسطة JSON"
-            ]
-        }
+  "translation-revision-date": "2024-08-29 02:16+0100",
+  "generator": "WP-CLI/2.6.0",
+  "source": "dist/app.js",
+  "domain": "messages",
+  "locale_data": {
+    "messages": {
+      "": {
+        "domain": "messages",
+        "lang": "ar\\n",
+        "plural-forms": "nplurals=2; plural=(n != 1);"
+      },
+      "Convert Blocks to JSON": [
+        "تحويل الكتل إلى JSON"
+      ],
+      "View JSON": [
+        "عرض JSON"
+      ],
+      "Import Blocks by JSON": [
+        "استيراد الكتل بواسطة JSON"
+      ],
+      "Import Blocks": [
+        "إستيراد المكونات"
+      ],
+      "Import": [
+        "استيراد"
+      ],
+      "Export Blocks to JSON": [
+        "تصدير الكتل إلى JSON"
+      ],
+      "Export Blocks": [
+        "كتل التصدير"
+      ],
+      "Export": [
+        "تصدير"
+      ],
+      "Importing blocks...": [
+        "استيراد الكتل..."
+      ],
+      "Unable to import blocks by JSON": [
+        "تعذر استيراد الكتل بواسطة JSON"
+      ],
+      "Select JSON File": [
+        "حدد ملف JSON"
+      ],
+      "Use JSON": [
+        "استخدام JSON"
+      ]
     }
+  }
 }
