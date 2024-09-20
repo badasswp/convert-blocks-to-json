@@ -319,11 +319,19 @@ function get_json_content( $json, $post_id ): array {
 }
 
 function get_content( $block ) {
+	$children = [];
+
+	if ( ! empty( $block['innerBlocks'] ) ) {
+		foreach( $block['innerBlocks'] as $child_block ) {
+			$children[] = get_content( $child_block );
+		}
+	}
+
 	$block['attributes']['content'] = $block['filtered'];
 
 	return [
 		'name'        => $block['name'] ?? '',
 		'attributes'  => wp_json_encode( $block['attributes'] ?? [] ),
-		'innerBlocks' => $block['innerBlocks'] ?? [],
+		'innerBlocks' => $children ?? [],
 	];
 }
