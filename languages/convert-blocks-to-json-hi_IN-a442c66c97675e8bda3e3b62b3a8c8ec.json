@@ -1,45 +1,51 @@
 {
-    "translation-revision-date": "2024-08-29 02:16+0100",
-    "generator": "WP-CLI/2.6.0",
-    "source": "dist/app.js",
-    "domain": "messages",
-    "locale_data": {
-        "messages": {
-            "": {
-                "domain": "messages",
-                "lang": "hi_IN\\n",
-                "plural-forms": "nplurals=2; plural=(n != 1);"
-            },
-            "Convert Blocks to JSON": [
-                "ब्लॉक को JSON में बदलें"
-            ],
-            "View JSON": [
-                "JSON देखें"
-            ],
-            "Import Blocks by JSON": [
-                "JSON द्वारा ब्लॉक आयात करें"
-            ],
-            "Import Blocks": [
-                "आयात ब्लॉक"
-            ],
-            "Import": [
-                "आयात"
-            ],
-            "Export Blocks to JSON": [
-                "JSON को ब्लॉक निर्यात करें"
-            ],
-            "Export Blocks": [
-                "निर्यात ब्लॉक"
-            ],
-            "Export": [
-                "निर्यात करें"
-            ],
-            "Importing blocks...": [
-                "ब्लॉक आयात करना..."
-            ],
-            "Unable to import blocks by JSON": [
-                "JSON द्वारा ब्लॉक आयात करने में असमर्थ"
-            ]
-        }
+  "translation-revision-date": "2024-08-29 02:16+0100",
+  "generator": "WP-CLI/2.6.0",
+  "source": "dist/app.js",
+  "domain": "messages",
+  "locale_data": {
+    "messages": {
+      "": {
+        "domain": "messages",
+        "lang": "hi_IN\\n",
+        "plural-forms": "nplurals=2; plural=(n != 1);"
+      },
+      "Convert Blocks to JSON": [
+        "ब्लॉक को JSON में बदलें"
+      ],
+      "View JSON": [
+        "JSON देखें"
+      ],
+      "Import Blocks by JSON": [
+        "JSON द्वारा ब्लॉक आयात करें"
+      ],
+      "Import Blocks": [
+        "आयात ब्लॉक"
+      ],
+      "Import": [
+        "आयात"
+      ],
+      "Export Blocks to JSON": [
+        "JSON को ब्लॉक निर्यात करें"
+      ],
+      "Export Blocks": [
+        "निर्यात ब्लॉक"
+      ],
+      "Export": [
+        "निर्यात करें"
+      ],
+      "Importing blocks...": [
+        "ब्लॉक आयात करना..."
+      ],
+      "Unable to import blocks by JSON": [
+        "JSON द्वारा ब्लॉक आयात करने में असमर्थ"
+      ],
+      "Select JSON File": [
+        "JSON फ़ाइल का चयन करें"
+      ],
+      "Use JSON": [
+        "JSON का उपयोग करें"
+      ]
     }
+  }
 }
