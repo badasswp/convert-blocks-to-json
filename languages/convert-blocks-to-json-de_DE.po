@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Convert Blocks to JSON\n"
 "POT-Creation-Date: 2024-08-29 02:17+0100\n"
-"PO-Revision-Date: 2024-08-30 13:02+0100\n"
+"PO-Revision-Date: 2024-09-20 12:44+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -75,3 +75,11 @@ msgstr "Blöcke werden importiert..."
 #. dist/app.js
 msgid "Unable to import blocks by JSON"
 msgstr "Blöcke können nicht über JSON importiert werden"
+
+#. dist/app.js
+msgid "Select JSON File"
+msgstr "JSON-Datei auswählen"
+
+#. dist/app.js
+msgid "Use JSON"
+msgstr "JSON verwenden"
