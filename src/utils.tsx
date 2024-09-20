@@ -1,3 +1,4 @@
+import { __ } from '@wordpress/i18n';
 import { select } from '@wordpress/data';
 import apiFetch from '@wordpress/api-fetch';
 
@@ -35,9 +36,9 @@ export const getBlocks = async () => {
  */
 export const getModalParams = () => {
   return {
-    title: 'Select JSON File',
+    title: __( 'Select JSON File', 'convert-blocks-to-json' ),
     button: {
-      text: 'Use JSON'
+      text: __( 'Use JSON', 'convert-blocks-to-json' )
     },
     multiple: false
   };
