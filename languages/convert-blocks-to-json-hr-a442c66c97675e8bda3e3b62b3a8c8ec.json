@@ -39,6 +39,12 @@
       ],
       "Unable to import blocks by JSON": [
         "Nije moguće uvesti blokove putem JSON-a"
+      ],
+      "Select JSON File": [
+        "Odaberite JSON datoteku"
+      ],
+      "Use JSON": [
+        "Koristite JSON"
       ]
     }
   }
