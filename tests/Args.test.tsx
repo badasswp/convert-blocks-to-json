@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 
-import { getBlocks, getModalParams } from '../src/utils';
+import { getBlocks, getModalParams, getImport } from '../src/utils';
 
 jest.mock( '@wordpress/data', () => ( {
   select: jest.fn( ( arg ) => {
@@ -14,7 +14,8 @@ jest.mock( '@wordpress/data', () => ( {
 } ) );
 
 jest.mock( '@wordpress/api-fetch', () => jest.fn( ( options ) => {
-  const { path } = options;
+  const { path, method, data } = options;
+
   if ( 'cbtj/v1/7' === path ) {
     return Promise.resolve(
       [
@@ -31,6 +32,28 @@ jest.mock( '@wordpress/api-fetch', () => jest.fn( ( options ) => {
       ]
     );
   }
+
+  if ( 'cbtj/v1/import' === path && 'POST' === method && JSON.stringify({}) === JSON.stringify( data ) ) {
+    return Promise.resolve(
+      [
+        {
+          name: 'core/paragraph',
+          attributes: {
+            content: '<p>Hello World</p>'
+          },
+          innerBlocks: [],
+        },
+        {
+          name: 'core/heading',
+          attributes: {
+            content: '<h1>Hello World</h1>'
+          },
+          innerBlocks: [],
+        },
+      ]
+    );
+  }
+
   return Promise.reject( new Error( 'Unknown path' ) );
 } ) );
 
@@ -63,6 +86,28 @@ describe( 'Utilities', () => {
         },
         multiple: false
       }
+    );
+  } );
+
+  it( 'gets the Import Blocks', () => {
+    const importBlocks = getImport({});
+    expect( importBlocks ).toEqual(
+      [
+        {
+          name: 'core/paragraph',
+          attributes: {
+            content: '<p>Hello World</p>'
+          },
+          innerBlocks: [],
+        },
+        {
+          name: 'core/heading',
+          attributes: {
+            content: '<h1>Hello World</h1>'
+          },
+          innerBlocks: [],
+        },
+      ]
     );
   } );
 } );
