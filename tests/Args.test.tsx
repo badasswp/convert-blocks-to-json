@@ -16,7 +16,7 @@ jest.mock( '@wordpress/data', () => ( {
 jest.mock( '@wordpress/api-fetch', () => jest.fn( ( options ) => {
   const { path, method, data } = options;
 
-  if ( 'cbtj/v1/7' === path ) {
+  if ( '/cbtj/v1/7' === path ) {
     return Promise.resolve(
       [
         {
@@ -33,7 +33,7 @@ jest.mock( '@wordpress/api-fetch', () => jest.fn( ( options ) => {
     );
   }
 
-  if ( 'cbtj/v1/import' === path && 'POST' === method && JSON.stringify({}) === JSON.stringify( data ) ) {
+  if ( '/cbtj/v1/import' === path && 'POST' === method ) {
     return Promise.resolve(
       [
         {
@@ -89,8 +89,8 @@ describe( 'Utilities', () => {
     );
   } );
 
-  it( 'gets the Import Blocks', () => {
-    const importBlocks = getImport({});
+  it( 'gets the Import Blocks', async () => {
+    const importBlocks = await getImport( {} );
     expect( importBlocks ).toEqual(
       [
         {
