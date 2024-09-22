@@ -18,7 +18,7 @@ export const getBlocks = (): Promise<any[]> => {
 
   return apiFetch(
     {
-      path: `cbtj/v1/${postID}`
+      path: `/cbtj/v1/${postID}`
     }
   );
 }
