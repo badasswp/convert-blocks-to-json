@@ -289,7 +289,7 @@ function get_json_import( $request ): \WP_REST_Response {
 /**
  * Get JSON Content.
  *
- * Loop throught the JSON array of blocks
+ * Loop through the JSON array of blocks
  * and render as string.
  *
  * @param 1.0.1
