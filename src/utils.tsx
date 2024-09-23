@@ -2,8 +2,6 @@ import { __ } from '@wordpress/i18n';
 import { select } from '@wordpress/data';
 import apiFetch from '@wordpress/api-fetch';
 
-apiFetch.use( apiFetch.createNonceMiddleware( 'convert-blocks-to-json' ) );
-
 /**
  * Get Blocks.
  *
