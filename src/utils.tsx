@@ -24,27 +24,6 @@ export const getBlocks = (): Promise<any[]> => {
 }
 
 /**
- * Get Modal Params.
- *
- * This function is responsible for getting the
- * Modal params values for the WP Media Window Frame
- * displayed to the user.
- *
- * @since 1.0.1
- *
- * @returns {Object} Modal Params.
- */
-export const getModalParams = () => {
-  return {
-    title: __( 'Select JSON File', 'convert-blocks-to-json' ),
-    button: {
-      text: __( 'Use JSON', 'convert-blocks-to-json' )
-    },
-    multiple: false
-  };
-}
-
-/**
  * Get Import.
  *
  * This function reaches out to the import endpoint
@@ -64,4 +43,25 @@ export const getImport = ( attachment ): Promise<any[]> => {
       },
     }
   );
+}
+
+/**
+ * Get Modal Params.
+ *
+ * This function is responsible for getting the
+ * Modal params values for the WP Media Window Frame
+ * displayed to the user.
+ *
+ * @since 1.0.1
+ *
+ * @returns {Object} Modal Params.
+ */
+export const getModalParams = () => {
+  return {
+    title: __( 'Select JSON File', 'convert-blocks-to-json' ),
+    button: {
+      text: __( 'Use JSON', 'convert-blocks-to-json' )
+    },
+    multiple: false
+  };
 }
