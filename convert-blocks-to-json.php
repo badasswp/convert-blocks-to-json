@@ -93,9 +93,9 @@ add_action( 'rest_api_init', function() {
 		'cbtj/v1',
 		'/(?P<id>\d+)',
 		[
-			'methods' => 'GET',
-			'callback' => __NAMESPACE__ . '\get_rest_response',
-			'permission_callback' => is_user_permissible() ? '__return_true' : '__return_false',
+			'methods'             => 'GET',
+			'callback'            => __NAMESPACE__ . '\get_rest_response',
+			'permission_callback' => __NAMESPACE__ . '\is_user_permissible',
 		],
 	);
 
@@ -103,9 +103,9 @@ add_action( 'rest_api_init', function() {
 		'cbtj/v1',
 		'/import',
 		[
-			'methods' => 'POST',
-			'callback' => __NAMESPACE__ . '\get_json_import',
-			'permission_callback' => is_user_permissible() ? '__return_true' : '__return_false',
+			'methods'             => 'POST',
+			'callback'            => __NAMESPACE__ . '\get_json_import',
+			'permission_callback' => __NAMESPACE__ . '\is_user_permissible',
 		],
 	);
 } );
@@ -348,12 +348,36 @@ function get_content( $block ): array {
 }
 
 /**
- * Permissions callback for endpoints.
+ * Is User Permissible?
+ *
+ * Validate that User has Admin capabilities
+ * and Nonce is set correctly.
  *
  * @since 1.0.2
  *
- * @return bool
+ * @param \WP_REST_Request $request Request Object.
+ * @return bool|\WP_Error
+ *
+ * @wp-hook 'rest_api_init'
  */
-function is_user_permissible(): bool {
-	return in_array( wp_get_current_user()->roles[0] ?? '', [ 'administrator' ], true );
+function is_user_permissible( $request ) {
+	$http_error = rest_authorization_required_code();
+
+	if ( ! current_user_can( 'administrator' ) ) {
+		return new \WP_Error(
+			'cbtj-rest-forbidden',
+			sprintf( 'Invalid User. Error: %s', $http_error ),
+			[ 'status' => $http_error ]
+		);
+	}
+
+	if ( ! wp_verify_nonce( $request->get_header( 'X-WP-Nonce' ), 'wp_rest' ) ) {
+		return new \WP_Error(
+			'cbtj-rest-forbidden',
+			sprintf( 'Invalid Nonce. Error: %s', $http_error ),
+			[ 'status' => $http_error ]
+		);
+	}
+
+	return true;
 }
