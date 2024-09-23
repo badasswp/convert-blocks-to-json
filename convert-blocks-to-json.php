@@ -318,7 +318,18 @@ function get_json_content( $json, $post_id ): array {
 	return (array) apply_filters( 'cbtj_rest_import', $import, $post_id );
 }
 
-function get_content( $block ) {
+/**
+ * Get Import Content.
+ *
+ * Loop through the JSON blocks and format
+ * correctly for use on JS.
+ *
+ * @since 1.0.1
+ *
+ * @param mixed[] $block Block array.
+ * @return mixed[]
+ */
+function get_content( $block ): array {
 	$children = [];
 
 	if ( ! empty( $block['innerBlocks'] ) ) {
