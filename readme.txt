@@ -24,6 +24,11 @@ With the ability to seamlessly transfer block data between environments, you can
 
 == Changelog ==
 
+= 1.0.2 =
+* Refactor: Use `is_user_permissible` for permissions callback.
+* Updated Unit Tests coverage.
+* Tested up to WP 6.6.2.
+
 = 1.0.1 =
 * Added Import functionality.
 * Custom Hooks - `cbtj_rest_import`.
