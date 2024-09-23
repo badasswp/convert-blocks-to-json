@@ -14,7 +14,7 @@ jest.mock( '@wordpress/data', () => ( {
 } ) );
 
 jest.mock( '@wordpress/api-fetch', () => jest.fn( ( options ) => {
-  const { path, method, data } = options;
+  const { path, method } = options;
 
   if ( '/cbtj/v1/7' === path ) {
     return Promise.resolve(
