@@ -95,7 +95,7 @@ add_action( 'rest_api_init', function() {
 		[
 			'methods' => 'GET',
 			'callback' => __NAMESPACE__ . '\get_rest_response',
-			'permission_callback' => '__return_true'
+			'permission_callback' => is_user_permissible() ? '__return_true' : '__return_false',
 		],
 	);
 
@@ -105,7 +105,7 @@ add_action( 'rest_api_init', function() {
 		[
 			'methods' => 'POST',
 			'callback' => __NAMESPACE__ . '\get_json_import',
-			'permission_callback' => '__return_true'
+			'permission_callback' => is_user_permissible() ? '__return_true' : '__return_false',
 		],
 	);
 } );
@@ -334,4 +334,15 @@ function get_content( $block ) {
 		'attributes'  => wp_json_encode( $block['attributes'] ?? [] ),
 		'innerBlocks' => $children ?? [],
 	];
+}
+
+/**
+ * Permissions callback for endpoints.
+ *
+ * @since 1.0.2
+ *
+ * @return bool
+ */
+function is_user_permissible(): bool {
+	return in_array( wp_get_current_user()->roles[0] ?? '', [ 'administrator' ], true );
 }
