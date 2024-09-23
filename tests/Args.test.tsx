@@ -13,49 +13,56 @@ jest.mock( '@wordpress/data', () => ( {
   } ),
 } ) );
 
-jest.mock( '@wordpress/api-fetch', () => jest.fn( ( options ) => {
-  const { path, method } = options;
+jest.mock( '@wordpress/api-fetch', () => {
+  function apiFetchMock( options ) {
+    const { path, method } = options;
 
-  if ( '/cbtj/v1/7' === path ) {
-    return Promise.resolve(
-      [
-        {
-          blockName: 'core/paragraph',
-          innerHTML: '<p>Hello World</p>',
-          innerBlocks: [],
-        },
-        {
-          blockName: 'core/heading',
-          innerHTML: '<h1>Hello World</h1>',
-          innerBlocks: [],
-        }
-      ]
-    );
-  }
-
-  if ( '/cbtj/v1/import' === path && 'POST' === method ) {
-    return Promise.resolve(
-      [
-        {
-          name: 'core/paragraph',
-          attributes: {
-            content: '<p>Hello World</p>'
+    if ( '/cbtj/v1/7' === path ) {
+      return Promise.resolve(
+        [
+          {
+            blockName: 'core/paragraph',
+            innerHTML: '<p>Hello World</p>',
+            innerBlocks: [],
           },
-          innerBlocks: [],
-        },
-        {
-          name: 'core/heading',
-          attributes: {
-            content: '<h1>Hello World</h1>'
-          },
-          innerBlocks: [],
-        },
-      ]
-    );
-  }
+          {
+            blockName: 'core/heading',
+            innerHTML: '<h1>Hello World</h1>',
+            innerBlocks: [],
+          }
+        ]
+      );
+    }
 
-  return Promise.reject( new Error( 'Unknown path' ) );
-} ) );
+    if ( '/cbtj/v1/import' === path && 'POST' === method ) {
+      return Promise.resolve(
+        [
+          {
+            name: 'core/paragraph',
+            attributes: {
+              content: '<p>Hello World</p>'
+            },
+            innerBlocks: [],
+          },
+          {
+            name: 'core/heading',
+            attributes: {
+              content: '<h1>Hello World</h1>'
+            },
+            innerBlocks: [],
+          },
+        ]
+      );
+    }
+
+    return Promise.reject( new Error( 'Unknown path' ) );
+  };
+
+  apiFetchMock.use = jest.fn();
+  apiFetchMock.createNonceMiddleware = jest.fn();
+
+  return apiFetchMock;
+} );
 
 describe( 'Utilities', () => {
   it( 'gets the Blocks', async () => {
