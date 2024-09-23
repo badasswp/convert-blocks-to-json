@@ -85,6 +85,7 @@ add_action( 'init', function() {
  *
  * @since 1.0.0
  * @since 1.0.1 Added `import` REST endpoint.
+ * @since 1.0.2 Serve is_user_permissible for permissions.
  *
  * @wp-hook 'rest_api_init'
  */
