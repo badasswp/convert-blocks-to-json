@@ -4,7 +4,7 @@ import { getBlocks, getModalParams, getImport } from '../src/utils';
 
 jest.mock( '@wordpress/data', () => ( {
   select: jest.fn( ( arg ) => {
-    if ( arg === 'core/editor' ) {
+    if ( 'core/editor' === arg ) {
       return {
         getCurrentPostId: jest.fn( () => 7 ),
       };
