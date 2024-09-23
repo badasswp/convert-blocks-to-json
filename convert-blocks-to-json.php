@@ -94,9 +94,9 @@ add_action( 'rest_api_init', function() {
 		'cbtj/v1',
 		'/(?P<id>\d+)',
 		[
-			'methods'             => 'GET',
+			'methods'             => \WP_REST_Server::READABLE,
 			'callback'            => __NAMESPACE__ . '\get_rest_response',
-			'permission_callback' => __NAMESPACE__ . '\is_user_permissible',
+			'permission_callback' => '__return_true',
 		],
 	);
 
@@ -104,7 +104,7 @@ add_action( 'rest_api_init', function() {
 		'cbtj/v1',
 		'/import',
 		[
-			'methods'             => 'POST',
+			'methods'             => \WP_REST_Server::CREATABLE,
 			'callback'            => __NAMESPACE__ . '\get_json_import',
 			'permission_callback' => __NAMESPACE__ . '\is_user_permissible',
 		],
