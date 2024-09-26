@@ -281,6 +281,7 @@ function get_json_import( $request ): \WP_REST_Response {
 		);
 	}
 
+	// phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
 	$json   = file_get_contents( $json_file );
 	$import = get_json_content( json_decode( $json, true ), $post_id );
 
@@ -339,7 +340,7 @@ function get_content( $block ): array {
 		}
 	}
 
-	$block['attributes']['content'] = $block['filtered'];
+	$block['attributes']['content'] = $block['filtered'] ?? '';
 
 	return [
 		'name'        => $block['name'] ?? '',
