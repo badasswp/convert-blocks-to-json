@@ -15,6 +15,8 @@ Convert your WP blocks to JSON.
 1. Go to 'Plugins > Add New' on your WordPress admin dashboard.
 2. Search for 'Convert Blocks to JSON' plugin from the official WordPress plugin repository.
 3. Click 'Install Now' and then 'Activate'.
+4. Proceed to your Block Editor and locate the top right corner.
+5. You should now see the 'Convert Blocks to JSON' icon available for use.
 
 == Description ==
 
