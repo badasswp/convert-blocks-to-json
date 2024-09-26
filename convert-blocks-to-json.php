@@ -43,7 +43,7 @@ add_action( 'enqueue_block_editor_assets', function() {
 			'wp-edit-post',
 			'wp-edit-site',
 		],
-		mt_rand(),
+		'1.0.3',
 		false,
 	);
 
