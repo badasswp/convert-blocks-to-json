@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.3
+* Replace `mt_rand` with `string` version for asset enqueuing.
+* Fix Bugs and Linting issues.
+* Updated README notes with screenshots.
+* Tested up to WP 6.6.2.
+
 ## 1.0.2
 * Refactor: Use `is_user_permissible` for permissions callback.
 * Updated Unit Tests coverage.
