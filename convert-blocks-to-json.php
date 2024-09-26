@@ -143,6 +143,20 @@ register_activation_hook( __FILE__, function() {
 } );
 
 /**
+ * Flush Permalinks.
+ *
+ * @since 1.0.4 Flush Permalinks.
+ *
+ * @wp-hook 'admin_init'
+ */
+add_action( 'admin_init', function() {
+	if ( get_option( 'cbtj_flush_rewrite_rules' ) ) {
+		flush_rewrite_rules();
+		delete_option( 'cbtj_flush_rewrite_rules' );
+	}
+} );
+
+/**
  * Get REST Response.
  *
  * This method grabs the REST Response needed
