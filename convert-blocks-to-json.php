@@ -131,11 +131,15 @@ add_filter( 'upload_mimes', function( $mimes ) {
  * Flush Permalinks.
  *
  * @since 1.0.1
+ * @since 1.0.4 Update permalink structure if empty.
  *
  * @wp-hook 'register_activation_hook'
  */
 register_activation_hook( __FILE__, function() {
-    flush_rewrite_rules();
+	if ( empty( get_option( 'permalink_structure' ) ) ) {
+		update_option( 'permalink_structure', '/%postname%/' );
+		update_option( 'cbtj_flush_rewrite_rules', true );
+	}
 } );
 
 /**
