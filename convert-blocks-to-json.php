@@ -223,10 +223,10 @@ function get_json( $block ): array {
 	}
 
 	return [
-		'name'        => $block['blockName'],
-		'content'     => $block['innerHTML'],
-		'filtered'    => wp_strip_all_tags( $block['innerHTML'] ),
-		'attributes'  => $block['attrs'],
+		'name'        => $block['blockName'] ?? '',
+		'content'     => $block['innerHTML'] ?? '',
+		'filtered'    => wp_strip_all_tags( $block['innerHTML'] ?? '' ),
+		'attributes'  => $block['attrs'] ?? [],
 		'innerBlocks' => $children
 	];
 }
