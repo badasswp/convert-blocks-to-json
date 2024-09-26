@@ -195,7 +195,7 @@ function get_blocks( $post_content ): array {
 	$valid_blocks = array_filter(
 		$all_blocks,
 		function( $block ) {
-			return ! is_null ( $block['name'] );
+			return ! empty ( $block['name'] );
 		}
 	);
 
