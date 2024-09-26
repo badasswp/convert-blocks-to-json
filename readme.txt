@@ -24,6 +24,12 @@ This plugin offers a powerful solution for exporting and importing WordPress blo
 
 With the ability to seamlessly transfer block data between environments, you can maintain consistency, streamline content updates, and enhance the efficiency of your development workflow.
 
+== Screenshots ==
+
+1. Convert Blocks to JSON icon - Convert your blocks to JSON and vice versa.
+2. Convert Blocks to JSON options - View, Import Blocks & Export Blocks.
+3. Convert Blocks to JSON sidebar - See Convert Blocks to JSON on sidebar.
+
 == Changelog ==
 
 = 1.0.2 =
