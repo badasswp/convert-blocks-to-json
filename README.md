@@ -5,6 +5,8 @@ Convert your WP blocks to JSON.
 
 ## Download
 
+Download from [WordPress plugin repository](https://wordpress.org/plugins/convert-blocks-to-json/).
+
 You can also get the latest version from any of our [release tags](https://github.com/badasswp/convert-blocks-to-json/releases).
 
 ## Why Convert Blocks to JSON?
