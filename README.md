@@ -11,9 +11,9 @@ You can also get the latest version from any of our [release tags](https://githu
 
 ## Why Convert Blocks to JSON?
 
-This plugin offers a powerful solution for __exporting and importing WordPress blocks in JSON format__, making it easier to manage and reuse block structures across different projects. It is particularly beneficial for developers and site owners who are adopting a __Headless CMS__ approach on the front-end that is powered by tools like __React__, __Vue__ & so on.
+This plugin offers a powerful solution for __importing and exporting WordPress blocks in JSON format__, making it easy to move posts across different WP websites. It is also beneficial for WP engineers who are adopting a __Headless CMS__ approach and would like a way to be able to fetch data from the front-end using tools like __React__, __Vue__ & so on.
 
-With the ability to seamlessly transfer block data between environments, you can maintain consistency, streamline content updates, and enhance the efficiency of your development workflow.
+It's __simple__, yet very __powerful__!
 
 https://github.com/user-attachments/assets/9dedf30f-9df0-4307-b634-cecef930a6e5
 

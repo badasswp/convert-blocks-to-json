@@ -20,9 +20,31 @@ Convert your WP blocks to JSON.
 
 == Description ==
 
-This plugin offers a powerful solution for exporting and importing WordPress blocks in JSON format, making it easier to manage and reuse block structures across different projects. It is particularly beneficial for developers and site owners who are adopting a Headless CMS approach on the front-end that is powered by tools like React, Vue & so on.
+This plugin offers a powerful solution for <strong>importing</strong> and <strong>exporting</strong> WordPress <strong>blocks</strong> in JSON format, making it easy to move posts across different WP websites. It is also beneficial for WP engineers who are adopting a <strong>Headless CMS</strong> approach and would like a way to be able to fetch data from the front-end using tools like <strong>React</strong>, </strong>Vue</strong> & so on.
 
-With the ability to seamlessly transfer block data between environments, you can maintain consistency, streamline content updates, and enhance the efficiency of your development workflow.
+It's <strong>simple</strong>, yet very <strong>powerful</strong>!
+
+= ✨ Getting Started =
+
+Create a new Post or open an existing Post. Locate the <strong>Convert Blocks to JSON</strong> icon at the <strong>top right</strong> corner of the Block Editor and click on it. From here you can do the following actions:
+
+1. <strong>View JSON</strong> - Generate JSON data of the post you are working on.
+2. <strong>Import JSON</strong> - Import JSON data from a JSON file to the post you are working on.
+3. <strong>Export JSON</strong> - Export JSON data of the post to a JSON file.
+
+You can get a taste of how this works, by using the [demo](https://tastewp.com/create/NMS/8.0/6.7.0/convert-blocks-to-json/twentytwentythree?ni=true&origin=wp) link.
+
+= ⚡ Why Convert Blocks to JSON =
+
+1. This plugin is useful for users who want to be able to <strong>import</strong> and <strong>export</strong> articles or posts between different WordPress sites easily.
+
+2. This plugin is beneficial for WP engineers who are adopting a <strong>Headless CMS</strong> approach and would like a way to be able to fetch data from the front-end using tools like <strong>React</strong>, </strong>Vue</strong> & so on.
+
+= 🔌🎨 Plug and Play or Customize =
+
+The <strong>Convert Blocks to JSON</strong> plugin is built to work right out of the box. Simply install, activate and start using in your Block Editor.
+
+Want to add your personal touch? All of our documentation can be found [here](https://github.com/badasswp/convert-blocks-to-json). You can override the plugin's behaviour with custom logic of your own using [hooks](https://github.com/badasswp/convert-blocks-to-json?tab=readme-ov-file#hooks).
 
 == Screenshots ==
 
