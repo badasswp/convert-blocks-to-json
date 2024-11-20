@@ -54,6 +54,12 @@ Want to add your personal touch? All of our documentation can be found [here](ht
 
 == Changelog ==
 
+= 1.0.5 =
+* Fix CI/CD build process.
+* Update README text content.
+* Bump up plugin version.
+* Tested up to WP 6.7.0.
+
 = 1.0.4 =
 * Provide graceful fallback for block arrays.
 * Filter out empty|null blocks.
