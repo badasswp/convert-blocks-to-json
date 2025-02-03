@@ -14,7 +14,7 @@ import apiFetch from '@wordpress/api-fetch';
  * @returns {Promise<any[]>}
  */
 export const getBlocks = (): Promise<any[]> => {
-  const postID = select('core/editor').getCurrentPostId();
+  const postID = select( 'core/editor' ).getCurrentPostId();
 
   return apiFetch(
     {

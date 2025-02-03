@@ -6,7 +6,7 @@ import ExportJSON from '../src/components/ExportJSON';
 
 jest.mock( '@wordpress/data', () => ( {
   select: jest.fn( ( storeName ) => {
-    if ( storeName === 'core/editor') {
+    if ( storeName === 'core/editor' ) {
       return {
         getCurrentPostId: jest.fn( () => 1 ),
       };
