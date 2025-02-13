@@ -100,7 +100,7 @@ Want to add your personal touch? All of our documentation can be found [here](ht
 
 = 1.0.0 =
 * Convert & Export Blocks to JSON.
-* Custom Hooks - `cbtj_rest_export`.
+* Custom Hooks - `cbtj_rest_response`.
 * Provided support for Arabic, Chinese, Hebrew, Hindi, Russian, German, Italian, Croatian, Spanish & French languages.
 * Unit Tests coverage.
 * Tested up to WP 6.6.1.
