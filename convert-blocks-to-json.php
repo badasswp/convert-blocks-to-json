@@ -310,7 +310,7 @@ function get_json_import( $request ) {
 	$json   = file_get_contents( $json_file );
 	$import = get_blocks_import( json_decode( $json, true ), $post_id );
 
-	return new \WP_REST_Response( $import );
+	return rest_ensure_response( $import );
 }
 
 /**
