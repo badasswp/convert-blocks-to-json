@@ -19,14 +19,14 @@ https://github.com/user-attachments/assets/9dedf30f-9df0-4307-b634-cecef930a6e5
 
 ### Hooks
 
-#### `cbtj_rest_response`
+#### `cbtj_rest_export`
 
 This custom hook (filter) provides the ability to customise the REST response obtained:
 
 ```php
-add_filter( 'cbtj_rest_response', [ $this, 'custom_rest_response' ], 10, 2 );
+add_filter( 'cbtj_rest_export', [ $this, 'custom_rest_export' ], 10, 2 );
 
-public function custom_rest_response( $response, $post_id ): array {
+public function custom_rest_export( $response, $post_id ): array {
     $response['content'] = wp_parse_args(
         [
             'name'    => 'custom/post-meta-block',

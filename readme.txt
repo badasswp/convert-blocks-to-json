@@ -2,13 +2,13 @@
 Contributors: badasswp
 Tags: convert, blocks, json, gutenberg, editor.
 Requires at least: 4.0
-Tested up to: 6.7.1
-Stable tag: 1.0.6
+Tested up to: 6.7.2
+Stable tag: 1.0.7
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Convert your WP blocks to JSON.
+Convert your WP blocks to JSON. Import & Export blocks across multiple WordPress websites easily & quickly. Generate JSON for Headless CMS websites.
 
 == Installation ==
 
@@ -53,6 +53,13 @@ Want to add your personal touch? All of our documentation can be found [here](ht
 3. Convert Blocks to JSON sidebar - See Convert Blocks to JSON on sidebar.
 
 == Changelog ==
+
+= 1.0.7 =
+* Ensure `REST` response for blocks' imports & exports.
+* Update Hook names `cbtj_rest_response` to `cbtj_rest_export`.
+* Update function names.
+* Update README docs.
+* Tested up to WP 6.7.2.
 
 = 1.0.6 =
 * Fix breaking/faulty dependency.
