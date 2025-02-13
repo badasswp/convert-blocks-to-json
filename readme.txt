@@ -54,6 +54,13 @@ Want to add your personal touch? All of our documentation can be found [here](ht
 
 == Changelog ==
 
+= 1.0.7 =
+* Ensure `REST` response for blocks' imports & exports.
+* Update Hook names `cbtj_rest_response` to `cbtj_rest_export`.
+* Update function names.
+* Update README docs.
+* Tested up to WP 6.7.2.
+
 = 1.0.6 =
 * Fix breaking/faulty dependency.
 * Fix linting issues.
