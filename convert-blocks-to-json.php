@@ -80,37 +80,6 @@ add_action( 'init', function() {
 } );
 
 /**
- * Setup REST routes.
- *
- * @since 1.0.0
- * @since 1.0.1 Added `import` REST endpoint.
- * @since 1.0.2 Serve is_user_permissible for permissions.
- *
- * @wp-hook 'rest_api_init'
- */
-add_action( 'rest_api_init', function() {
-	register_rest_route(
-		'cbtj/v1',
-		'/(?P<id>\d+)',
-		[
-			'methods'             => \WP_REST_Server::READABLE,
-			'callback'            => __NAMESPACE__ . '\get_rest_response',
-			'permission_callback' => '__return_true',
-		]
-	);
-
-	register_rest_route(
-		'cbtj/v1',
-		'/import',
-		[
-			'methods'             => \WP_REST_Server::CREATABLE,
-			'callback'            => __NAMESPACE__ . '\get_json_import',
-			'permission_callback' => __NAMESPACE__ . '\is_user_permissible',
-		]
-	);
-} );
-
-/**
  * Register Mimes.
  *
  * @since 1.0.1
@@ -156,25 +125,44 @@ add_action( 'admin_init', function() {
 } );
 
 /**
- * Get REST Response.
- *
- * This method grabs the REST Response needed
- * for generating the JSON.
+ * Setup REST route for Export.
  *
  * @since 1.0.0
  *
- * @param \WP_REST_Request $request Request Object.
- * @return \WP_REST_Response
- *
  * @wp-hook 'rest_api_init'
  */
-function get_rest_response( $request ): \WP_REST_Response {
+add_action( 'rest_api_init', function() {
+	register_rest_route(
+		'cbtj/v1',
+		'/(?P<id>\d+)',
+		[
+			'methods'             => \WP_REST_Server::READABLE,
+			'callback'            => __NAMESPACE__ . '\get_json_export',
+			'permission_callback' => '__return_true',
+		]
+	);
+} );
+
+/**
+ * Get REST Response.
+ *
+ * This method gets exportable JSON data
+ * for the blocks.
+ *
+ * @since 1.0.0
+ *
+ * @wp-hook 'rest_api_init'
+ *
+ * @param \WP_REST_Request $request Request Object.
+ * @return \WP_REST_Response|\WP_Error
+ */
+function get_json_export( $request ) {
 	$post_id      = (int) $request->get_param( 'id' );
 	$post_content = get_post_field( 'post_content', $post_id );
 
 	$response = [
 		'title'   => get_the_title( $post_id ),
-		'content' => get_blocks( $post_content ),
+		'content' => get_blocks_export( $post_content ),
 	];
 
 	/**
@@ -187,13 +175,13 @@ function get_rest_response( $request ): \WP_REST_Response {
 	 *
 	 * @return mixed[]
 	 */
-	$response = (array) apply_filters( 'cbtj_rest_response', $response, $post_id );
+	$response = (array) apply_filters( 'cbtj_rest_export', $response, $post_id );
 
 	return rest_ensure_response( $response );
 }
 
 /**
- * Get Blocks.
+ * Get Blocks Export.
  *
  * This method is responsible for getting WP
  * valid blocks.
@@ -203,9 +191,9 @@ function get_rest_response( $request ): \WP_REST_Response {
  * @param string $post_content Post Content.
  * @return mixed[]
  */
-function get_blocks( $post_content ): array {
+function get_blocks_export( $post_content ): array {
 	$all_blocks = array_map(
-		__NAMESPACE__ . '\get_json',
+		__NAMESPACE__ . '\get_export',
 		parse_blocks( $post_content )
 	);
 
@@ -230,12 +218,12 @@ function get_blocks( $post_content ): array {
  * @param mixed[] $block WP Blocks.
  * @return mixed[]
  */
-function get_json( $block ): array {
+function get_export( $block ): array {
 	$children = [];
 
 	if ( ! empty( $block['innerBlocks'] ) ) {
 		foreach( $block['innerBlocks'] as $child_block ) {
-			$children[] = get_json( $child_block );
+			$children[] = get_export( $child_block );
 		}
 	}
 
@@ -249,6 +237,26 @@ function get_json( $block ): array {
 }
 
 /**
+ * Setup REST route for Import.
+ *
+ * @since 1.0.1 Added `import` REST endpoint.
+ * @since 1.0.2 Serve is_user_permissible for permissions.
+ *
+ * @wp-hook 'rest_api_init'
+ */
+add_action( 'rest_api_init', function() {
+	register_rest_route(
+		'cbtj/v1',
+		'/import',
+		[
+			'methods'             => \WP_REST_Server::CREATABLE,
+			'callback'            => __NAMESPACE__ . '\get_json_import',
+			'permission_callback' => __NAMESPACE__ . '\is_user_permissible',
+		]
+	);
+} );
+
+/**
  * Get REST Response.
  *
  * This method grabs the JSON attachment
@@ -256,19 +264,19 @@ function get_json( $block ): array {
  *
  * @since 1.0.1
  *
- * @param \WP_REST_Request $request Request Object.
- * @return \WP_REST_Response
- *
  * @wp-hook 'rest_api_init'
+ *
+ * @param \WP_REST_Request $request Request Object.
+ * @return \WP_REST_Response|\WP_Error
  */
-function get_json_import( $request ): \WP_REST_Response {
+function get_json_import( $request ) {
 	$args = $request->get_json_params();
 
 	// Get Post ID & JSON file.
 	$post_id   = (int) ( $args['id'] ?? '' );
 	$json_file = get_attached_file( $post_id );
 
-	//Bail out, if it does NOT exists.
+	// Bail out, if it does NOT exists.
 	if ( ! file_exists( $json_file ) ) {
 		return new \WP_Error(
 			'cbtj-bad-request',
@@ -283,7 +291,7 @@ function get_json_import( $request ): \WP_REST_Response {
 		);
 	}
 
-	//Bail out, if it is not JSON.
+	// Bail out, if it is not JSON.
 	if ( 'json' !== wp_check_filetype( $json_file )['ext'] ?? '' ) {
 		return new \WP_Error(
 			'cbtj-bad-request',
@@ -300,13 +308,13 @@ function get_json_import( $request ): \WP_REST_Response {
 
 	// phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
 	$json   = file_get_contents( $json_file );
-	$import = get_json_content( json_decode( $json, true ), $post_id );
+	$import = get_blocks_import( json_decode( $json, true ), $post_id );
 
-	return new \WP_REST_Response( $import );
+	return rest_ensure_response( $import );
 }
 
 /**
- * Get JSON Content.
+ * Get Blocks Import.
  *
  * Loop through the JSON array of blocks
  * and render as string.
@@ -318,9 +326,9 @@ function get_json_import( $request ): \WP_REST_Response {
  *
  * @return mixed[]
  */
-function get_json_content( $json, $post_id ): array {
+function get_blocks_import( $json, $post_id ): array {
 	$import = array_map(
-		__NAMESPACE__ . '\get_content',
+		__NAMESPACE__ . '\get_import',
 		$json['content'] ?? []
 	);
 
@@ -348,12 +356,12 @@ function get_json_content( $json, $post_id ): array {
  * @param mixed[] $block Block array.
  * @return mixed[]
  */
-function get_content( $block ): array {
+function get_import( $block ): array {
 	$children = [];
 
 	if ( ! empty( $block['innerBlocks'] ) ) {
 		foreach( $block['innerBlocks'] as $child_block ) {
-			$children[] = get_content( $child_block );
+			$children[] = get_import( $child_block );
 		}
 	}
 
@@ -374,10 +382,10 @@ function get_content( $block ): array {
  *
  * @since 1.0.2
  *
+ * @wp-hook 'rest_api_init'
+ *
  * @param \WP_REST_Request $request Request Object.
  * @return bool|\WP_Error
- *
- * @wp-hook 'rest_api_init'
  */
 function is_user_permissible( $request ) {
 	$http_error = rest_authorization_required_code();
