@@ -168,13 +168,13 @@ add_action( 'admin_init', function() {
  * @param \WP_REST_Request $request Request Object.
  * @return \WP_REST_Response|\WP_Error
  */
-function get_rest_response( $request ): \WP_REST_Response {
+function get_json_export( $request ) {
 	$post_id      = (int) $request->get_param( 'id' );
 	$post_content = get_post_field( 'post_content', $post_id );
 
 	$response = [
 		'title'   => get_the_title( $post_id ),
-		'content' => get_blocks( $post_content ),
+		'content' => get_blocks_export( $post_content ),
 	];
 
 	/**
@@ -187,7 +187,7 @@ function get_rest_response( $request ): \WP_REST_Response {
 	 *
 	 * @return mixed[]
 	 */
-	$response = (array) apply_filters( 'cbtj_rest_response', $response, $post_id );
+	$response = (array) apply_filters( 'cbtj_rest_export', $response, $post_id );
 
 	return rest_ensure_response( $response );
 }
@@ -203,9 +203,9 @@ function get_rest_response( $request ): \WP_REST_Response {
  * @param string $post_content Post Content.
  * @return mixed[]
  */
-function get_blocks( $post_content ): array {
+function get_blocks_export( $post_content ): array {
 	$all_blocks = array_map(
-		__NAMESPACE__ . '\get_json',
+		__NAMESPACE__ . '\get_export',
 		parse_blocks( $post_content )
 	);
 
@@ -230,12 +230,12 @@ function get_blocks( $post_content ): array {
  * @param mixed[] $block WP Blocks.
  * @return mixed[]
  */
-function get_json( $block ): array {
+function get_export( $block ): array {
 	$children = [];
 
 	if ( ! empty( $block['innerBlocks'] ) ) {
 		foreach( $block['innerBlocks'] as $child_block ) {
-			$children[] = get_json( $child_block );
+			$children[] = get_export( $child_block );
 		}
 	}
 
@@ -261,7 +261,7 @@ function get_json( $block ): array {
  * @param \WP_REST_Request $request Request Object.
  * @return \WP_REST_Response|\WP_Error
  */
-function get_json_import( $request ): \WP_REST_Response {
+function get_json_import( $request ) {
 	$args = $request->get_json_params();
 
 	// Get Post ID & JSON file.
@@ -300,7 +300,7 @@ function get_json_import( $request ): \WP_REST_Response {
 
 	// phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
 	$json   = file_get_contents( $json_file );
-	$import = get_json_content( json_decode( $json, true ), $post_id );
+	$import = get_blocks_import( json_decode( $json, true ), $post_id );
 
 	return new \WP_REST_Response( $import );
 }
@@ -318,9 +318,9 @@ function get_json_import( $request ): \WP_REST_Response {
  *
  * @return mixed[]
  */
-function get_json_content( $json, $post_id ): array {
+function get_blocks_import( $json, $post_id ): array {
 	$import = array_map(
-		__NAMESPACE__ . '\get_content',
+		__NAMESPACE__ . '\get_import',
 		$json['content'] ?? []
 	);
 
@@ -348,12 +348,12 @@ function get_json_content( $json, $post_id ): array {
  * @param mixed[] $block Block array.
  * @return mixed[]
  */
-function get_content( $block ): array {
+function get_import( $block ): array {
 	$children = [];
 
 	if ( ! empty( $block['innerBlocks'] ) ) {
 		foreach( $block['innerBlocks'] as $child_block ) {
-			$children[] = get_content( $child_block );
+			$children[] = get_import( $child_block );
 		}
 	}
 
