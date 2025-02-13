@@ -158,15 +158,15 @@ add_action( 'admin_init', function() {
 /**
  * Get REST Response.
  *
- * This method grabs the REST Response needed
- * for generating the JSON.
+ * This method gets exportable JSON data
+ * for the blocks.
  *
  * @since 1.0.0
  *
- * @param \WP_REST_Request $request Request Object.
- * @return \WP_REST_Response
- *
  * @wp-hook 'rest_api_init'
+ *
+ * @param \WP_REST_Request $request Request Object.
+ * @return \WP_REST_Response|\WP_Error
  */
 function get_rest_response( $request ): \WP_REST_Response {
 	$post_id      = (int) $request->get_param( 'id' );
@@ -193,7 +193,7 @@ function get_rest_response( $request ): \WP_REST_Response {
 }
 
 /**
- * Get Blocks.
+ * Get Blocks Export.
  *
  * This method is responsible for getting WP
  * valid blocks.
@@ -256,10 +256,10 @@ function get_json( $block ): array {
  *
  * @since 1.0.1
  *
- * @param \WP_REST_Request $request Request Object.
- * @return \WP_REST_Response
- *
  * @wp-hook 'rest_api_init'
+ *
+ * @param \WP_REST_Request $request Request Object.
+ * @return \WP_REST_Response|\WP_Error
  */
 function get_json_import( $request ): \WP_REST_Response {
 	$args = $request->get_json_params();
@@ -268,7 +268,7 @@ function get_json_import( $request ): \WP_REST_Response {
 	$post_id   = (int) ( $args['id'] ?? '' );
 	$json_file = get_attached_file( $post_id );
 
-	//Bail out, if it does NOT exists.
+	// Bail out, if it does NOT exists.
 	if ( ! file_exists( $json_file ) ) {
 		return new \WP_Error(
 			'cbtj-bad-request',
@@ -283,7 +283,7 @@ function get_json_import( $request ): \WP_REST_Response {
 		);
 	}
 
-	//Bail out, if it is not JSON.
+	// Bail out, if it is not JSON.
 	if ( 'json' !== wp_check_filetype( $json_file )['ext'] ?? '' ) {
 		return new \WP_Error(
 			'cbtj-bad-request',
@@ -306,7 +306,7 @@ function get_json_import( $request ): \WP_REST_Response {
 }
 
 /**
- * Get JSON Content.
+ * Get Blocks Import.
  *
  * Loop through the JSON array of blocks
  * and render as string.
@@ -374,10 +374,10 @@ function get_content( $block ): array {
  *
  * @since 1.0.2
  *
+ * @wp-hook 'rest_api_init'
+ *
  * @param \WP_REST_Request $request Request Object.
  * @return bool|\WP_Error
- *
- * @wp-hook 'rest_api_init'
  */
 function is_user_permissible( $request ) {
 	$http_error = rest_authorization_required_code();
