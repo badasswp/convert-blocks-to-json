@@ -8,7 +8,7 @@ Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Convert your WP blocks to JSON.
+Convert your WP blocks to JSON. Import & Export blocks across multiple WordPress websites easily & quickly. Generate JSON for Headless CMS websites.
 
 == Installation ==
 
