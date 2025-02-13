@@ -80,37 +80,6 @@ add_action( 'init', function() {
 } );
 
 /**
- * Setup REST routes.
- *
- * @since 1.0.0
- * @since 1.0.1 Added `import` REST endpoint.
- * @since 1.0.2 Serve is_user_permissible for permissions.
- *
- * @wp-hook 'rest_api_init'
- */
-add_action( 'rest_api_init', function() {
-	register_rest_route(
-		'cbtj/v1',
-		'/(?P<id>\d+)',
-		[
-			'methods'             => \WP_REST_Server::READABLE,
-			'callback'            => __NAMESPACE__ . '\get_rest_response',
-			'permission_callback' => '__return_true',
-		]
-	);
-
-	register_rest_route(
-		'cbtj/v1',
-		'/import',
-		[
-			'methods'             => \WP_REST_Server::CREATABLE,
-			'callback'            => __NAMESPACE__ . '\get_json_import',
-			'permission_callback' => __NAMESPACE__ . '\is_user_permissible',
-		]
-	);
-} );
-
-/**
  * Register Mimes.
  *
  * @since 1.0.1
@@ -153,6 +122,25 @@ add_action( 'admin_init', function() {
 		flush_rewrite_rules();
 		delete_option( 'cbtj_flush_rewrite_rules' );
 	}
+} );
+
+/**
+ * Setup REST route for Export.
+ *
+ * @since 1.0.0
+ *
+ * @wp-hook 'rest_api_init'
+ */
+add_action( 'rest_api_init', function() {
+	register_rest_route(
+		'cbtj/v1',
+		'/(?P<id>\d+)',
+		[
+			'methods'             => \WP_REST_Server::READABLE,
+			'callback'            => __NAMESPACE__ . '\get_json_export',
+			'permission_callback' => '__return_true',
+		]
+	);
 } );
 
 /**
@@ -247,6 +235,26 @@ function get_export( $block ): array {
 		'innerBlocks' => $children
 	];
 }
+
+/**
+ * Setup REST route for Import.
+ *
+ * @since 1.0.1 Added `import` REST endpoint.
+ * @since 1.0.2 Serve is_user_permissible for permissions.
+ *
+ * @wp-hook 'rest_api_init'
+ */
+add_action( 'rest_api_init', function() {
+	register_rest_route(
+		'cbtj/v1',
+		'/import',
+		[
+			'methods'             => \WP_REST_Server::CREATABLE,
+			'callback'            => __NAMESPACE__ . '\get_json_import',
+			'permission_callback' => __NAMESPACE__ . '\is_user_permissible',
+		]
+	);
+} );
 
 /**
  * Get REST Response.
