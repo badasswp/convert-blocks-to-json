@@ -47,7 +47,7 @@ describe( 'ViewJSON', () => {
 
 		// Expect Component to look like so:
 		expect( container.innerHTML ).toBe(
-			`<p>View JSON</p><a href="https://example.com/wp-json/cbtj/v1/1" target="_blank"><button type="button" class="components-button is-primary">View JSON</button></a>`
+			`<p>View JSON</p><a href="https://example.com/wp-json/cbtj/v1/1" target="_blank" rel="noreferrer"><button type="button" class="components-button is-primary">View JSON</button></a>`
 		);
 	} );
 } );
