@@ -18,43 +18,42 @@ import './styles/app.scss';
  *
  * @since 1.0.0
  *
- * @returns {JSX.Element}
+ * @return {JSX.Element} Convert Blocks To JSON.
  */
-const ConvertBlocksToJSON = () => {
-  return (
-    <Fragment>
-      <PluginSidebarMoreMenuItem
-        target="cbtj-sidebar"
-        icon="editor-code"
-      >
-        { __( 'Convert Blocks to JSON', 'convert-blocks-to-json' ) }
-      </PluginSidebarMoreMenuItem>
-      <PluginSidebar
-        name="cbtj-sidebar"
-        title={ __( 'Convert Blocks to JSON', 'convert-blocks-to-json' ) }
-        icon="editor-code"
-      >
-        <PanelBody>
-          <div id="cbtj">
-            <ul>
-              <li>
-                <ViewJSON />
-              </li>
-              <li>
-                <ImportJSON />
-              </li>
-              <li>
-                <ExportJSON />
-              </li>
-            </ul>
-          </div>
-        </PanelBody>
-      </PluginSidebar>
-    </Fragment>
-  );
+const ConvertBlocksToJSON = (): JSX.Element => {
+	return (
+		<Fragment>
+			<PluginSidebarMoreMenuItem target="cbtj-sidebar" icon="editor-code">
+				{ __( 'Convert Blocks to JSON', 'convert-blocks-to-json' ) }
+			</PluginSidebarMoreMenuItem>
+			<PluginSidebar
+				name="cbtj-sidebar"
+				title={ __(
+					'Convert Blocks to JSON',
+					'convert-blocks-to-json'
+				) }
+				icon="editor-code"
+			>
+				<PanelBody>
+					<div id="cbtj">
+						<ul>
+							<li>
+								<ViewJSON />
+							</li>
+							<li>
+								<ImportJSON />
+							</li>
+							<li>
+								<ExportJSON />
+							</li>
+						</ul>
+					</div>
+				</PanelBody>
+			</PluginSidebar>
+		</Fragment>
+	);
 };
 
 registerPlugin( 'convert-blocks-to-json', {
-  render: ConvertBlocksToJSON,
+	render: ConvertBlocksToJSON,
 } );
-

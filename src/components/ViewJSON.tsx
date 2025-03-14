@@ -10,24 +10,25 @@ import { Button } from '@wordpress/components';
  *
  * @since 1.0.0
  *
- * @returns {JSX.Element}
+ * @return {JSX.Element} View JSON.
  */
-const ViewJSON = () => {
-  const postID = select('core/editor').getCurrentPostId();
+const ViewJSON = (): JSX.Element => {
+	const postID = select( 'core/editor' ).getCurrentPostId();
 
-  return (
-    <>
-      <p>{ __( 'View JSON', 'convert-blocks-to-json' ) }</p>
-      <a href={`${cbtj.url}/wp-json/cbtj/v1/${postID}`} target="_blank">
-        <Button
-          variant="primary"
-          onClick={ () => { } }
-        >
-          { __( 'View JSON', 'convert-blocks-to-json' ) }
-        </Button>
-      </a>
-    </>
-  )
-}
+	return (
+		<>
+			<p>{ __( 'View JSON', 'convert-blocks-to-json' ) }</p>
+			<a
+				href={ `${ cbtj.url }/wp-json/cbtj/v1/${ postID }` }
+				target="_blank"
+				rel="noreferrer"
+			>
+				<Button variant="primary" onClick={ () => {} }>
+					{ __( 'View JSON', 'convert-blocks-to-json' ) }
+				</Button>
+			</a>
+		</>
+	);
+};
 
 export default ViewJSON;
