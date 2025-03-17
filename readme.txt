@@ -3,7 +3,7 @@ Contributors: badasswp
 Tags: convert, blocks, json, gutenberg, editor.
 Requires at least: 4.0
 Tested up to: 6.7.2
-Stable tag: 1.0.7
+Stable tag: 1.0.8
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
