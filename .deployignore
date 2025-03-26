@@ -4,6 +4,7 @@
 .eslintrc.js
 .gitignore
 .github
+.wp-env.json
 CHANGELOG.md
 jest.config.js
 jest.setup.js
@@ -13,3 +14,4 @@ webpack.config.js
 assets
 src
 tests
+bin
