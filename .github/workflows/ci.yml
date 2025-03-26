@@ -13,19 +13,19 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - name: Set up Node.js 18.x
+    - name: Set up Node.js 20.x
       uses: actions/setup-node@v3
       with:
-        node-version: 18.x
+        node-version: 20.x
 
     - name: Install NPM
       run: |
         yarn install
 
-    - name: Check Linting
+    - name: Check JS Linting
       run: |
         yarn lint:js
 
-    - name: Run Test Suites
+    - name: Run JS Unit Tests
       run: |
-        yarn test
+        yarn test:js
