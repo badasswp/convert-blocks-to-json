@@ -71,11 +71,32 @@ public function custom_rest_import( $import, $post_id ): array {
 - import _`{mixed[]}`_ REST Import. By default this is an array of Blocks.
 - post_id _`{int}`_ Post ID.
 
-## Development
+---
 
-### Setup
+## Contribute
 
-- Clone the repository.
-- Make sure you have [Node](https://nodejs.org) installed on your computer.
-- Run `yarn install && yarn build` to build JS dependencies.
-- For local development, you can use [Docker](https://docs.docker.com/install/) or [Local by Flywheel](https://localwp.com/).
+Contributions are __welcome__ and will be fully __credited__. To contribute, please fork this repo and raise a PR (Pull Request) against the `master` branch.
+
+### Pre-requisites
+
+You should have the following tools before proceeding to the next steps:
+
+- Composer
+- Yarn
+- Docker
+
+To enable you start development, please run:
+
+```bash
+yarn start
+```
+
+This should spin up a local WP env instance for you to work with at:
+
+```bash
+http://cbtj.localhost:5478
+```
+
+You should now have a functioning local WP env to work with. To login to the `wp-admin` backend, please username as `admin` & password as `password`.
+
+__Awesome!__ - Thanks for being interested in contributing your time and code to this project!
