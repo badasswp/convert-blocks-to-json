@@ -1,0 +1,16 @@
+{
+	"plugins": [
+		"."
+	],
+	"phpVersion": "8.2",
+	"port": 5478,
+	"testsPort": 5479,
+	"config": {
+		"ALLOW_UNFILTERED_UPLOADS": true,
+		"WP_SITEURL": "http://cbtj.localhost",
+		"WP_HOME": "http://cbtj.localhost"
+	},
+	"lifecycleScripts": {
+		"afterStart": "./bin/setup.sh"
+	}
+}
