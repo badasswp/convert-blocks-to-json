@@ -54,6 +54,11 @@ Want to add your personal touch? All of our documentation can be found [here](ht
 
 == Changelog ==
 
+= 1.0.9 =
+* Bump up plugin version.
+* Tested up to WP 6.8
+* Update README docs.
+
 = 1.0.8 =
 * Enforce WP style linting across plugin.
 * Add local dev env setup for WP.
