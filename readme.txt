@@ -2,8 +2,8 @@
 Contributors: badasswp
 Tags: convert, blocks, json, gutenberg, editor.
 Requires at least: 4.0
-Tested up to: 6.7.2
-Stable tag: 1.0.8
+Tested up to: 6.8
+Stable tag: 1.0.9
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -53,6 +53,11 @@ Want to add your personal touch? All of our documentation can be found [here](ht
 3. Convert Blocks to JSON sidebar - See Convert Blocks to JSON on sidebar.
 
 == Changelog ==
+
+= 1.0.9 =
+* Bump up plugin version.
+* Tested up to WP 6.8
+* Update README docs.
 
 = 1.0.8 =
 * Enforce WP style linting across plugin.
