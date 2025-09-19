@@ -47,7 +47,7 @@ abstract class Route implements Router {
 	 * @return string|array
 	 */
 	public function get_permission_callback() {
-		if ( $this->method === \WP_REST_Server::READABLE ) {
+		if ( \WP_REST_Server::READABLE === $this->method ) {
 			return '__return_true';
 		}
 
