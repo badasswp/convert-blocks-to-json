@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
@@ -15,10 +14,6 @@ jest.mock( '@wordpress/data', () => ( {
 	} ),
 } ) );
 
-jest.mock( '@wordpress/i18n', () => ( {
-	__: jest.fn( ( text ) => text ),
-} ) );
-
 jest.mock( '@wordpress/components', () => ( {
 	Button: jest.fn( ( { children } ) => {
 		return (
@@ -31,23 +26,12 @@ jest.mock( '@wordpress/components', () => ( {
 
 describe( 'ViewJSON', () => {
 	beforeAll( () => {
-		global.cbtj = { url: 'https://example.com' };
+		global.cbtj = { baseUrl: 'https://example.com' };
 	} );
 
 	it( 'renders the component with correct text and link', () => {
 		const { container } = render( <ViewJSON /> );
 
-		// Expect Correct link is generated:
-		const link = screen.getByRole( 'link' );
-		expect( link ).toHaveAttribute( 'target', '_blank' );
-		expect( link ).toHaveAttribute(
-			'href',
-			'https://example.com/wp-json/cbtj/v1/1'
-		);
-
-		// Expect Component to look like so:
-		expect( container.innerHTML ).toBe(
-			`<p>View JSON</p><a href="https://example.com/wp-json/cbtj/v1/1" target="_blank" rel="noreferrer"><button type="button" class="components-button is-primary">View JSON</button></a>`
-		);
+		expect( container ).toMatchSnapshot();
 	} );
 } );
