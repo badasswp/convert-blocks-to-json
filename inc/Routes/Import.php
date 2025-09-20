@@ -79,6 +79,18 @@ class Import extends Route implements Router {
 		$json   = file_get_contents( $json_file );
 		$import = $this->get_blocks_import( json_decode( $json, true ), $post_id );
 
+		/**
+		 * Filter JSON Import.
+		 *
+		 * @since 1.0.1
+		 *
+		 * @param mixed[] $response Import Blocks.
+		 * @param integer $post_id  Post ID.
+		 *
+		 * @return mixed[]
+		 */
+		$import = (array) apply_filters( 'cbtj_rest_import', $import, $post_id );
+
 		return rest_ensure_response( $import );
 	}
 
@@ -96,22 +108,12 @@ class Import extends Route implements Router {
 	 * @return mixed[]
 	 */
 	public function get_blocks_import( $json, $post_id ): array {
-		$import = array_map(
+		$import_blocks = array_map(
 			[ $this, 'get_import' ],
 			$json['content'] ?? []
 		);
 
-		/**
-		 * Filter JSON Import.
-		 *
-		 * @since 1.0.1
-		 *
-		 * @param mixed[] $response Import Blocks.
-		 * @param integer $post_id  Post ID.
-		 *
-		 * @return mixed[]
-		 */
-		return (array) apply_filters( 'cbtj_rest_import', $import, $post_id );
+		return $import_blocks;
 	}
 
 	/**

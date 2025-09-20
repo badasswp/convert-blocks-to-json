@@ -52,7 +52,7 @@ class Export extends Route implements Router {
 		$post_id      = (int) $request->get_param( 'id' );
 		$post_content = get_post_field( 'post_content', $post_id );
 
-		$response = [
+		$export = [
 			'title'   => get_the_title( $post_id ),
 			'content' => $this->get_blocks_export( $post_content ),
 		];
@@ -62,14 +62,14 @@ class Export extends Route implements Router {
 		 *
 		 * @since 1.0.0
 		 *
-		 * @param mixed[] $response Response Object.
-		 * @param integer $post_id  Post ID.
+		 * @param mixed[] $export  Response Array.
+		 * @param integer $post_id Post ID.
 		 *
 		 * @return mixed[]
 		 */
-		$response = (array) apply_filters( 'cbtj_rest_export', $response, $post_id );
+		$export = (array) apply_filters( 'cbtj_rest_export', $export, $post_id );
 
-		return rest_ensure_response( $response );
+		return rest_ensure_response( $export );
 	}
 
 	/**
@@ -84,13 +84,14 @@ class Export extends Route implements Router {
 	 * @return mixed[]
 	 */
 	public function get_blocks_export( $post_content ): array {
-		$all_blocks = array_map(
+		$export_blocks = array_map(
 			[ $this, 'get_export' ],
 			parse_blocks( $post_content )
 		);
 
+		// Some blocks turn up nullable, let's remove them.
 		$valid_blocks = array_filter(
-			$all_blocks,
+			$export_blocks,
 			function ( $block ) {
 				return ! empty( $block['name'] );
 			}
