@@ -10,6 +10,7 @@
 
 namespace ConvertBlocksToJSON\Services;
 
+use ConvertBlocksToJSON\Abstracts\Route;
 use ConvertBlocksToJSON\Abstracts\Service;
 use ConvertBlocksToJSON\Interfaces\Kernel;
 
@@ -66,7 +67,8 @@ class Scripts extends Service implements Kernel {
 			static::$slug,
 			'cbtj',
 			[
-				'url' => get_home_url(),
+				'baseUrl'   => get_home_url(),
+				'namespace' => Route::get_rest_namespace(),
 			]
 		);
 	}

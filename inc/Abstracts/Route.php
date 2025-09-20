@@ -46,13 +46,16 @@ abstract class Route implements Router {
 	}
 
 	/**
-	 * Register REST Route.
+	 * Get REST namespace.
 	 *
-	 * @since 1.0.0
+	 * Get the REST namespace which will be used in
+	 * the route path e.g. 'cbtj/v1'
 	 *
-	 * @return void
+	 * @since 1.1.0
+	 *
+	 * @return string
 	 */
-	public function register_route(): void {
+	public static function get_rest_namespace(): string {
 		/**
 		 * Filter REST namespace.
 		 *
@@ -63,10 +66,19 @@ abstract class Route implements Router {
 		 *
 		 * @return string
 		 */
-		$rest_namespace = (string) apply_filters( 'cbtj_rest_namespace', 'cbtj/v1' );
+		return (string) apply_filters( 'cbtj_rest_namespace', 'cbtj/v1' );
+	}
 
+	/**
+	 * Register REST Route.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return void
+	 */
+	public function register_route(): void {
 		register_rest_route(
-			$rest_namespace,
+			static::get_rest_namespace(),
 			$this->endpoint,
 			[
 				'methods'             => $this->method,
