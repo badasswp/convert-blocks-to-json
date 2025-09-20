@@ -1,6 +1,7 @@
 declare global {
   var cbtj: {
-    url: string;
+    baseUrl: string;
+    namespace: string;
   };
 }
 
