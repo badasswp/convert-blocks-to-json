@@ -17,15 +17,6 @@ use ConvertBlocksToJSON\Interfaces\Router;
  */
 abstract class Route implements Router {
 	/**
-	 * Get, Post, Put, Patch, Delete.
-	 *
-	 * @since 1.1.0
-	 *
-	 * @var string
-	 */
-	public string $method;
-
-	/**
 	 * REST Callback.
 	 *
 	 * Also known as the Request Callback. This method is
