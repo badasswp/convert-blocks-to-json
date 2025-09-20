@@ -76,7 +76,7 @@ abstract class Route implements Router {
 
 		register_rest_route(
 			$rest_namespace,
-			'/(?P<id>\d+)',
+			$this->endpoint,
 			[
 				'methods'             => $this->method,
 				'callback'            => [ $this, 'rest_callback' ],

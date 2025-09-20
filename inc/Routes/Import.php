@@ -27,6 +27,15 @@ class Import extends Route implements Router {
 	public string $method = \WP_REST_Server::CREATABLE;
 
 	/**
+	 * Endpoint.
+	 *
+	 * @since 1.1.0
+	 *
+	 * @var string
+	 */
+	public string $endpoint = '/import';
+
+	/**
 	 * Get REST Response.
 	 *
 	 * This method grabs the JSON attachment

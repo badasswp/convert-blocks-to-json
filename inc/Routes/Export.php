@@ -27,6 +27,15 @@ class Export extends Route implements Router {
 	public string $method = \WP_REST_Server::READABLE;
 
 	/**
+	 * Endpoint.
+	 *
+	 * @since 1.1.0
+	 *
+	 * @var string
+	 */
+	public string $endpoint = '/(?P<id>\d+)';
+
+	/**
 	 * Get REST Response.
 	 *
 	 * This method gets exportable JSON data
