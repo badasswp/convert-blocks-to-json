@@ -48,6 +48,7 @@ public function custom_rest_export( $response, $post_id ): array {
 
 - response _`{mixed[]}`_ REST Response.
 - post_id _`{int}`_ Post ID.
+<br/>
 
 #### `cbtj_rest_import`
 
@@ -70,6 +71,24 @@ public function custom_rest_import( $import, $post_id ): array {
 
 - import _`{mixed[]}`_ REST Import. By default this is an array of Blocks.
 - post_id _`{int}`_ Post ID.
+<br/>
+
+#### `cbtj_rest_namespace`
+
+This custom hook (filter) provides users the ability to customize the default REST namespace. For e.g.
+
+```php
+add_filter( 'cbtj_rest_namespace', [ $this, 'custom_namespace' ], 10, 2 );
+
+public function custom_namespace( $namespace ): array {
+    return 'my-custom-namespace/v1';
+}
+```
+
+**Parameters**
+
+- namespace _`{string}`_ REST Namespace. By default, this is a string which contains the Route namespace.
+<br/>
 
 ---
 
