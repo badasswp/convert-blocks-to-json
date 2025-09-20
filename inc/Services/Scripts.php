@@ -47,7 +47,7 @@ class Scripts extends Service implements Kernel {
 
 		wp_enqueue_script(
 			static::$slug,
-			plugins_url( sprintf( '%s/dist/app.js', static::slug ) ),
+			plugins_url( sprintf( '%s/dist/app.js', static::$slug ) ),
 			$assets['dependencies'],
 			$assets['version'],
 			false,
