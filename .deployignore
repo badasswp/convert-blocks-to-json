@@ -11,6 +11,8 @@ jest.setup.js
 README.md
 tsconfig.json
 webpack.config.js
+phpcs.xml
+phpunit.xml
 assets
 src
 tests
