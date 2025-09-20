@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ViewJSON renders the component with correct text and link 1`] = `
+<div>
+  <p>
+    View JSON
+  </p>
+  <a
+    href="https://example.com/wp-json/cbtj/v1/1"
+    rel="noreferrer"
+    target="_blank"
+  >
+    <button
+      class="components-button is-primary"
+      type="button"
+    >
+      View JSON
+    </button>
+  </a>
+</div>
+`;
