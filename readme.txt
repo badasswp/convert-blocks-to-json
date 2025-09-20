@@ -8,7 +8,7 @@ Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Convert your WP blocks to JSON. Import & Export blocks across multiple WordPress websites easily & quickly. Generate JSON for Headless CMS websites.
+Convert your WP blocks to JSON. Import & Export blocks across multiple WordPress websites. Generate JSON for your Headless CMS websites.
 
 == Installation ==
 
@@ -23,6 +23,16 @@ Convert your WP blocks to JSON. Import & Export blocks across multiple WordPress
 This plugin offers a powerful solution for <strong>importing</strong> and <strong>exporting</strong> WordPress <strong>blocks</strong> in JSON format, making it easy to move posts across different WP websites. It is also beneficial for WP engineers who are adopting a <strong>Headless CMS</strong> approach and would like a way to be able to fetch data from the front-end using tools like <strong>React</strong>, </strong>Vue</strong> & so on.
 
 It's <strong>simple</strong>, yet very <strong>powerful</strong>!
+
+= ✔️ Features =
+
+Our plugin comes with everything you need for your WP blocks.
+
+✔️ <strong>Import & Export WP blocks</strong> across multiple WordPress websites.
+✔️ <strong>Convert WP blocks to JSON</strong> easily & quickly.
+✔️ Useful for <strong>Headless CMS websites</strong> or front-end projects working with React, Vue & so on.
+✔️ Available in <strong>mutiple langauges</strong> such as Arabic, Chinese, Hebrew, Hindi, Russian, German, Italian, Croatian, Spanish & French languages.
+✔️ <strong>Backward compatible</strong>, works with most WP versions.
 
 = ✨ Getting Started =
 
