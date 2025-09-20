@@ -8,7 +8,7 @@
  * @package ConvertBlocksToJSON
  */
 
-namespace ConvertBlocksToJSON\Services;
+namespace ConvertBlocksToJSON\Routes;
 
 use ConvertBlocksToJSON\Abstracts\Route;
 use ConvertBlocksToJSON\Interfaces\Router;
