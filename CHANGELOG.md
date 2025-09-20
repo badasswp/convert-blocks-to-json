@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.0
+* Feat: Add REST namespace `cbtj_rest_namespace`.
+* Docs: Improve README docs.
+* Refactor: Use classes for PHP codebase.
+* Tested up to WP 6.7.2.
+
 ## 1.0.9
 * Bump up plugin version.
 * Tested up to WP 6.8
