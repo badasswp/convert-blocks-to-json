@@ -3,7 +3,7 @@
  * Plugin Name: Convert Blocks to JSON
  * Plugin URI:  https://github.com/badasswp/convert-blocks-to-json
  * Description: Convert your WP blocks to JSON.
- * Version:     1.0.9
+ * Version:     1.1.0
  * Author:      badasswp
  * Author URI:  https://github.com/badasswp
  * License:     GPL v2 or later
