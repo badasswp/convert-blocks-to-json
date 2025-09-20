@@ -78,7 +78,7 @@ public function custom_rest_import( $import, $post_id ): array {
 This custom hook (filter) provides users the ability to customize the default REST namespace. For e.g.
 
 ```php
-add_filter( 'cbtj_rest_namespace', [ $this, 'custom_namespace' ], 10, 2 );
+add_filter( 'cbtj_rest_namespace', [ $this, 'custom_namespace' ] );
 
 public function custom_namespace( $namespace ): array {
     return 'my-custom-namespace/v1';
