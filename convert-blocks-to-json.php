@@ -132,8 +132,20 @@ add_action( 'admin_init', function() {
  * @wp-hook 'rest_api_init'
  */
 add_action( 'rest_api_init', function() {
+	/**
+	 * Filter REST namespace.
+	 *
+	 * Provide users the ability to customize the
+	 * default REST namespace.
+	 *
+	 * @since 1.1.0
+	 *
+	 * @return string
+	 */
+	$rest_namespace = (string) apply_filters( 'cbtj_rest_namespace', 'cbtj/v1' );
+
 	register_rest_route(
-		'cbtj/v1',
+		$rest_namespace,
 		'/(?P<id>\d+)',
 		[
 			'methods'             => \WP_REST_Server::READABLE,
@@ -245,8 +257,20 @@ function get_export( $block ): array {
  * @wp-hook 'rest_api_init'
  */
 add_action( 'rest_api_init', function() {
+	/**
+	 * Filter REST namespace.
+	 *
+	 * Provide users the ability to customize the
+	 * default REST namespace.
+	 *
+	 * @since 1.1.0
+	 *
+	 * @return string
+	 */
+	$rest_namespace = (string) apply_filters( 'cbtj_rest_namespace', 'cbtj/v1' );
+
 	register_rest_route(
-		'cbtj/v1',
+		$rest_namespace,
 		'/import',
 		[
 			'methods'             => \WP_REST_Server::CREATABLE,
