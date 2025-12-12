@@ -153,11 +153,21 @@ class Import extends Route implements Router {
 			$block['attributes']['url'] = esc_url( $matches[1] ?? '' );
 		}
 
-		return [
+		$import_block = [
 			'name'            => $block['name'] ?? '',
 			'originalContent' => $block['content'] ?? '',
 			'attributes'      => wp_json_encode( $block['attributes'] ?? [] ),
 			'innerBlocks'     => $children ?? [],
 		];
+
+		/**
+		 * Filter Import Block.
+		 *
+		 * @since 1.2.0
+		 *
+		 * @param mixed[] $response Import Block.
+		 * @return mixed[]
+		 */
+		return apply_filters( 'cbtj_import_block', $import_block );
 	}
 }
