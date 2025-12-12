@@ -2,6 +2,9 @@ import { __ } from '@wordpress/i18n';
 import { dispatch } from '@wordpress/data';
 import { Button } from '@wordpress/components';
 import { createBlock } from '@wordpress/blocks';
+import { store as editorStore } from '@wordpress/editor';
+import { store as noticeStore } from '@wordpress/notices';
+import { store as blockEditorStore } from '@wordpress/block-editor';
 
 import { getModalParams, getImport } from '../utils';
 
@@ -44,22 +47,35 @@ const ImportJSON = (): JSX.Element => {
 	 *
 	 * @return {Promise<void>}
 	 */
-	const handleImport = async ( wpMediaModal ) => {
+	const handleImport = async ( wpMediaModal: Object ): Promise< void > => {
 		const attachment = wpMediaModal
 			.state()
 			.get( 'selection' )
 			.first()
 			.toJSON();
-		const jsonImport = ( await getImport( attachment ) ) as any[];
 
-		jsonImport.forEach( ( { name, attributes, innerBlocks } ) => {
-			attributes = JSON.parse( attributes );
-			(
-				dispatch( 'core/block-editor' ) as { insertBlocks: any }
-			 ).insertBlocks(
-				createBlock( name, { ...attributes }, innerBlocks )
-			);
-		} );
+		try {
+			// Get data.
+			const { title, content } = await getImport( attachment );
+
+			// Add title.
+			dispatch( editorStore ).editPost( { title, status: 'publish' } );
+
+			// Add content.
+			content.forEach( ( { name, attributes, innerBlocks } ) => {
+				attributes = JSON.parse( attributes );
+				(
+					dispatch( blockEditorStore ) as { insertBlocks: any }
+				 ).insertBlocks(
+					createBlock( name, { ...attributes }, innerBlocks )
+				);
+			} );
+
+			// Save Post.
+			await dispatch( editorStore ).savePost();
+		} catch ( e ) {
+			dispatch( noticeStore ).createWarningNotice( e.message );
+		}
 	};
 
 	return (

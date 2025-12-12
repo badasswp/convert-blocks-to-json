@@ -76,11 +76,17 @@ class Import extends Route implements Router {
 		}
 
 		// phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
-		$json   = file_get_contents( $json_file );
-		$import = $this->get_blocks_import( json_decode( $json, true ), $post_id );
+		$json   = json_decode( file_get_contents( $json_file ), true );
+		$blocks = $this->get_blocks_import( $json['content'] ?? [], $post_id );
 
 		// Make sure to weed out empty blocks.
-		$import = array_filter( $import, fn( $block ) => ! empty( $block ) );
+		$content = array_filter( $blocks, fn( $block ) => ! empty( $block ) );
+
+		// Add title.
+		$import = [
+			'title'   => $json['title'] ?? '',
+			'content' => $content
+		];
 
 		/**
 		 * Filter JSON Import.
@@ -105,13 +111,13 @@ class Import extends Route implements Router {
 	 *
 	 * @param 1.0.1
 	 *
-	 * @param array   $json    JSON Array of Blocks.
+	 * @param array   $content JSON content.
 	 * @param integer $post_id Post ID.
 	 *
 	 * @return mixed[]
 	 */
-	public function get_blocks_import( $json, $post_id ): array {
-		return array_map( [ $this, 'get_import' ], $json['content'] ?? [] );
+	public function get_blocks_import( $content, $post_id ): array {
+		return array_map( [ $this, 'get_import' ], $content );
 	}
 
 	/**
