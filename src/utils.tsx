@@ -13,10 +13,10 @@ import apiFetch from '@wordpress/api-fetch';
  *
  * @return {Promise<any[]>} Blocks.
  */
-export const getBlocks = (): Promise< any[] > => {
+export const getBlocks = async (): Promise< any[] > => {
 	const postID = select( 'core/editor' ).getCurrentPostId();
 
-	return apiFetch( {
+	return await apiFetch( {
 		path: `/cbtj/v1/${ postID }`,
 	} );
 };
@@ -30,10 +30,10 @@ export const getBlocks = (): Promise< any[] > => {
  * @param  attachment
  * @since 1.0.1
  *
- * @return {Promise<any[]>} Import.
+ * @return {Promise<any>} Import.
  */
-export const getImport = ( attachment ): Promise< any[] > => {
-	return apiFetch( {
+export const getImport = async ( attachment ): Promise< any > => {
+	return await apiFetch( {
 		path: '/cbtj/v1/import',
 		method: 'POST',
 		data: {
@@ -51,9 +51,9 @@ export const getImport = ( attachment ): Promise< any[] > => {
  *
  * @since 1.0.1
  *
- * @return {Object} Modal Params.
+ * @return {any} Modal Params.
  */
-export const getModalParams = (): object => {
+export const getModalParams = (): any => {
 	return {
 		title: __( 'Select JSON File', 'convert-blocks-to-json' ),
 		button: {
