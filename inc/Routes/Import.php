@@ -108,12 +108,7 @@ class Import extends Route implements Router {
 	 * @return mixed[]
 	 */
 	public function get_blocks_import( $json, $post_id ): array {
-		$import_blocks = array_map(
-			[ $this, 'get_import' ],
-			$json['content'] ?? []
-		);
-
-		return $import_blocks;
+		return array_map( [ $this, 'get_import' ], $json['content'] ?? [] );
 	}
 
 	/**
