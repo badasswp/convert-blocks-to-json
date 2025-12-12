@@ -147,10 +147,17 @@ class Import extends Route implements Router {
 
 		$block['attributes']['content'] = $block['filtered'] ?? '';
 
+		// Ensure missing URL attribute is captured for image blocks.
+		if ( 'core/image' === $block['name'] ) {
+			preg_match( '/src="([^"]+)"/', $block['content'] ?? '', $matches );
+			$block['attributes']['url'] = esc_url( $matches[1] ?? '' );
+		}
+
 		return [
-			'name'        => $block['name'] ?? '',
-			'attributes'  => wp_json_encode( $block['attributes'] ?? [] ),
-			'innerBlocks' => $children ?? [],
+			'name'            => $block['name'] ?? '',
+			'originalContent' => $block['content'] ?? '',
+			'attributes'      => wp_json_encode( $block['attributes'] ?? [] ),
+			'innerBlocks'     => $children ?? [],
 		];
 	}
 }
