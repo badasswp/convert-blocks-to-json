@@ -79,6 +79,9 @@ class Import extends Route implements Router {
 		$json   = file_get_contents( $json_file );
 		$import = $this->get_blocks_import( json_decode( $json, true ), $post_id );
 
+		// Make sure to weed out empty blocks.
+		$import = array_filter( $import, fn( $block ) => ! empty( $block ) );
+
 		/**
 		 * Filter JSON Import.
 		 *
@@ -123,6 +126,11 @@ class Import extends Route implements Router {
 	 * @return mixed[]
 	 */
 	public function get_import( $block ): array {
+		// Bail out, if block has no name.
+		if ( '' === ( $block['name'] ?? '' ) ) {
+			return [];
+		}
+
 		$children = [];
 
 		if ( ! empty( $block['innerBlocks'] ) ) {
