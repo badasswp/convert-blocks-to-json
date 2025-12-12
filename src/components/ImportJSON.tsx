@@ -43,11 +43,10 @@ const ImportJSON = (): JSX.Element => {
 	 *
 	 * @since 1.0.1
 	 *
-	 * @param {Object} wpMediaModal
-	 *
+	 * @param {any} wpMediaModal
 	 * @return {Promise<void>}
 	 */
-	const handleImport = async ( wpMediaModal: Object ): Promise< void > => {
+	const handleImport = async ( wpMediaModal: any ): Promise< void > => {
 		const attachment = wpMediaModal
 			.state()
 			.get( 'selection' )

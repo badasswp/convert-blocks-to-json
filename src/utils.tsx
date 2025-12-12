@@ -28,12 +28,12 @@ export const getBlocks = async (): Promise< any[] > => {
  * This function reaches out to the import endpoint
  * and gets the list of JSON blocks.
  *
- * @param  attachment
  * @since 1.0.1
  *
+ * @param {any} attachment Attachment object.
  * @return {Promise<any>} Import.
  */
-export const getImport = async ( attachment ): Promise< any > => {
+export const getImport = async ( attachment: any ): Promise< any > => {
 	return await apiFetch( {
 		path: '/cbtj/v1/import',
 		method: 'POST',
