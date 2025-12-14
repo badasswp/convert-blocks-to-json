@@ -11,6 +11,7 @@
 namespace ConvertBlocksToJSON\Core;
 
 use ConvertBlocksToJSON\Services\Boot;
+use ConvertBlocksToJSON\Services\Blocks;
 use ConvertBlocksToJSON\Services\Routes;
 use ConvertBlocksToJSON\Services\Scripts;
 use ConvertBlocksToJSON\Interfaces\Kernel;
@@ -33,6 +34,7 @@ class Container implements Kernel {
 	public function __construct() {
 		static::$services = [
 			Boot::class,
+			Blocks::class,
 			Routes::class,
 			Scripts::class,
 		];

@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
 import ViewJSON from '../src/components/ViewJSON';
@@ -26,7 +26,9 @@ jest.mock( '@wordpress/components', () => ( {
 
 describe( 'ViewJSON', () => {
 	beforeAll( () => {
-		global.cbtj = { baseUrl: 'https://example.com' };
+		( global as unknown as { cbtj: any } ).cbtj = {
+			baseUrl: 'https://example.com',
+		};
 	} );
 
 	it( 'renders the component with correct text and link', () => {
