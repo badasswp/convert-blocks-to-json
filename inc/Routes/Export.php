@@ -120,12 +120,22 @@ class Export extends Route implements Router {
 			}
 		}
 
-		return [
+		$export_block = [
 			'name'        => $block['blockName'] ?? '',
 			'content'     => $block['innerHTML'] ?? '',
 			'filtered'    => wp_strip_all_tags( $block['innerHTML'] ?? '' ),
 			'attributes'  => $block['attrs'] ?? [],
 			'innerBlocks' => $children,
 		];
+
+		/**
+		 * Filter Export Block.
+		 *
+		 * @since 1.2.0
+		 *
+		 * @param mixed[] $export_block Export Block.
+		 * @return mixed[]
+		 */
+		return apply_filters( 'cbtj_export_block', $export_block );
 	}
 }
