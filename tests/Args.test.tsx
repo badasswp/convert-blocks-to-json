@@ -2,6 +2,10 @@ import '@testing-library/jest-dom';
 
 import { getBlocks, getModalParams, getImport } from '../src/utils';
 
+jest.mock( '@wordpress/editor', () => ( {
+	store: 'core/editor',
+} ) );
+
 jest.mock( '@wordpress/data', () => ( {
 	select: jest.fn( ( arg ) => {
 		if ( 'core/editor' === arg ) {
