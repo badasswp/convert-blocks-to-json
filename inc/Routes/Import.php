@@ -89,12 +89,12 @@ class Import extends Route implements Router {
 		];
 
 		/**
-		 * Filter JSON Import.
+		 * Filter Import.
 		 *
 		 * @since 1.0.1
 		 *
-		 * @param mixed[] $response Import Blocks.
-		 * @param integer $post_id  Post ID.
+		 * @param mixed[] $import  Import data.
+		 * @param integer $post_id Post ID.
 		 *
 		 * @return mixed[]
 		 */
@@ -159,7 +159,7 @@ class Import extends Route implements Router {
 		 *
 		 * @since 1.2.0
 		 *
-		 * @param mixed[] $response Import Block.
+		 * @param mixed[] $import_block Import Block.
 		 * @return mixed[]
 		 */
 		return apply_filters( 'cbtj_import_block', $import_block );
