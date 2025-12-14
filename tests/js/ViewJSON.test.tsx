@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
-import ViewJSON from '../src/components/ViewJSON';
+import ViewJSON from '../../src/components/ViewJSON';
 
 jest.mock( '@wordpress/data', () => ( {
 	select: jest.fn( ( storeName ) => {
