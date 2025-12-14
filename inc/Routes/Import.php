@@ -147,12 +147,6 @@ class Import extends Route implements Router {
 
 		$block['attributes']['content'] = $block['filtered'] ?? '';
 
-		// Ensure missing URL attribute is captured for image blocks.
-		if ( 'core/image' === $block['name'] ) {
-			preg_match( '/src="([^"]+)"/', $block['content'] ?? '', $matches );
-			$block['attributes']['url'] = esc_url( $matches[1] ?? '' );
-		}
-
 		$import_block = [
 			'name'            => $block['name'] ?? '',
 			'originalContent' => $block['content'] ?? '',
