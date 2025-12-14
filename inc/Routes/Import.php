@@ -85,7 +85,7 @@ class Import extends Route implements Router {
 		// Add title.
 		$import = [
 			'title'   => $json['title'] ?? '',
-			'content' => $content
+			'content' => $content,
 		];
 
 		/**

@@ -23,7 +23,7 @@ class Image extends Block {
 	 */
 	public function modify_block( $block ): array {
 		// Bail out, if undefined OR not Image block.
-		if ( empty( $block['name' ] ) || 'core/image' !== $block['name'] ) {
+		if ( empty( $block['name'] ) || 'core/image' !== $block['name'] ) {
 			return $block;
 		}
 
@@ -40,5 +40,3 @@ class Image extends Block {
 		return $block;
 	}
 }
-
-

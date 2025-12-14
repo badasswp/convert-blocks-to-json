@@ -25,7 +25,7 @@ class Blocks extends Service implements Kernel {
 	 */
 	public function register(): void {
 		$blocks = [
-			Image::class
+			Image::class,
 		];
 
 		/**
