@@ -14,14 +14,14 @@ class ImageTest extends WPMockTestCase {
 	public Image $image;
 
 	public function setUp(): void {
-        parent::setUp();
+		parent::setUp();
 
 		$this->image = new Image();
-    }
+	}
 
-    public function tearDown(): void {
-        parent::tearDown();
-    }
+	public function tearDown(): void {
+		parent::tearDown();
+	}
 
 	public function test_modify_block_returns_default_block_if_name_is_undefined() {
 		$block = $this->image->modify_block(
