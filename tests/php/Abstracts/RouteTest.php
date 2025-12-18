@@ -66,7 +66,7 @@ class RouteTest extends TestCase {
 		$this->assertSame(
 			[
 				$private_route,
-				'is_user_permissible'
+				'is_user_permissible',
 			],
 			$private_route->get_permission_callback()
 		);
@@ -206,7 +206,7 @@ class RouteTest extends TestCase {
 }
 
 class ConcreteRoute extends Route {
-	public string $method = 'GET';
+	public string $method   = 'GET';
 	public string $endpoint = '/concrete';
 	public WP_REST_Request $request;
 
@@ -216,7 +216,7 @@ class ConcreteRoute extends Route {
 }
 
 class RegisterRoute extends Route {
-	public string $method = 'GET';
+	public string $method   = 'GET';
 	public string $endpoint = '/register';
 	public WP_REST_Request $request;
 
