@@ -38,5 +38,8 @@
 		"lint:fix": "vendor/bin/phpcbf -v",
 		"test": "vendor/bin/phpunit --testdox",
 		"analyse": "vendor/bin/phpstan analyse --memory-limit=2048M"
+	},
+	"require": {
+		"badasswp/wp-mock-tc": "^1.0"
 	}
 }
