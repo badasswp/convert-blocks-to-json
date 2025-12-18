@@ -10,6 +10,8 @@
 
 namespace ConvertBlocksToJSON\Abstracts;
 
+use WP_Error;
+use WP_REST_Server;
 use ConvertBlocksToJSON\Interfaces\Router;
 
 /**
@@ -31,6 +33,17 @@ abstract class Route implements Router {
 	abstract public function rest_callback( $request );
 
 	/**
+	 * Server HTTP verb.
+	 *
+	 * @since 1.2.0
+	 *
+	 * @return string
+	 */
+	protected function get_http_verb(): string {
+		return WP_REST_Server::READABLE;
+	}
+
+	/**
 	 * Permission Callback.
 	 *
 	 * @since 1.1.0
@@ -38,7 +51,7 @@ abstract class Route implements Router {
 	 * @return string|array
 	 */
 	public function get_permission_callback() {
-		if ( \WP_REST_Server::READABLE === $this->method ) {
+		if ( $this->get_http_verb() === $this->method ) {
 			return '__return_true';
 		}
 
@@ -99,10 +112,10 @@ abstract class Route implements Router {
 	 * @param string $message Error Msg.
 	 * @return \WP_Error
 	 */
-	public function get_400_response( $message ): \WP_Error {
+	public function get_400_response( $message ): WP_Error {
 		$args = $this->request->get_json_params();
 
-		return new \WP_Error(
+		return new WP_Error(
 			'cbtj-bad-request',
 			sprintf(
 				'Fatal Error: Bad Request, %s',
@@ -132,7 +145,7 @@ abstract class Route implements Router {
 		$http_error = rest_authorization_required_code();
 
 		if ( ! current_user_can( 'administrator' ) ) {
-			return new \WP_Error(
+			return new WP_Error(
 				'cbtj-rest-forbidden',
 				sprintf( 'Invalid User. Error: %s', $http_error ),
 				[ 'status' => $http_error ]
@@ -140,7 +153,7 @@ abstract class Route implements Router {
 		}
 
 		if ( ! wp_verify_nonce( $request->get_header( 'X-WP-Nonce' ), 'wp_rest' ) ) {
-			return new \WP_Error(
+			return new WP_Error(
 				'cbtj-rest-forbidden',
 				sprintf( 'Invalid Nonce. Error: %s', $http_error ),
 				[ 'status' => $http_error ]
