@@ -33,17 +33,6 @@ abstract class Route implements Router {
 	abstract public function rest_callback( $request );
 
 	/**
-	 * Server HTTP verb.
-	 *
-	 * @since 1.2.0
-	 *
-	 * @return string
-	 */
-	protected function get_http_verb(): string {
-		return WP_REST_Server::READABLE;
-	}
-
-	/**
 	 * Permission Callback.
 	 *
 	 * @since 1.1.0
@@ -51,7 +40,7 @@ abstract class Route implements Router {
 	 * @return string|array
 	 */
 	public function get_permission_callback() {
-		if ( $this->get_http_verb() === $this->method ) {
+		if ( WP_REST_Server::READABLE === $this->method ) {
 			return '__return_true';
 		}
 
