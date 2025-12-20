@@ -14,6 +14,9 @@ use ConvertBlocksToJSON\Abstracts\Route;
  * @covers \ConvertBlocksToJSON\Abstracts\Route::rest_callback
  * @covers \ConvertBlocksToJSON\Abstracts\Route::get_permission_callback
  * @covers \ConvertBlocksToJSON\Abstracts\Route::get_rest_namespace
+ * @covers \ConvertBlocksToJSON\Abstracts\Route::register_route
+ * @covers \ConvertBlocksToJSON\Abstracts\Route::get_400_response
+ * @covers \ConvertBlocksToJSON\Abstracts\Route::is_user_permissible
  */
 class RouteTest extends TestCase {
 	public Route $route;
