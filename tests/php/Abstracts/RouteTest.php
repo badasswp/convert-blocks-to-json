@@ -47,31 +47,21 @@ class RouteTest extends TestCase {
 	}
 
 	public function test_get_permission_callback_returns_string_with_return_true_value() {
-		$private_route = Mockery::mock( ConcreteRoute::class )->makePartial()
-			->shouldAllowMockingProtectedMethods();
-
-		$private_route->shouldReceive( 'get_http_verb' )
-			->andReturn( 'GET' );
-
 		$this->assertSame(
 			'__return_true',
-			$private_route->get_permission_callback()
+			$this->route->get_permission_callback()
 		);
 	}
 
 	public function test_get_permission_callback_returns_array() {
-		$private_route = Mockery::mock( ConcreteRoute::class )->makePartial()
-			->shouldAllowMockingProtectedMethods();
-
-		$private_route->shouldReceive( 'get_http_verb' )
-			->andReturn( 'POST' );
+		$post_route = new PostRoute();
 
 		$this->assertSame(
 			[
-				$private_route,
+				$post_route,
 				'is_user_permissible',
 			],
-			$private_route->get_permission_callback()
+			$post_route->get_permission_callback()
 		);
 	}
 
@@ -95,21 +85,23 @@ class RouteTest extends TestCase {
 	}
 
 	public function test_register_route() {
-		$route = new RegisterRoute();
+		WP_Mock::onFilter( 'cbtj_rest_namespace' )
+			->with( 'cbtj/v1' )
+			->reply( 'blocks/v1' );
 
 		WP_Mock::userFunction( 'register_rest_route' )
 			->with(
-				'register-route/v1',
-				'/register',
+				'blocks/v1',
+				'/concrete',
 				[
 					'methods'             => 'GET',
-					'callback'            => [ $route, 'rest_callback' ],
+					'callback'            => [ $this->route, 'rest_callback' ],
 					'permission_callback' => '__return_true',
 				]
 			)
 			->andReturn( null );
 
-		$route->register_route();
+		$this->route->register_route();
 
 		$this->assertConditionsMet();
 	}
@@ -218,18 +210,10 @@ class ConcreteRoute extends Route {
 	}
 }
 
-class RegisterRoute extends Route {
-	public string $method   = 'GET';
-	public string $endpoint = '/register';
+class PostRoute extends Route {
+	public string $method   = 'POST';
+	public string $endpoint = '/post';
 	public WP_REST_Request $request;
-
-	public static function get_rest_namespace(): string {
-		return 'register-route/v1';
-	}
-
-	public function get_permission_callback() {
-		return '__return_true';
-	}
 
 	public function rest_callback( $request ) {
 		return rest_ensure_response( [] );
