@@ -14,14 +14,14 @@ use ConvertBlocksToJSON\Abstracts\Block;
 
 class Image extends Block {
 	/**
-	 * Modify Block.
+	 * Import Block.
 	 *
 	 * @since 1.2.0
 	 *
 	 * @param mixed[] $block Import Block.
 	 * @return mixed[]
 	 */
-	public function modify_block( $block ): array {
+	public function import_block( $block ): array {
 		// Bail out, if undefined OR not Image block.
 		if ( empty( $block['name'] ) || 'core/image' !== $block['name'] ) {
 			return $block;
@@ -36,6 +36,23 @@ class Image extends Block {
 
 		// Re-encode attributes correctly.
 		$block['attributes'] = wp_json_encode( $block['attributes'] );
+
+		return $block;
+	}
+
+	/**
+	 * Export Block.
+	 *
+	 * @since 1.2.0
+	 *
+	 * @param mixed[] $block Export Block.
+	 * @return mixed[]
+	 */
+	public function export_block( $block ): array {
+		// Bail out, if undefined OR not Image block.
+		if ( empty( $block['name'] ) || 'core/image' !== $block['name'] ) {
+			return $block;
+		}
 
 		return $block;
 	}
