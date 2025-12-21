@@ -10,6 +10,7 @@ use ConvertBlocksToJSON\Routes\Export;
 use Badasswp\WPMockTC\WPMockTestCase;
 
 /**
+ * @covers \ConvertBlocksToJSON\Routes\Export::__construct
  * @covers \ConvertBlocksToJSON\Routes\Export::rest_callback
  * @covers \ConvertBlocksToJSON\Routes\Export::get_blocks_export
  * @covers \ConvertBlocksToJSON\Routes\Export::get_export
@@ -25,6 +26,11 @@ class ExportTest extends WPMockTestCase {
 
 	public function tearDown(): void {
 		parent::tearDown();
+	}
+
+	public function test_class_properties_are_defined_by_default() {
+		$this->assertSame( 'GET', $this->export->method );
+		$this->assertSame( '/(?P<id>\d+)', $this->export->endpoint );
 	}
 
 	public function test_rest_callback() {
