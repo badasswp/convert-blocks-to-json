@@ -11,6 +11,8 @@ use Badasswp\WPMockTC\WPMockTestCase;
 
 /**
  * @covers \ConvertBlocksToJSON\Routes\Export::rest_callback
+ * @covers \ConvertBlocksToJSON\Routes\Export::get_blocks_export
+ * @covers \ConvertBlocksToJSON\Routes\Export::get_export
  */
 class ExportTest extends WPMockTestCase {
 	public Export $export;
@@ -53,7 +55,7 @@ class ExportTest extends WPMockTestCase {
 		WP_Mock::expectFilter(
 			'cbtj_rest_export',
 			[
-				'title' => 'Hello World',
+				'title'   => 'Hello World',
 				'content' => [],
 			],
 			1
@@ -66,5 +68,85 @@ class ExportTest extends WPMockTestCase {
 
 		$this->assertInstanceOf( WP_REST_Response::class, $response );
 		$this->assertConditionsMet();
+	}
+
+	public function test_get_blocks_export() {
+		WP_Mock::userFunction( 'parse_blocks' )
+			->with( 'Hello World' )
+			->andReturn(
+				[
+					[
+						'content'     => 'Block with no name',
+						'innerHTML'   => '<p>Block with no name</p>',
+						'attrs'       => [],
+						'innerBlocks' => [],
+					],
+					[
+						'blockName'   => 'core/paragraph',
+						'innerHTML'   => '<p>Block with name</p>',
+						'attrs'       => [],
+						'innerBlocks' => [],
+					],
+				]
+			);
+
+		WP_Mock::expectFilter(
+			'cbtj_export_block',
+			[
+				'name'        => '',
+				'content'     => '<p>Block with no name</p>',
+				'filtered'    => 'Block with no name',
+				'attributes'  => [],
+				'innerBlocks' => [],
+			]
+		);
+
+		WP_Mock::expectFilter(
+			'cbtj_export_block',
+			[
+				'name'        => 'core/paragraph',
+				'content'     => '<p>Block with name</p>',
+				'filtered'    => 'Block with name',
+				'attributes'  => [],
+				'innerBlocks' => [],
+			]
+		);
+
+		$this->assertSame(
+			[
+				[
+					'name'        => 'core/paragraph',
+					'content'     => '<p>Block with name</p>',
+					'filtered'    => 'Block with name',
+					'attributes'  => [],
+					'innerBlocks' => [],
+				]
+			],
+			$this->export->get_blocks_export( 'Hello World' )
+		);
+	}
+
+	public function test_get_export() {
+		$expected = [
+			'name'        => 'core/paragraph',
+			'content'     => '<p>Block with name</p>',
+			'filtered'    => 'Block with name',
+			'attributes'  => [],
+			'innerBlocks' => [],
+		];
+
+		WP_Mock::expectFilter( 'cbtj_export_block', $expected );
+
+		$this->assertSame(
+			$expected,
+			$this->export->get_export(
+				[
+					'blockName'   => 'core/paragraph',
+					'innerHTML'   => '<p>Block with name</p>',
+					'attrs'       => [],
+					'innerBlocks' => [],
+				]
+			)
+		);
 	}
 }
