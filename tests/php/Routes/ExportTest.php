@@ -20,9 +20,6 @@ class ExportTest extends WPMockTestCase {
 	public function setUp(): void {
 		parent::setUp();
 
-		Mockery::mock( WP_REST_Server::class )
-			->makePartial();
-
 		$this->export = new Export();
 	}
 
