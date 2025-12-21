@@ -120,7 +120,7 @@ class ExportTest extends WPMockTestCase {
 					'filtered'    => 'Block with name',
 					'attributes'  => [],
 					'innerBlocks' => [],
-				]
+				],
 			],
 			$this->export->get_blocks_export( 'Hello World' )
 		);
