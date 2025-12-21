@@ -102,8 +102,6 @@ abstract class Route implements Router {
 	 * @return \WP_Error
 	 */
 	public function get_400_response( $message ): WP_Error {
-		$args = $this->request->get_json_params();
-
 		return new WP_Error(
 			'cbtj-bad-request',
 			sprintf(
@@ -112,7 +110,6 @@ abstract class Route implements Router {
 			),
 			[
 				'status'  => 400,
-				'request' => $args,
 			]
 		);
 	}
