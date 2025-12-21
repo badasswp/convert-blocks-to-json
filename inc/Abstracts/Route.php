@@ -109,7 +109,7 @@ abstract class Route implements Router {
 				$message
 			),
 			[
-				'status'  => 400,
+				'status' => 400,
 			]
 		);
 	}
