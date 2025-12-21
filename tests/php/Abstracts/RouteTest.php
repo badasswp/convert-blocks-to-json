@@ -120,8 +120,6 @@ class RouteTest extends TestCase {
 		// Just mock this, so that WP_Error exists.
 		$wp_error = Mockery::mock( WP_Error::class )->makePartial();
 
-		$this->route->request = $request;
-
 		$error_response = $this->route->get_400_response( 'Post ID not found.' );
 
 		$this->assertInstanceOf( WP_Error::class, $error_response );
