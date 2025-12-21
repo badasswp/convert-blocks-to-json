@@ -19,12 +19,17 @@ class BlockTest extends TestCase {
 		WP_Mock::tearDown();
 	}
 
-	public function test_init_subscribes_to_cbtj_import_block_hook() {
+	public function test_init_subscribes_to_cbtj_import_and_export_block_hooks() {
 		$block = new ConcreteBlock();
 
 		WP_Mock::expectFilterAdded(
 			'cbtj_import_block',
-			[ $block, 'modify_block' ]
+			[ $block, 'import_block' ]
+		);
+
+		WP_Mock::expectFilterAdded(
+			'cbtj_export_block',
+			[ $block, 'export_block' ]
 		);
 
 		$block->init();
@@ -34,7 +39,11 @@ class BlockTest extends TestCase {
 }
 
 class ConcreteBlock extends Block {
-	public function modify_block( $block ): array {
+	public function import_block( $block ): array {
+		return $block;
+	}
+
+	public function export_block( $block ): array {
 		return $block;
 	}
 }
