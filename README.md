@@ -17,6 +17,14 @@ It's __simple__, yet very __powerful__!
 
 https://github.com/user-attachments/assets/9dedf30f-9df0-4307-b634-cecef930a6e5
 
+## Why can't I upload JSON files?
+
+You might need to configure the `ALLOW_UNFILTERED_UPLOADS` option in your `wp-config.php` file like so:
+
+```php
+define( 'ALLOW_UNFILTERED_UPLOADS', true );
+```
+
 ### Hooks
 
 #### `cbtj_blocks`

@@ -44,6 +44,12 @@ Create a new Post or open an existing Post. Locate the <strong>Convert Blocks to
 
 You can get a taste of how this works, by using the [demo](https://tastewp.com/create/NMS/8.0/6.7.0/convert-blocks-to-json/twentytwentythree?ni=true&origin=wp) link.
 
+= ✨ Why can't I upload JSON files? =
+
+You might need to configure the <code>ALLOW_UNFILTERED_UPLOADS</code> option in your <code>wp-config.php</code> file like so:
+
+<code>define( 'ALLOW_UNFILTERED_UPLOADS', true );</code>
+
 = ⚡ Why Convert Blocks to JSON =
 
 1. This plugin is useful for users who want to be able to <strong>import</strong> and <strong>export</strong> articles or posts between different WordPress sites easily.
