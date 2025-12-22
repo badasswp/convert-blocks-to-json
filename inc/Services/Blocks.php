@@ -17,6 +17,28 @@ use ConvertBlocksToJSON\Interfaces\Kernel;
 
 class Blocks extends Service implements Kernel {
 	/**
+	 * Blocks classes.
+	 *
+	 * @since 1.2.0
+	 *
+	 * @var Block[]
+	 */
+	public array $blocks;
+
+	/**
+	 * Set up.
+	 *
+	 * @since 1.2.0
+	 *
+	 * @return void
+	 */
+	public function __construct() {
+		$this->blocks = [
+			Image::class,
+		];
+	}
+
+	/**
 	 * Bind to WP.
 	 *
 	 * @since 1.2.0
@@ -24,10 +46,19 @@ class Blocks extends Service implements Kernel {
 	 * @return void
 	 */
 	public function register(): void {
-		$blocks = [
-			Image::class,
-		];
+		/**
+		 * Run `init` to filter Block types.
+		 *
+		 * @since 1.2.0
+		 *
+		 * @var Block $block
+		 */
+		foreach ( $this->get_blocks() as $block ) {
+			$block->init();
+		}
+	}
 
+	protected function get_blocks(): array {
 		/**
 		 * Filter Block classes.
 		 *
@@ -39,17 +70,8 @@ class Blocks extends Service implements Kernel {
 		 * @param Block[] $blocks Block classes.
 		 * @return Block[]
 		 */
-		$blocks = apply_filters( 'cbtj_blocks', $blocks );
+		$blocks = apply_filters( 'cbtj_blocks', $this->blocks );
 
-		/**
-		 * Run `init` to filter Block types.
-		 *
-		 * @since 1.2.0
-		 *
-		 * @var Block $block
-		 */
-		foreach ( $blocks as $block ) {
-			( new $block() )->init();
-		}
+		return array_map( fn( $block ) => new $block(), $blocks );
 	}
 }
