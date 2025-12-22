@@ -1,6 +1,6 @@
 {
 	"name": "convert-blocks-to-json",
-	"version": "1.1.0",
+	"version": "1.2.0",
 	"description": "Convert your WP blocks to JSON.",
 	"author": "badasswp",
 	"license": "GPL-2.0-or-later",
