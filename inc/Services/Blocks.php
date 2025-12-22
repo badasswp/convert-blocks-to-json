@@ -58,7 +58,7 @@ class Blocks extends Service implements Kernel {
 		}
 	}
 
-	protected function get_blocks(): array {
+	public function get_blocks(): array {
 		/**
 		 * Filter Block classes.
 		 *
