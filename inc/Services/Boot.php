@@ -54,11 +54,11 @@ class Boot extends Service implements Kernel {
 	 * @wp-hook 'upload_mimes'
 	 */
 	public function register_json_mime( $mimes ) {
-		return wp_parse_args(
-			[
-				'json' => 'application/json',
-			],
-			$mimes
-		);
+		if ( ! isset( $mimes['json'] ) ) {
+			$mimes['json'] = 'application/json';
+			return $mimes;
+		}
+
+		return $mimes;
 	}
 }
