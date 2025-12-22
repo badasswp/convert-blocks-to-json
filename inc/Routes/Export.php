@@ -10,6 +10,7 @@
 
 namespace ConvertBlocksToJSON\Routes;
 
+use WP_REST_Server;
 use ConvertBlocksToJSON\Abstracts\Route;
 use ConvertBlocksToJSON\Interfaces\Router;
 
@@ -24,7 +25,7 @@ class Export extends Route implements Router {
 	 *
 	 * @var string
 	 */
-	public string $method = \WP_REST_Server::READABLE;
+	public string $method = WP_REST_Server::READABLE;
 
 	/**
 	 * Endpoint.
@@ -58,11 +59,11 @@ class Export extends Route implements Router {
 		];
 
 		/**
-		 * Filter JSON Response.
+		 * Filter Export.
 		 *
 		 * @since 1.0.0
 		 *
-		 * @param mixed[] $export  Response Array.
+		 * @param mixed[] $export  Export data.
 		 * @param integer $post_id Post ID.
 		 *
 		 * @return mixed[]
@@ -101,14 +102,14 @@ class Export extends Route implements Router {
 	}
 
 	/**
-	 * Get JSON.
+	 * Get Export Content.
 	 *
-	 * Get all JSON block arrays and recursively
-	 * add children.
+	 * Loop through the JSON blocks and recursively
+	 * add children blocks.
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param mixed[] $block WP Blocks.
+	 * @param mixed[] $block Block array.
 	 * @return mixed[]
 	 */
 	public function get_export( $block ): array {
@@ -120,12 +121,22 @@ class Export extends Route implements Router {
 			}
 		}
 
-		return [
+		$export_block = [
 			'name'        => $block['blockName'] ?? '',
 			'content'     => $block['innerHTML'] ?? '',
 			'filtered'    => wp_strip_all_tags( $block['innerHTML'] ?? '' ),
 			'attributes'  => $block['attrs'] ?? [],
 			'innerBlocks' => $children,
 		];
+
+		/**
+		 * Filter Export Block.
+		 *
+		 * @since 1.2.0
+		 *
+		 * @param mixed[] $export_block Export Block.
+		 * @return mixed[]
+		 */
+		return apply_filters( 'cbtj_export_block', $export_block );
 	}
 }

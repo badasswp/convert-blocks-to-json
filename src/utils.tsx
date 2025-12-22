@@ -1,6 +1,7 @@
 import { __ } from '@wordpress/i18n';
 import { select } from '@wordpress/data';
 import apiFetch from '@wordpress/api-fetch';
+import { store as editorStore } from '@wordpress/editor';
 
 /**
  * Get Blocks.
@@ -13,10 +14,10 @@ import apiFetch from '@wordpress/api-fetch';
  *
  * @return {Promise<any[]>} Blocks.
  */
-export const getBlocks = (): Promise< any[] > => {
-	const postID = select( 'core/editor' ).getCurrentPostId();
+export const getBlocks = async (): Promise< any[] > => {
+	const postID = select( editorStore ).getCurrentPostId();
 
-	return apiFetch( {
+	return await apiFetch( {
 		path: `/cbtj/v1/${ postID }`,
 	} );
 };
@@ -27,13 +28,13 @@ export const getBlocks = (): Promise< any[] > => {
  * This function reaches out to the import endpoint
  * and gets the list of JSON blocks.
  *
- * @param  attachment
  * @since 1.0.1
  *
- * @return {Promise<any[]>} Import.
+ * @param {any} attachment Attachment object.
+ * @return {Promise<any>} Import.
  */
-export const getImport = ( attachment ): Promise< any[] > => {
-	return apiFetch( {
+export const getImport = async ( attachment: any ): Promise< any > => {
+	return await apiFetch( {
 		path: '/cbtj/v1/import',
 		method: 'POST',
 		data: {
@@ -51,9 +52,9 @@ export const getImport = ( attachment ): Promise< any[] > => {
  *
  * @since 1.0.1
  *
- * @return {Object} Modal Params.
+ * @return {any} Modal Params.
  */
-export const getModalParams = (): object => {
+export const getModalParams = (): any => {
 	return {
 		title: __( 'Select JSON File', 'convert-blocks-to-json' ),
 		button: {

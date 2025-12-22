@@ -10,6 +10,7 @@
 
 namespace ConvertBlocksToJSON\Routes;
 
+use WP_REST_Server;
 use ConvertBlocksToJSON\Abstracts\Route;
 use ConvertBlocksToJSON\Interfaces\Router;
 
@@ -24,7 +25,7 @@ class Import extends Route implements Router {
 	 *
 	 * @var string
 	 */
-	public string $method = \WP_REST_Server::CREATABLE;
+	public string $method = WP_REST_Server::CREATABLE;
 
 	/**
 	 * Endpoint.
@@ -76,16 +77,25 @@ class Import extends Route implements Router {
 		}
 
 		// phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
-		$json   = file_get_contents( $json_file );
-		$import = $this->get_blocks_import( json_decode( $json, true ), $post_id );
+		$json   = json_decode( file_get_contents( $json_file ), true );
+		$blocks = $this->get_blocks_import( $json['content'] ?? [] );
+
+		// Make sure to weed out empty blocks.
+		$content = array_filter( $blocks, fn( $block ) => ! empty( $block ) );
+
+		// Add title.
+		$import = [
+			'title'   => $json['title'] ?? '',
+			'content' => $content,
+		];
 
 		/**
-		 * Filter JSON Import.
+		 * Filter Import.
 		 *
 		 * @since 1.0.1
 		 *
-		 * @param mixed[] $response Import Blocks.
-		 * @param integer $post_id  Post ID.
+		 * @param mixed[] $import  Import data.
+		 * @param integer $post_id Post ID.
 		 *
 		 * @return mixed[]
 		 */
@@ -102,18 +112,11 @@ class Import extends Route implements Router {
 	 *
 	 * @param 1.0.1
 	 *
-	 * @param array   $json    JSON Array of Blocks.
-	 * @param integer $post_id Post ID.
-	 *
+	 * @param array   $content JSON content.
 	 * @return mixed[]
 	 */
-	public function get_blocks_import( $json, $post_id ): array {
-		$import_blocks = array_map(
-			[ $this, 'get_import' ],
-			$json['content'] ?? []
-		);
-
-		return $import_blocks;
+	public function get_blocks_import( $content ): array {
+		return array_map( [ $this, 'get_import' ], $content );
 	}
 
 	/**
@@ -128,6 +131,11 @@ class Import extends Route implements Router {
 	 * @return mixed[]
 	 */
 	public function get_import( $block ): array {
+		// Bail out, if block has no name.
+		if ( '' === ( $block['name'] ?? '' ) ) {
+			return [];
+		}
+
 		$children = [];
 
 		if ( ! empty( $block['innerBlocks'] ) ) {
@@ -138,10 +146,21 @@ class Import extends Route implements Router {
 
 		$block['attributes']['content'] = $block['filtered'] ?? '';
 
-		return [
-			'name'        => $block['name'] ?? '',
-			'attributes'  => wp_json_encode( $block['attributes'] ?? [] ),
-			'innerBlocks' => $children ?? [],
+		$import_block = [
+			'name'            => $block['name'] ?? '',
+			'originalContent' => $block['content'] ?? '',
+			'attributes'      => wp_json_encode( $block['attributes'] ?? [] ),
+			'innerBlocks'     => $children ?? [],
 		];
+
+		/**
+		 * Filter Import Block.
+		 *
+		 * @since 1.2.0
+		 *
+		 * @param mixed[] $import_block Import Block.
+		 * @return mixed[]
+		 */
+		return apply_filters( 'cbtj_import_block', $import_block );
 	}
 }

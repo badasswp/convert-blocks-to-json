@@ -96,7 +96,7 @@ class Scripts extends Service implements Kernel {
 	 * @param string $path Path to webpack generated PHP asset file.
 	 * @return array
 	 */
-	protected function get_assets( string $path ): array {
+	public function get_assets( string $path ): array {
 		$assets = [
 			'version'      => strval( time() ),
 			'dependencies' => [],

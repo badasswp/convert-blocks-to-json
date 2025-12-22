@@ -29,3 +29,24 @@ jobs:
     - name: Run JS Unit Tests
       run: |
         yarn test:js
+
+    - name: Set up PHP v8.2
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.2'
+
+    - name: Validate Composer
+      run: |
+        composer validate --strict
+
+    - name: Install Composer
+      run: |
+        composer install --prefer-dist --no-progress
+
+    - name: Check PHP Linting
+      run: |
+        composer run lint
+
+    - name: Run PHP Unit Tests
+      run: |
+        composer run test

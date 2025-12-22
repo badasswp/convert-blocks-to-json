@@ -1,6 +1,10 @@
 import '@testing-library/jest-dom';
 
-import { getBlocks, getModalParams, getImport } from '../src/utils';
+import { getBlocks, getModalParams, getImport } from '../../src/utils';
+
+jest.mock( '@wordpress/editor', () => ( {
+	store: 'core/editor',
+} ) );
 
 jest.mock( '@wordpress/data', () => ( {
 	select: jest.fn( ( arg ) => {
@@ -14,7 +18,7 @@ jest.mock( '@wordpress/data', () => ( {
 } ) );
 
 jest.mock( '@wordpress/api-fetch', () => {
-	function apiFetchMock( options ) {
+	function apiFetchMock( options: any ) {
 		const { path, method } = options;
 
 		if ( '/cbtj/v1/7' === path ) {

@@ -17,7 +17,88 @@ It's __simple__, yet very __powerful__!
 
 https://github.com/user-attachments/assets/9dedf30f-9df0-4307-b634-cecef930a6e5
 
+## Why can't I upload JSON files?
+
+You might need to configure the `ALLOW_UNFILTERED_UPLOADS` option in your `wp-config.php` file like so:
+
+```php
+define( 'ALLOW_UNFILTERED_UPLOADS', true );
+```
+
 ### Hooks
+
+#### `cbtj_blocks`
+
+This custom hook (filter) provides the ability to customise the block classes:
+
+```php
+add_filter( 'cbtj_blocks', [ $this, 'custom_blocks' ], 10 );
+
+public function custom_blocks( $blocks ): array {
+    $blocks[] = \YourNameSpace\YourCustomBlock::class;
+
+    return $block;
+}
+```
+
+**Parameters**
+
+- blocks _`{Block[]}`_ By default, this is an array consisting of block classes.
+<br/>
+
+#### `cbtj_import_block`
+
+This custom hook (filter) provides the ability to customise any block array during import:
+
+```php
+add_filter( 'cbtj_import_block', [ $this, 'custom_import_block' ], 10 );
+
+public function custom_import_block( $block ): array {
+    if ( 'core/image' !== $block['name'] ) {
+        return $block;
+    }
+
+    // Get block attributes.
+    $block['attributes'] = json_decode( $block['attributes'], true );
+
+    // Set Caption using Post meta.
+    $block['attributes']['caption'] = get_post_meta( get_the_ID(), 'featured_image_caption', true );
+
+    // Encode attributes finally.
+    $block['attributes'] = wp_json_encode( $block['attributes'] );
+
+    return $block;
+}
+```
+
+**Parameters**
+
+- block _`{mixed[]}`_ By default, this would be a block array containing `name`, `originalContent`, `attributes` & `innerBlocks` key/value pairs.
+<br/>
+
+#### `cbtj_export_block`
+
+This custom hook (filter) provides the ability to customise any block array during export:
+
+```php
+add_filter( 'cbtj_export_block', [ $this, 'custom_export_block' ], 10 );
+
+public function custom_export_block( $block ): array {
+    if ( 'core/image' !== $block['name'] ) {
+        return $block;
+    }
+
+    // Set Caption using Post meta.
+    $block['attributes']['caption'] = get_post_meta( get_the_ID(), 'featured_image_caption', true );
+
+    return $block;
+}
+```
+
+**Parameters**
+
+- block _`{mixed[]}`_ By default, this would be a block array containing `name`, `content`, `filtered`, `attributes` & `innerBlocks` key/value pairs.
+<br/>
 
 #### `cbtj_rest_export`
 
