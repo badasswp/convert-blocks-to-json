@@ -10,11 +10,11 @@ use ConvertBlocksToJSON\Abstracts\Service;
 use Badasswp\WPMockTC\WPMockTestCase;
 
 /**
- * @covers \ConvertBlocksToJSON\Services\Scripts::__construct
  * @covers \ConvertBlocksToJSON\Services\Scripts::register
  * @covers \ConvertBlocksToJSON\Services\Scripts::register_scripts
  * @covers \ConvertBlocksToJSON\Services\Scripts::register_translation
  * @covers \ConvertBlocksToJSON\Services\Scripts::get_assets
+ * @covers \ConvertBlocksToJSON\Abstracts\Route::get_rest_namespace
  */
 class ScriptsTest extends WPMockTestCase {
 	public Scripts $scripts;

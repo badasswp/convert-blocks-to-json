@@ -13,6 +13,7 @@ use ConvertBlocksToJSON\Services\Blocks;
  * @covers \ConvertBlocksToJSON\Services\Blocks::__construct
  * @covers \ConvertBlocksToJSON\Services\Blocks::register
  * @covers \ConvertBlocksToJSON\Services\Blocks::get_blocks
+ * @covers \ConvertBlocksToJSON\Abstracts\Block::init
  */
 class BlocksTest extends WPMockTestCase {
 	public Blocks $blocks;

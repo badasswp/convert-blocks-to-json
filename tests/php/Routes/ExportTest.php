@@ -10,7 +10,6 @@ use ConvertBlocksToJSON\Routes\Export;
 use Badasswp\WPMockTC\WPMockTestCase;
 
 /**
- * @covers \ConvertBlocksToJSON\Routes\Export::__construct
  * @covers \ConvertBlocksToJSON\Routes\Export::rest_callback
  * @covers \ConvertBlocksToJSON\Routes\Export::get_blocks_export
  * @covers \ConvertBlocksToJSON\Routes\Export::get_export

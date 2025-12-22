@@ -11,10 +11,10 @@ use ConvertBlocksToJSON\Routes\Import;
 use Badasswp\WPMockTC\WPMockTestCase;
 
 /**
- * @covers \ConvertBlocksToJSON\Routes\Import::__construct
  * @covers \ConvertBlocksToJSON\Routes\Import::rest_callback
  * @covers \ConvertBlocksToJSON\Routes\Import::get_blocks_import
  * @covers \ConvertBlocksToJSON\Routes\Import::get_import
+ * @covers \ConvertBlocksToJSON\Abstracts\Route::get_400_response
  */
 class ImportTest extends WPMockTestCase {
 	public Import $import;
