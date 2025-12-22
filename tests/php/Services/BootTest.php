@@ -8,9 +8,9 @@ use Badasswp\WPMockTC\WPMockTestCase;
 use ConvertBlocksToJSON\Services\Boot;
 
 /**
- * @covers \ConvertBlocksToJSON\Services\Boot::__construct
  * @covers \ConvertBlocksToJSON\Services\Boot::register
- * @covers \ConvertBlocksToJSON\Services\Boot::get_blocks
+ * @covers \ConvertBlocksToJSON\Services\Boot::flush_permalinks
+ * @covers \ConvertBlocksToJSON\Services\Boot::register_json_mime
  */
 class BootTest extends WPMockTestCase {
 	public Boot $boot;
