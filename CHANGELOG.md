@@ -2,7 +2,9 @@
 
 ## 1.2.0
 * Fix: Resolve `Image` block import issues.
+* Fix: Missing post title during import.
 * Feat: Add custom hooks `cbtj_import_block`, `cbtj_export_block`, `cbtj_blocks`.
+* Test: Add PHP unit tests to improve code.
 * Docs: Update README docs.
 * Tested up to WP 6.8.
 
