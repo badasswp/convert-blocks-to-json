@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
-import ExportJSON from '../src/components/ExportJSON';
+import ExportJSON from '../../src/components/ExportJSON';
 
 jest.mock( '@wordpress/editor', () => ( {
 	store: 'core/editor',

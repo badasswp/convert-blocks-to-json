@@ -10,6 +10,7 @@
 
 namespace ConvertBlocksToJSON\Routes;
 
+use WP_REST_Server;
 use ConvertBlocksToJSON\Abstracts\Route;
 use ConvertBlocksToJSON\Interfaces\Router;
 
@@ -24,7 +25,7 @@ class Export extends Route implements Router {
 	 *
 	 * @var string
 	 */
-	public string $method = \WP_REST_Server::READABLE;
+	public string $method = WP_REST_Server::READABLE;
 
 	/**
 	 * Endpoint.

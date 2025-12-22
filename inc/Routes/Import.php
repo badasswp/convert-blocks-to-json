@@ -10,6 +10,7 @@
 
 namespace ConvertBlocksToJSON\Routes;
 
+use WP_REST_Server;
 use ConvertBlocksToJSON\Abstracts\Route;
 use ConvertBlocksToJSON\Interfaces\Router;
 
@@ -24,7 +25,7 @@ class Import extends Route implements Router {
 	 *
 	 * @var string
 	 */
-	public string $method = \WP_REST_Server::CREATABLE;
+	public string $method = WP_REST_Server::CREATABLE;
 
 	/**
 	 * Endpoint.
@@ -77,7 +78,7 @@ class Import extends Route implements Router {
 
 		// phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
 		$json   = json_decode( file_get_contents( $json_file ), true );
-		$blocks = $this->get_blocks_import( $json['content'] ?? [], $post_id );
+		$blocks = $this->get_blocks_import( $json['content'] ?? [] );
 
 		// Make sure to weed out empty blocks.
 		$content = array_filter( $blocks, fn( $block ) => ! empty( $block ) );
@@ -85,7 +86,7 @@ class Import extends Route implements Router {
 		// Add title.
 		$import = [
 			'title'   => $json['title'] ?? '',
-			'content' => $content
+			'content' => $content,
 		];
 
 		/**
@@ -112,11 +113,9 @@ class Import extends Route implements Router {
 	 * @param 1.0.1
 	 *
 	 * @param array   $content JSON content.
-	 * @param integer $post_id Post ID.
-	 *
 	 * @return mixed[]
 	 */
-	public function get_blocks_import( $content, $post_id ): array {
+	public function get_blocks_import( $content ): array {
 		return array_map( [ $this, 'get_import' ], $content );
 	}
 
