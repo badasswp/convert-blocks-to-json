@@ -1,0 +1,53 @@
+{
+    "packages": [
+        {
+            "name": "badasswp/wp-mock-tc",
+            "version": "v1.0.0",
+            "version_normalized": "1.0.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/badasswp/wp-mock-tc.git",
+                "reference": "5ce1409c66280343af0af75ad94afb93dc41661c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/badasswp/wp-mock-tc/zipball/5ce1409c66280343af0af75ad94afb93dc41661c",
+                "reference": "5ce1409c66280343af0af75ad94afb93dc41661c",
+                "shasum": ""
+            },
+            "require-dev": {
+                "10up/wp_mock": "^1.1",
+                "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
+                "phpunit/phpunit": "^9.0",
+                "wp-coding-standards/wpcs": "^3.0"
+            },
+            "time": "2025-09-25T19:36:07+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Badasswp\\WPMockTC\\": "src/",
+                    "Badasswp\\WPMockTC\\Tests\\": "tests/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "badasswp",
+                    "email": "badasswpdev@gmail.com"
+                }
+            ],
+            "description": "WP Mock Test Case Library",
+            "support": {
+                "issues": "https://github.com/badasswp/wp-mock-tc/issues",
+                "source": "https://github.com/badasswp/wp-mock-tc/tree/v1.0.0"
+            },
+            "install-path": "../badasswp/wp-mock-tc"
+        }
+    ],
+    "dev": false,
+    "dev-package-names": []
+}
