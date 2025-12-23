@@ -37,9 +37,7 @@
 		"lint": "vendor/bin/phpcs -v",
 		"lint:fix": "vendor/bin/phpcbf -v",
 		"test": "vendor/bin/phpunit --testdox",
-		"analyse": "vendor/bin/phpstan analyse --memory-limit=2048M"
-	},
-	"require": {
-		"badasswp/wp-mock-tc": "^1.0"
+		"analyse": "vendor/bin/phpstan analyse --memory-limit=2048M",
+		"coverage": "XDEBUG_MODE=coverage vendor/bin/phpunit && coveralls --repo-token=byKUqCy8K3xiFzc5k1ndQabygPeF2DQPA --file=cobertura.xml"
 	}
 }

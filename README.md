@@ -1,6 +1,8 @@
 # convert-blocks-to-json
 Convert your WP blocks to JSON.
 
+[![Coverage Status](https://coveralls.io/repos/github/badasswp/convert-blocks-to-json/badge.svg?branch=master)](https://coveralls.io/github/badasswp/convert-blocks-to-json?branch=master)
+
 <img src="https://github.com/user-attachments/assets/875acd91-b2ed-4832-8df7-9ebe013e9c35" alt="Convert Blocks to JSON" height="300">
 
 ## Download
