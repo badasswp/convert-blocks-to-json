@@ -70,6 +70,10 @@ Want to add your personal touch? All of our documentation can be found [here](ht
 
 == Changelog ==
 
+= 1.2.1 =
+* Specify `wordpress-plugin` as Composer package type.
+* Tested up to WP 6.9.
+
 = 1.2.0 =
 * Fix: Resolve `Image` block import issues.
 * Fix: Missing post title during import.
