@@ -2,7 +2,9 @@ This PR resolves [WP-30](https://appworld.atlassian.net/browse/WP-30).
 
 ## Description / Background Context
 
-This PR simply introduces a template that enables all contributors use the same template for raising PRs.
+At the moment, when a developer/contributor wants to raise a PR, there is no particular format available to be used thereby causing irregularities in the PRs
+
+This PR ensures that there exist a template for raising PRs
 
 ## Testing Instructions
 
