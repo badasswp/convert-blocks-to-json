@@ -1,15 +1,16 @@
-This PR resolves [WP-30](https://appworld.atlassian.net/browse/WP-30).
+This PR resolves #1. <!-- What issue does this PR resolve? -->
 
 ## Description / Background Context
 
-At the moment, when a developer/contributor wants to raise a PR, there is no particular format available to be used thereby causing irregularities in the PRs
-
-This PR ensures that there exist a template for raising PRs
+<!-- Why is this PR necessary? What problem is it solving? Reference any existing previous issue(s) or PR(s), but please add a short summary here, too -->
 
 ## Testing Instructions
 
-- Pull PR to local.
-- Observe that `pull_request_template.md` is now part of the `root` folder of the plugin.
-- Check out to a new branch from this branch.
-- Attempt to raise a new PR.
-- Observe that you can now see the template in action.
+<!-- Please include step by step instructions on how to test this PR. -->
+<!-- 1. Pull PR to local. -->
+<!-- 2. Run `yarn build` to build correctly. -->
+<!-- 3. etc. -->
+
+## Screenshots / Screencast
+
+<!-- If you would like to upload screenshots, feel free to show the difference between before and after the change. -->
