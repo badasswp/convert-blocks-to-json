@@ -34,7 +34,7 @@ msgstr "Konversikan blok WP Anda ke JSON."
 
 #. Author
 msgid "badasswp"
-msgstr "keren"
+msgstr "badasswp"
 
 #. Author URI
 msgid "https://github.com/badasswp"
