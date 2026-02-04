@@ -14,7 +14,7 @@ use Badasswp\WPMockTC\WPMockTestCase;
  * @covers \ConvertBlocksToJSON\Routes\Import::rest_callback
  * @covers \ConvertBlocksToJSON\Routes\Import::get_blocks_import
  * @covers \ConvertBlocksToJSON\Routes\Import::get_import
- * @covers \ConvertBlocksToJSON\Abstracts\Route::get_400_response
+ * @covers \ConvertBlocksToJSON\Abstracts\Route::get_error_response
  */
 class ImportTest extends WPMockTestCase {
 	public Import $import;
@@ -55,6 +55,9 @@ class ImportTest extends WPMockTestCase {
 			->with( 0 )
 			->andReturn( '' );
 
+		Mockery::mock( WP_Error::class )
+			->makePartial();
+
 		$response = $this->import->rest_callback( $request );
 
 		$this->assertInstanceOf( WP_Error::class, $response );
@@ -84,6 +87,9 @@ class ImportTest extends WPMockTestCase {
 			);
 
 		$this->create_mock_file( $mock_file );
+
+		Mockery::mock( WP_Error::class )
+			->makePartial();
 
 		$response = $this->import->rest_callback( $request );
 
