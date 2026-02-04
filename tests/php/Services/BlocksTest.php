@@ -76,7 +76,7 @@ class BlocksTest extends WPMockTestCase {
 			[
 				Lists::class,
 				ListItem::class,
-				Image::class
+				Image::class,
 			]
 		);
 
