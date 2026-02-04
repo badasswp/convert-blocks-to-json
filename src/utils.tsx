@@ -1,6 +1,7 @@
 import { __ } from '@wordpress/i18n';
 import { select } from '@wordpress/data';
 import apiFetch from '@wordpress/api-fetch';
+import { applyFilters } from '@wordpress/hooks';
 import { store as editorStore } from '@wordpress/editor';
 
 /**
@@ -62,4 +63,36 @@ export const getModalParams = (): any => {
 		},
 		multiple: false,
 	};
+};
+
+/**
+ * Get Inner Blocks.
+ *
+ * This function returns created version of the inner
+ * blocks if they exist.
+ *
+ * @param  block
+ * @param  block.name        Name of block.
+ * @param  block.innerBlocks Inner blocks.
+ *
+ * @return {Array} Array of created blocks.
+ */
+export const getInnerBlocks = ( { name, innerBlocks } ): [] => {
+	// Bail out, if empty.
+	if ( ! innerBlocks.length ) {
+		return [];
+	}
+
+	/**
+	 * Filters the inner blocks depending on
+	 * what type of block it is.
+	 *
+	 * @since 1.3.0
+	 *
+	 * @param {any[]}  innerBlocks Inner blocks.
+	 * @param {string} name        Name of block.
+	 *
+	 * @return {Array}
+	 */
+	return applyFilters( 'cbtj.innerBlocks', innerBlocks, name ) as [];
 };
