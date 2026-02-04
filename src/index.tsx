@@ -8,6 +8,7 @@ import ViewJSON from './components/ViewJSON';
 import ImportJSON from './components/ImportJSON';
 import ExportJSON from './components/ExportJSON';
 
+import './filters';
 import './styles/app.scss';
 
 /**
