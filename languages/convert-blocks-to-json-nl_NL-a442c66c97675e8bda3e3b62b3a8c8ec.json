@@ -1,0 +1,51 @@
+{
+  "translation-revision-date": "2024-08-29 02:16+0100",
+  "generator": "WP-CLI\/2.6.0",
+  "source": "dist\/app.js",
+  "domain": "messages",
+  "locale_data": {
+    "messages": {
+      "": {
+        "domain": "messages",
+        "lang": "nl_NL",
+        "plural-forms": "nplurals=2; plural=(n != 1);"
+      },
+      "Convert Blocks to JSON": [
+        "Converteer blokken naar JSON"
+      ],
+      "View JSON": [
+        "JSON bekijken"
+      ],
+      "Import Blocks by JSON": [
+        "Blokken importeren via JSON"
+      ],
+      "Import Blocks": [
+        "Blokken importeren"
+      ],
+      "Import": [
+        "Importeren"
+      ],
+      "Export Blocks to JSON": [
+        "Exporteer blokken naar JSON"
+      ],
+      "Export Blocks": [
+        "Blokken exporteren"
+      ],
+      "Export": [
+        "Exporteren"
+      ],
+      "Importing blocks...": [
+        "Blokken importeren..."
+      ],
+      "Unable to import blocks by JSON": [
+        "Blokken kunnen niet via JSON worden geïmporteerd."
+      ],
+      "Select JSON File": [
+        "Selecteer JSON-bestand"
+      ],
+      "Use JSON": [
+        "Gebruik JSON"
+      ]
+    }
+  }
+}
