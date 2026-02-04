@@ -5,9 +5,12 @@ namespace ConvertBlocksToJSON\Tests\Services;
 use Mockery;
 use WP_Mock;
 use Badasswp\WPMockTC\WPMockTestCase;
-use ConvertBlocksToJSON\Blocks\Image;
 use ConvertBlocksToJSON\Abstracts\Block;
 use ConvertBlocksToJSON\Services\Blocks;
+
+use ConvertBlocksToJSON\Blocks\Lists;
+use ConvertBlocksToJSON\Blocks\ListItem;
+use ConvertBlocksToJSON\Blocks\Image;
 
 /**
  * @covers \ConvertBlocksToJSON\Services\Blocks::__construct
@@ -31,6 +34,8 @@ class BlocksTest extends WPMockTestCase {
 	public function test_class_properties_are_defined_by_default() {
 		$this->assertSame(
 			[
+				Lists::class,
+				ListItem::class,
 				Image::class,
 			],
 			$this->blocks->blocks
@@ -66,7 +71,14 @@ class BlocksTest extends WPMockTestCase {
 	}
 
 	public function test_get_blocks() {
-		WP_Mock::expectFilter( 'cbtj_blocks', [ Image::class ] );
+		WP_Mock::expectFilter(
+			'cbtj_blocks',
+			[
+				Lists::class,
+				ListItem::class,
+				Image::class,
+			]
+		);
 
 		$blocks = $this->blocks->get_blocks();
 

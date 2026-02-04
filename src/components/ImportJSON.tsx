@@ -6,7 +6,7 @@ import { store as editorStore } from '@wordpress/editor';
 import { store as noticeStore } from '@wordpress/notices';
 import { store as blockEditorStore } from '@wordpress/block-editor';
 
-import { getModalParams, getImport } from '../utils';
+import { getModalParams, getImport, getInnerBlocks } from '../utils';
 
 /**
  * Import JSON.
@@ -66,7 +66,11 @@ const ImportJSON = (): JSX.Element => {
 				(
 					dispatch( blockEditorStore ) as { insertBlocks: any }
 				 ).insertBlocks(
-					createBlock( name, { ...attributes }, innerBlocks )
+					createBlock(
+						name,
+						{ ...attributes },
+						getInnerBlocks( { name, innerBlocks } )
+					)
 				);
 			} );
 
