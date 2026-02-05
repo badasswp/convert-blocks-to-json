@@ -4,6 +4,7 @@ on:
   workflow_run:
     workflows: ["ConvertBlocksToJSON CI"]
     types: [completed]
+    branches: [release-1.3.0]
 
 permissions:
   contents: write
