@@ -1,12 +1,7 @@
 # Changelog
 
 ## 1.3.0
-* Fix: Import issues with `core/list` and `core/list-item` blocks.
-* Feat: Add custom hook - `cbtj.innerBlocks`.
-* Refactor: Replace `get_400_response` with `get_error_response`.
-* Chore: Add pull request template to repo.
-* Docs: Update README docs.
-* Tested up to WP 6.8.
+* Feat: Added extra 8 language translations to `convert-blocks-to-json`.
 
 ## 1.2.1
 * Specify `wordpress-plugin` as Composer package type.
