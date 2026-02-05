@@ -3,7 +3,7 @@ Contributors: badasswp
 Tags: convert, blocks, json, gutenberg, editor.
 Requires at least: 4.0
 Tested up to: 6.9
-Stable tag: 1.2.1
+Stable tag: 1.3.0
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -69,6 +69,14 @@ Want to add your personal touch? All of our documentation can be found [here](ht
 3. Convert Blocks to JSON sidebar - See Convert Blocks to JSON on sidebar.
 
 == Changelog ==
+
+= 1.3.0 =
+* Fix: Import issues with `core/list` and `core/list-item` blocks.
+* Feat: Add custom hook - `cbtj.innerBlocks`.
+* Refactor: Replace `get_400_response` with `get_error_response`.
+* Chore: Add pull request template to repo.
+* Docs: Update README docs.
+* Tested up to WP 6.8.
 
 = 1.2.1 =
 * Specify `wordpress-plugin` as Composer package type.

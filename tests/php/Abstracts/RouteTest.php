@@ -15,7 +15,7 @@ use ConvertBlocksToJSON\Abstracts\Route;
  * @covers \ConvertBlocksToJSON\Abstracts\Route::get_permission_callback
  * @covers \ConvertBlocksToJSON\Abstracts\Route::get_rest_namespace
  * @covers \ConvertBlocksToJSON\Abstracts\Route::register_route
- * @covers \ConvertBlocksToJSON\Abstracts\Route::get_400_response
+ * @covers \ConvertBlocksToJSON\Abstracts\Route::get_error_response
  * @covers \ConvertBlocksToJSON\Abstracts\Route::is_user_permissible
  */
 class RouteTest extends TestCase {
@@ -106,7 +106,7 @@ class RouteTest extends TestCase {
 		$this->assertConditionsMet();
 	}
 
-	public function test_get_400_response() {
+	public function test_get_error_response() {
 		$request = Mockery::mock( WP_REST_Request::class )
 			->makePartial();
 
@@ -120,7 +120,7 @@ class RouteTest extends TestCase {
 		// Just mock this, so that WP_Error exists.
 		$wp_error = Mockery::mock( WP_Error::class )->makePartial();
 
-		$error_response = $this->route->get_400_response( 'Post ID not found.' );
+		$error_response = $this->route->get_error_response( 'Post ID not found.' );
 
 		$this->assertInstanceOf( WP_Error::class, $error_response );
 		$this->assertConditionsMet();

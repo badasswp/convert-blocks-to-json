@@ -173,6 +173,34 @@ public function custom_namespace( $namespace ): array {
 - namespace _`{string}`_ REST Namespace. By default, this is a string which contains the Route namespace.
 <br/>
 
+#### `cbtj.innerBlocks`
+
+This custom hook (filter) provides the ability to filter the way we create the inner blocks like so:
+
+```js
+import { addFilter } from '@wordpress/hooks';
+
+addFilter(
+    'cbtj.innerBlocks',
+    'yourNamespace',
+    ( innerBlocks, name ) => {
+        if ( 'my/custom-block' === name ) {
+            return innerBlocks.map( ( { name, attributes } ) =>
+                createBlock( name, { ...JSON.parse( attributes ) } )
+            );
+        }
+
+        return innerBlocks;
+    }
+);
+```
+
+**Parameters**
+
+- innerBlocks _`{any[]}`_ Array of inner blocks.
+- name _`{string}`_ Name of block.
+<br/>
+
 ---
 
 ## Contribute
