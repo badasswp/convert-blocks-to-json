@@ -1,0 +1,75 @@
+name: ConvertBlocksToJSON Release
+
+on:
+  workflow_run:
+    workflows: ["ConvertBlocksToJSON CI"]
+    types: [completed]
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    if: >
+      github.event.workflow_run.conclusion == 'success' &&
+      startsWith(github.event.workflow_run.head_branch, 'release-')
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout release branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_branch }}
+
+      - name: Set Git identity
+        run: |
+          git config user.email "badasswpdev@gmail.com"
+          git config user.name "badasswp"
+
+      - name: Create / reset release-built branch
+        run: |
+          BUILT_BRANCH="${{ github.event.workflow_run.head_branch }}-built"
+          echo "BUILT_BRANCH=$BUILT_BRANCH" >> $GITHUB_ENV
+          git checkout -B "$BUILT_BRANCH"
+
+      - name: Set up Node.js 20.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20.x
+
+      - name: Build Dist folder
+        run: |
+          yarn install && yarn build
+          git add dist/ -f
+          git rm package.json
+
+      - name: Build Vendor folder
+        run: |
+          composer install --no-dev
+          git add vendor/ -f
+
+      - name: Clean Up Files
+        run: |
+          while IFS= read -r file; do
+            git rm -r "$file"
+          done < .deployignore
+          git rm .deployignore
+          git clean -f yarn.lock
+          git clean -f node_modules
+          git clean -f composer.lock
+
+      - name: Commit & push release-built branch
+        run: |
+          git commit -m "Build from ${{ github.event.workflow_run.head_branch }}"
+          git push origin "$BUILT_BRANCH" --force
+
+      - name: Deploy to Staging
+        uses: burnett01/rsync-deployments@6.0.0
+        with:
+          switches: -avzr --delete
+          path: ./
+          remote_path: /var/www/html/wp-content/plugins/convert-blocks-to-json
+          remote_host: ${{ secrets.CBTJ_HOST }}
+          remote_user: ${{ secrets.CBTJ_USER }}
+          remote_key: ${{ secrets.CBTJ_PRIVATE_KEY }}
