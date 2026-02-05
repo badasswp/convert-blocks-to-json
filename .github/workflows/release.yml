@@ -4,20 +4,23 @@ on:
   workflow_run:
     workflows: ["ConvertBlocksToJSON CI"]
     types: [completed]
-    branches: [release-1.3.0]
 
 permissions:
   contents: write
 
 jobs:
   build:
-    if: >
-      github.event.workflow_run.conclusion == 'success' &&
-      startsWith(github.event.workflow_run.head_branch, 'release-')
-
+    # Only run if CI workflow succeeded AND branch starts with release-
+    if: ${{ github.event.workflow_run.conclusion == 'success' && startsWith(github.event.workflow_run.head_branch, 'release-') }}
     runs-on: ubuntu-latest
 
     steps:
+      - name: Debug workflow_run event
+        run: |
+          echo "CI workflow branch: ${{ github.event.workflow_run.head_branch }}"
+          echo "CI workflow conclusion: ${{ github.event.workflow_run.conclusion }}"
+          echo "Release workflow triggered on branch: ${{ github.ref }}"
+
       - name: Checkout release branch
         uses: actions/checkout@v4
         with:
