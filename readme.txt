@@ -77,6 +77,7 @@ Want to add your personal touch? All of our documentation can be found [here](ht
 * Chore: Add pull request template to repo.
 * Docs: Update README docs.
 * Tested up to WP 6.8.
+* Feat: Added extra 8 language translations to `convert-blocks-to-json`.
 
 = 1.2.1 =
 * Specify `wordpress-plugin` as Composer package type.
