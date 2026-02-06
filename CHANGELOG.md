@@ -7,7 +7,6 @@
 * Chore: Add pull request template to repo.
 * Docs: Update README docs.
 * Tested up to WP 6.8.
-* Feat: Added language translations for Japanese, Indonesia ...
 * Feat: Added language translations for Japanese, Indonesia, Turkish, Polish, Dutch, Danish, Brazil, Portuguese.
 
 ## 1.2.1
