@@ -78,6 +78,7 @@ Want to add your personal touch? All of our documentation can be found [here](ht
 * Docs: Update README docs.
 * Tested up to WP 6.8.
 * Feat: Added extra 8 language translations to `convert-blocks-to-json`.
+* Feat: Added language translations for Japanese, Indonesia, Turkish, Polish, Dutch, Danish, Brazil, Portuguese.
 
 = 1.2.1 =
 * Specify `wordpress-plugin` as Composer package type.
