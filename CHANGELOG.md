@@ -1,13 +1,13 @@
 # Changelog
 
 ## 1.3.0
+* Feat: Added language translations for Japanese, Indonesia, Turkish, Polish, Dutch, Danish, Brazil, Portuguese.
 * Fix: Import issues with `core/list` and `core/list-item` blocks.
 * Feat: Add custom hook - `cbtj.innerBlocks`.
 * Refactor: Replace `get_400_response` with `get_error_response`.
 * Chore: Add pull request template to repo.
 * Docs: Update README docs.
-* Tested up to WP 6.8.
-* Feat: Added language translations for Japanese, Indonesia, Turkish, Polish, Dutch, Danish, Brazil, Portuguese.
+* Tested up to WP 6.9.
 
 ## 1.2.1
 * Specify `wordpress-plugin` as Composer package type.

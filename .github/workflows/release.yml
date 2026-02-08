@@ -105,7 +105,7 @@ jobs:
         with:
           switches: -avzr --delete
           path: ./
-          remote_path: /var/www/html/wp-content/plugins/convert-blocks-to-json
+          remote_path: /home/appworld/www/wp-content/plugins/convert-blocks-to-json
           remote_host: ${{ secrets.CBTJ_HOST }}
           remote_user: ${{ secrets.CBTJ_USER }}
           remote_key: ${{ secrets.CBTJ_PRIVATE_KEY }}
