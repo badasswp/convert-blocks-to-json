@@ -15,6 +15,7 @@ class ImageTest extends WPMockTestCase {
 	public Image $image;
 
 	public function setUp(): void {
+		parent::override( [ 'is_wp_error' ] );
 		parent::setUp();
 
 		$this->image = new Image();
@@ -65,6 +66,9 @@ class ImageTest extends WPMockTestCase {
 	}
 
 	public function test_import_block_returns_modified_block_with_added_image_attribute() {
+		WP_Mock::userFunction( 'home_url' )
+			->andReturn( 'https://www.example.com' );
+
 		$block = $this->image->import_block(
 			[
 				'name'            => 'core/image',
@@ -80,6 +84,77 @@ class ImageTest extends WPMockTestCase {
 				'name'            => 'core/image',
 				'originalContent' => '<body><img src="https://www.example.com/wp-content/image.jpg"/></body>',
 				'attributes'      => '{"url":"https:\/\/www.example.com\/wp-content\/image.jpg"}',
+				'innerBlocks'     => [],
+			]
+		);
+	}
+
+	public function test_import_block_returns_modified_block_with_added_image_url_referencing_old_site_if_is_wp_error() {
+		$image = Mockery::mock( Image::class )->makePartial();
+		$image->shouldAllowMockingProtectedMethods();
+
+		$wp_error = Mockery::mock( WP_Error::class )->makePartial();
+		$wp_error->shouldAllowMockingProtectedMethods();
+
+		WP_Mock::userFunction( 'home_url' )
+			->andReturn( 'https://www.example.com' );
+
+		WP_Mock::userFunction( 'is_wp_error' )
+			->andReturn( true );
+
+		$image->shouldReceive( 'get_remote_image' )
+			->with( 'https://www.johndoe.com/wp-content/image.jpg' )
+			->andReturn( $wp_error );
+
+		$block = $image->import_block(
+			[
+				'name'            => 'core/image',
+				'originalContent' => '<body><img src="https://www.johndoe.com/wp-content/image.jpg"/></body>',
+				'attributes'      => '{}',
+				'innerBlocks'     => [],
+			]
+		);
+
+		$this->assertSame(
+			$block,
+			[
+				'name'            => 'core/image',
+				'originalContent' => '<body><img src="https://www.johndoe.com/wp-content/image.jpg"/></body>',
+				'attributes'      => '{"url":"https:\/\/www.johndoe.com\/wp-content\/image.jpg"}',
+				'innerBlocks'     => [],
+			]
+		);
+	}
+
+	public function test_import_block_returns_modified_block_with_newly_imported_image_from_remote_site() {
+		$image = Mockery::mock( Image::class )->makePartial();
+		$image->shouldAllowMockingProtectedMethods();
+
+		WP_Mock::userFunction( 'home_url' )
+			->andReturn( 'https://www.example.com' );
+
+		WP_Mock::userFunction( 'is_wp_error' )
+			->andReturn( false );
+
+		$image->shouldReceive( 'get_remote_image' )
+			->with( 'https://www.johndoe.com/wp-content/image.jpg' )
+			->andReturn( 'https://www.example.com/wp-content/imported-image.jpg' );
+
+		$block = $image->import_block(
+			[
+				'name'            => 'core/image',
+				'originalContent' => '<body><img src="https://www.johndoe.com/wp-content/image.jpg"/></body>',
+				'attributes'      => '{}',
+				'innerBlocks'     => [],
+			]
+		);
+
+		$this->assertSame(
+			$block,
+			[
+				'name'            => 'core/image',
+				'originalContent' => '<body><img src="https://www.johndoe.com/wp-content/image.jpg"/></body>',
+				'attributes'      => '{"url":"https:\/\/www.example.com\/wp-content\/imported-image.jpg"}',
 				'innerBlocks'     => [],
 			]
 		);
