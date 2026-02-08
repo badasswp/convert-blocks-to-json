@@ -6,7 +6,7 @@
 * Refactor: Replace `get_400_response` with `get_error_response`.
 * Chore: Add pull request template to repo.
 * Docs: Update README docs.
-* Tested up to WP 6.8.
+* Tested up to WP 6.9.
 
 ## 1.2.1
 * Specify `wordpress-plugin` as Composer package type.
