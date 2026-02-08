@@ -3,6 +3,7 @@
 ## 1.3.0
 * Fix: Import issues with `core/list` and `core/list-item` blocks.
 * Feat: Add custom hook - `cbtj.innerBlocks`.
+* Feat: Implement Image import across websites.
 * Refactor: Replace `get_400_response` with `get_error_response`.
 * Chore: Add pull request template to repo.
 * Docs: Update README docs.
