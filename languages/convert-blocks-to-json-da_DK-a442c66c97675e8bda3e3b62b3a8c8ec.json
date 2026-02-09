@@ -1,0 +1,51 @@
+{
+  "translation-revision-date": "2024-08-29 02:16+0100",
+  "generator": "WP-CLI\/2.6.0",
+  "source": "dist\/app.js",
+  "domain": "messages",
+  "locale_data": {
+    "messages": {
+      "": {
+        "domain": "messages",
+        "lang": "da_DK",
+        "plural-forms": "nplurals=2; plural=(n != 1);"
+      },
+      "Convert Blocks to JSON": [
+        "Konverter blokke til JSON"
+      ],
+      "View JSON": [
+        "Se JSON"
+      ],
+      "Import Blocks by JSON": [
+        "Importér blokke via JSON"
+      ],
+      "Import Blocks": [
+        "Importer blokke"
+      ],
+      "Import": [
+        "Importere"
+      ],
+      "Export Blocks to JSON": [
+        "Eksportér blokke til JSON"
+      ],
+      "Export Blocks": [
+        "Eksporter blokke"
+      ],
+      "Export": [
+        "Eksportere"
+      ],
+      "Importing blocks...": [
+        "Importerer blokke..."
+      ],
+      "Unable to import blocks by JSON": [
+        "Kan ikke importere blokke via JSON"
+      ],
+      "Select JSON File": [
+        "Vælg JSON-fil"
+      ],
+      "Use JSON": [
+        "Brug JSON"
+      ]
+    }
+  }
+}

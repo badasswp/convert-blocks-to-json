@@ -1,6 +1,7 @@
 # Changelog
 
 ## 1.3.0
+* Feat: Added language translations for Japanese, Indonesia, Turkish, Polish, Dutch, Danish, Brazil, Portuguese.
 * Fix: Import issues with `core/list` and `core/list-item` blocks.
 * Feat: Add custom hook - `cbtj.innerBlocks`.
 * Refactor: Replace `get_400_response` with `get_error_response`.
