@@ -110,9 +110,12 @@ class Image extends Block {
 		$url_filename = basename( parse_url( $image_url, PHP_URL_PATH ) );
 
 		// Build an array that resembles a PHP file upload.
+		$filetype = wp_check_filetype( $url_filename );
+
+		// Build an array that resembles a PHP file upload.
 		$file = [
 			'name'     => $url_filename,
-			'type'     => mime_content_type( $tmp_file ),
+			'type'     => $filetype['type'] ?? 'application/octet-stream',
 			'tmp_name' => $tmp_file,
 			'error'    => 0,
 			'size'     => filesize( $tmp_file ),
