@@ -34,7 +34,7 @@ msgstr "قم بتحويل كتل WP إلى JSON."
 
 #. Author
 msgid "badasswp"
-msgstr "‫badasswp"
+msgstr "badasswp"
 
 #. Author URI
 msgid "https://github.com/badasswp"
