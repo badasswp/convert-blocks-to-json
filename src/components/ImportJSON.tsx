@@ -47,6 +47,18 @@ const ImportJSON = (): JSX.Element => {
 	 * @return {Promise<void>}
 	 */
 	const handleImport = async ( wpMediaModal: any ): Promise< void > => {
+		dispatch( noticeStore ).createNotice(
+			'info',
+			__(
+				'Importing blocks into new Post. Please wait…',
+				'convert-blocks-to-json'
+			),
+			{
+				isDismissible: true,
+				id: 'cbtj-info',
+				type: 'snackbar',
+			}
+		);
 		const attachment = wpMediaModal
 			.state()
 			.get( 'selection' )
@@ -76,6 +88,7 @@ const ImportJSON = (): JSX.Element => {
 
 			// Save Post.
 			await dispatch( editorStore ).savePost();
+			dispatch( noticeStore ).removeNotice( 'cbtj-info' );
 		} catch ( e ) {
 			dispatch( noticeStore ).createWarningNotice( e.message );
 		}
