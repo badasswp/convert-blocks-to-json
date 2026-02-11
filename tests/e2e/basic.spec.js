@@ -120,5 +120,20 @@ test.describe( 'Convert Blocks to JSON', () => {
 		} );
 		await expect( viewButton ).toBeVisible();
 		await viewButton.click();
+
+		const currentUrl = page.url();
+
+		// Extract Post ID.
+		const url = new URL( currentUrl );
+		const postId = url.searchParams.get( 'post' );
+
+		expect( postId ).toBeTruthy();
+
+		await page.goto(
+			`http://cbtj.localhost:5478/wp-json/cbtj/v1/${ postId }`
+		);
+		await expect( page.locator( 'body' ) ).toContainText(
+			'{"title":"test","content":[]}'
+		);
 	} );
 } );
