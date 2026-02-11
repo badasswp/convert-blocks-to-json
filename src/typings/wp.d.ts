@@ -10,3 +10,5 @@ declare namespace wp {
 
   function media(options: MediaOptions): any;
 }
+
+declare module '@wordpress/editor';

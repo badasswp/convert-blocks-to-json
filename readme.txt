@@ -71,12 +71,13 @@ Want to add your personal touch? All of our documentation can be found [here](ht
 == Changelog ==
 
 = 1.3.0 =
-* Chore: Fixed incorrectly quoted translation bits.
-* Feat: Added language translations for Japanese, Indonesia, Turkish, Polish, Dutch, Danish, Brazil, Portuguese.
-* Fix: Import issues with `core/list` and `core/list-item` blocks.
+* Feat: Add language translations for Japanese, Indonesia, Turkish, Polish, Dutch, Danish, Brazil, Portuguese.
+* Feat: Add Image import functionality across websites.
 * Feat: Add custom hook - `cbtj.innerBlocks`.
-* Feat: Implement Image import across websites.
+* Fix: Import issues with `core/list` and `core/list-item` blocks.
+* Fix: Incorrectly quoted translation bits.
 * Refactor: Replace `get_400_response` with `get_error_response`.
+* Test: Add e2e tests for plugin codebase.
 * Chore: Add pull request template to repo.
 * Docs: Update README docs.
 * Tested up to WP 6.9.
