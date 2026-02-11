@@ -71,6 +71,7 @@ Want to add your personal touch? All of our documentation can be found [here](ht
 == Changelog ==
 
 = 1.3.0 =
+* Chore: Fixed incorrectly quoted translation bits.
 * Feat: Added language translations for Japanese, Indonesia, Turkish, Polish, Dutch, Danish, Brazil, Portuguese.
 * Fix: Import issues with `core/list` and `core/list-item` blocks.
 * Feat: Add custom hook - `cbtj.innerBlocks`.
