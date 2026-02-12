@@ -74,6 +74,7 @@ Want to add your personal touch? All of our documentation can be found [here](ht
 * Feat: Add language translations for Japanese, Indonesia, Turkish, Polish, Dutch, Danish, Brazil, Portuguese.
 * Feat: Add Image import functionality across websites.
 * Feat: Add custom hook - `cbtj.innerBlocks`.
+* Feat: Add Notification modal during import.
 * Fix: Import issues with `core/list` and `core/list-item` blocks.
 * Fix: Incorrectly quoted translation bits.
 * Refactor: Replace `get_400_response` with `get_error_response`.
