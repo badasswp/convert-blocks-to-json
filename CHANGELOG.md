@@ -1,8 +1,10 @@
 # Changelog
 
 ## 1.3.0
-* Feat: Add language translations for Japanese, Indonesia, Turkish, Polish, Dutch, Danish, Brazil, Portuguese.
-* Feat: Add Image import functionality across websites.
+* Feat: Added a notification modal during import.
+* Chore: Fixed incorrectly quoted translation bits.
+* Feat: Added language translations for Japanese, Indonesia, Turkish, Polish, Dutch, Danish, Brazil, Portuguese.
+* Fix: Import issues with `core/list` and `core/list-item` blocks.
 * Feat: Add custom hook - `cbtj.innerBlocks`.
 * Fix: Import issues with `core/list` and `core/list-item` blocks.
 * Fix: Incorrectly quoted translation bits.
