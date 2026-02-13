@@ -23,7 +23,7 @@ class Paragraph extends Block {
 	 */
 	public function import_block( $block ): array {
 		//Bail out, if undefined OR not Paragraph block.
-		if ( empty( $block['name'] ) || 'core/paragraph' !== $block['name'] ){
+		if ( empty( $block['name'] ) || 'core/paragraph' !== $block['name'] ) {
 			return $block;
 		}
 
@@ -40,7 +40,7 @@ class Paragraph extends Block {
 	 */
 	public function export_block( $block ): array {
 		//Bail out, if undefined OR not paragraph block.
-		if ( empty( $block['name'] ) || 'core/paragraph' !== $block['name'] ){
+		if ( empty( $block['name'] ) || 'core/paragraph' !== $block['name'] ) {
 			return $block;
 		}
 
