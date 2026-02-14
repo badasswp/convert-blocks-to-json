@@ -9,6 +9,7 @@ use ConvertBlocksToJSON\Abstracts\Block;
 
 /**
  * @covers \ConvertBlocksToJSON\Abstracts\Block::init
+ * @covers \ConvertBlocksToJSON\Abstracts\Block::get_clean_markup
  */
 class BlockTest extends TestCase {
 	public function setUp(): void {
