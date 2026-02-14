@@ -36,9 +36,47 @@ class BlockTest extends TestCase {
 
 		$this->assertConditionsMet();
 	}
+
+	public function test_get_clean_markup_removes_dirty_markup_with_no_attributes() {
+		$block      = new ConcreteBlock();
+		$block->tag = 'p';
+
+		$expected = $block->get_clean_markup( '<p>The <mark style="background-color:rgba(0, 0, 0, 0);color:#ff6900" class="has-inline-color">rough</mark> driver...</p>' );
+
+		$this->assertSame(
+			$expected,
+			'The <mark style="background-color:rgba(0, 0, 0, 0);color:#ff6900" class="has-inline-color">rough</mark> driver...'
+		);
+	}
+
+	public function test_get_clean_markup_removes_dirty_markup_with_attributes() {
+		$block      = new ConcreteBlock();
+		$block->tag = 'h2';
+
+		$expected = $block->get_clean_markup( '<h2 class="wp-block-heading"><h2 class="wp-block-heading">The <mark style="background-color:rgba(0, 0, 0, 0);color:#ff6900" class="has-inline-color">rough</mark> driver...</h2></h2>' );
+
+		$this->assertSame(
+			$expected,
+			'The <mark style="background-color:rgba(0, 0, 0, 0);color:#ff6900" class="has-inline-color">rough</mark> driver...'
+		);
+	}
+
+	public function test_get_clean_markup_removes_dirty_markup_with_attributes_using_regexp_as_tag() {
+		$block      = new ConcreteBlock();
+		$block->tag = '(h1|h2|h3|h4|h5|h6)';
+
+		$expected = $block->get_clean_markup( '<h2 class="wp-block-heading"><h2 class="wp-block-heading">The <mark style="background-color:rgba(0, 0, 0, 0);color:#ff6900" class="has-inline-color">rough</mark> driver...</h2></h2>' );
+
+		$this->assertSame(
+			$expected,
+			'The <mark style="background-color:rgba(0, 0, 0, 0);color:#ff6900" class="has-inline-color">rough</mark> driver...'
+		);
+	}
 }
 
 class ConcreteBlock extends Block {
+	public string $tag;
+
 	public function import_block( $block ): array {
 		return $block;
 	}
