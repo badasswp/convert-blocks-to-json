@@ -46,4 +46,16 @@ abstract class Block {
 		add_filter( 'cbtj_import_block', [ $this, 'import_block' ] );
 		add_filter( 'cbtj_export_block', [ $this, 'export_block' ] );
 	}
+
+	/**
+	 * Get clean markup.
+	 *
+	 * @since 1.3.0
+	 *
+	 * @param string $markup Dirty markup.
+	 * @return string
+	 */
+	public function get_clean_markup( $markup ) {
+		return preg_replace( sprintf( '/<\/?%s\b[^>]*>/', $this->tag ?? '' ), '', $markup );
+	}
 }
