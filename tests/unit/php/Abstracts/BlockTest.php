@@ -10,6 +10,7 @@ use ConvertBlocksToJSON\Abstracts\Block;
 /**
  * @covers \ConvertBlocksToJSON\Abstracts\Block::init
  * @covers \ConvertBlocksToJSON\Abstracts\Block::get_clean_markup
+ * @covers \ConvertBlocksToJSON\Abstracts\Block::get_tag_content
  */
 class BlockTest extends TestCase {
 	public function setUp(): void {
@@ -72,6 +73,14 @@ class BlockTest extends TestCase {
 			$expected,
 			'The <mark style="background-color:rgba(0, 0, 0, 0);color:#ff6900" class="has-inline-color">rough</mark> driver...'
 		);
+	}
+
+	public function test_tag_content_returns_content_nested_within_tag() {
+		$block = new ConcreteBlock();
+
+		$summary = $block->get_tag_content( '<details class="wp-block-details"><summary>A wonderful set of details to add to this page...</summary></details>', 'summary' );
+
+		$this->assertSame( $summary, 'A wonderful set of details to add to this page...' );
 	}
 }
 
