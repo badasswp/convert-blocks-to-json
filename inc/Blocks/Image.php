@@ -31,7 +31,7 @@ class Image extends Block {
 		$block['attributes'] = json_decode( $block['attributes'] ?? '', true );
 
 		// Ensure missing URL attribute is captured for image blocks.
-		preg_match( '/src="([^"]+)"/', $block['originalContent'] ?? '', $matches );
+		preg_match( '/src="([^"]+)"/', $block['attributes']['content'] ?? '', $matches );
 		$block['attributes']['url'] = esc_url( $matches[1] ?? '' );
 
 		// If it's not same site, get remote image.
@@ -75,9 +75,9 @@ class Image extends Block {
 	 * @since 1.3.0
 	 *
 	 * @param string $image_url Image URL.
-	 * @return string
+	 * @return string|\WP_Error
 	 */
-	protected function get_remote_image( $image_url ): string {
+	protected function get_remote_image( $image_url ) {
 		if ( ! function_exists( 'download_url' ) ) {
 			require_once ABSPATH . 'wp-admin/includes/file.php';
 		}
