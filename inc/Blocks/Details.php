@@ -30,8 +30,11 @@ class Details extends Block {
 		// Decode attributes correctly.
 		$block['attributes'] = json_decode( $block['attributes'] ?? '{}', true );
 
+		// Get the block content.
+		$content = $block['attributes']['content'] ?? '';
+
 		// Set the summary.
-		$block['attributes']['summary'] = $this->get_summary( $block['attributes']['content'] ?? '' );
+		$block['attributes']['summary'] = $this->get_tag_content( $content, 'summary' );
 
 		return [
 			'name'        => $block['name'] ?? '',
@@ -57,17 +60,5 @@ class Details extends Block {
 		}
 
 		return $block;
-	}
-
-	/**
-	 * Get Summary.
-	 *
-	 * @param string $markup Details markup.
-	 * @return string
-	 */
-	public function get_summary( $markup ): string {
-		preg_match( '/<summary>(.*?)<\/summary>/', $markup, $match );
-
-		return $match[1] ?? '';
 	}
 }
