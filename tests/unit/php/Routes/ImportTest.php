@@ -109,7 +109,7 @@ class ImportTest extends WPMockTestCase {
 					[],
 					[
 						'name'        => 'core/paragraph',
-						'content'     => '<p>Block with name</p>',
+						'content'     => "\n<p>Block with name</p>\n",
 						'filtered'    => 'Block with name',
 						'attributes'  => [],
 						'innerBlocks' => [],
@@ -147,10 +147,9 @@ class ImportTest extends WPMockTestCase {
 		WP_Mock::expectFilter(
 			'cbtj_import_block',
 			[
-				'name'            => 'core/paragraph',
-				'originalContent' => '<p>Block with name</p>',
-				'attributes'      => '{"content":"Block with name"}',
-				'innerBlocks'     => [],
+				'name'        => 'core/paragraph',
+				'attributes'  => '{"content":"<p>Block with name<\/p>"}',
+				'innerBlocks' => [],
 			]
 		);
 
@@ -159,10 +158,9 @@ class ImportTest extends WPMockTestCase {
 			[
 				'title'   => 'Hello World',
 				'content' => [
-					'name'            => 'core/paragraph',
-					'originalContent' => '<p>Block with name</p>',
-					'attributes'      => '{"content":"Block with name"}',
-					'innerBlocks'     => [],
+					'name'        => 'core/paragraph',
+					'attributes'  => '{"content":"<p>Block with name<\/p>"}',
+					'innerBlocks' => [],
 				],
 			],
 			1
@@ -186,7 +184,7 @@ class ImportTest extends WPMockTestCase {
 			[],
 			[
 				'name'        => 'core/paragraph',
-				'content'     => '<p>Block with name</p>',
+				'content'     => "\n<p>Block with name</p>\n",
 				'filtered'    => 'Block with name',
 				'attributes'  => [],
 				'innerBlocks' => [],
@@ -203,10 +201,9 @@ class ImportTest extends WPMockTestCase {
 		WP_Mock::expectFilter(
 			'cbtj_import_block',
 			[
-				'name'            => 'core/paragraph',
-				'originalContent' => '<p>Block with name</p>',
-				'attributes'      => '{"content":"Block with name"}',
-				'innerBlocks'     => [],
+				'name'        => 'core/paragraph',
+				'attributes'  => '{"content":"<p>Block with name<\/p>"}',
+				'innerBlocks' => [],
 			]
 		);
 
@@ -217,10 +214,9 @@ class ImportTest extends WPMockTestCase {
 			[
 				[],
 				[
-					'name'            => 'core/paragraph',
-					'originalContent' => '<p>Block with name</p>',
-					'attributes'      => '{"content":"Block with name"}',
-					'innerBlocks'     => [],
+					'name'        => 'core/paragraph',
+					'attributes'  => '{"content":"<p>Block with name<\/p>"}',
+					'innerBlocks' => [],
 				],
 				[],
 				[],
@@ -246,7 +242,7 @@ class ImportTest extends WPMockTestCase {
 	public function test_get_import_returns_filtered_block_correctly() {
 		$block = [
 			'name'        => 'core/paragraph',
-			'content'     => '<p>Block with name</p>',
+			'content'     => "\n<p>Block with name</p>\n",
 			'filtered'    => 'Block with name',
 			'attributes'  => [],
 			'innerBlocks' => [],
@@ -255,10 +251,9 @@ class ImportTest extends WPMockTestCase {
 		WP_Mock::expectFilter(
 			'cbtj_import_block',
 			[
-				'name'            => 'core/paragraph',
-				'originalContent' => '<p>Block with name</p>',
-				'attributes'      => '{"content":"Block with name"}',
-				'innerBlocks'     => [],
+				'name'        => 'core/paragraph',
+				'attributes'  => '{"content":"<p>Block with name<\/p>"}',
+				'innerBlocks' => [],
 			]
 		);
 
@@ -267,10 +262,9 @@ class ImportTest extends WPMockTestCase {
 		$this->assertSame(
 			$response,
 			[
-				'name'            => 'core/paragraph',
-				'originalContent' => '<p>Block with name</p>',
-				'attributes'      => '{"content":"Block with name"}',
-				'innerBlocks'     => [],
+				'name'        => 'core/paragraph',
+				'attributes'  => '{"content":"<p>Block with name<\/p>"}',
+				'innerBlocks' => [],
 			]
 		);
 		$this->assertConditionsMet();
