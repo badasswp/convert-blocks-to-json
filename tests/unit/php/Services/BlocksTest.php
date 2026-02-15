@@ -14,6 +14,7 @@ use ConvertBlocksToJSON\Blocks\Lists;
 use ConvertBlocksToJSON\Blocks\ListItem;
 use ConvertBlocksToJSON\Blocks\Image;
 use ConvertBlocksToJSON\Blocks\Paragraph;
+use ConvertBlocksToJSON\Blocks\Table;
 
 /**
  * @covers \ConvertBlocksToJSON\Services\Blocks::__construct
@@ -43,6 +44,7 @@ class BlocksTest extends WPMockTestCase {
 				ListItem::class,
 				Image::class,
 				Paragraph::class,
+				Table::class,
 			],
 			$this->blocks->blocks
 		);
@@ -86,6 +88,7 @@ class BlocksTest extends WPMockTestCase {
 				ListItem::class,
 				Image::class,
 				Paragraph::class,
+				Table::class,
 			]
 		);
 
