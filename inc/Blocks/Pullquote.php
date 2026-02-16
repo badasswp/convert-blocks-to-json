@@ -33,11 +33,9 @@ class Pullquote extends Block {
 		// Get the block content.
 		$content = $block['attributes']['content'] ?? '';
 
-		// Set the citation.
+		// Set the value & citation.
+		$block['attributes']['value']    = $this->get_tag_content( $content, 'p' );
 		$block['attributes']['citation'] = $this->get_tag_content( $content, 'cite' );
-
-		// Set the value.
-		$block['attributes']['value'] = $this->get_tag_content( $content, 'p' );
 
 		return [
 			'name'        => $block['name'] ?? '',
