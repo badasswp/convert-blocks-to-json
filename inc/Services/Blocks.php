@@ -10,6 +10,7 @@
 
 namespace ConvertBlocksToJSON\Services;
 
+use ConvertBlocksToJSON\Blocks\Pullquote;
 use ConvertBlocksToJSON\Blocks\Details;
 use ConvertBlocksToJSON\Blocks\Heading;
 use ConvertBlocksToJSON\Blocks\Lists;
@@ -40,6 +41,7 @@ class Blocks extends Service implements Kernel {
 	 */
 	public function __construct() {
 		$this->blocks = [
+			Pullquote::class,
 			Details::class,
 			Heading::class,
 			Lists::class,
