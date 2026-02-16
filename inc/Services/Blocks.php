@@ -53,13 +53,13 @@ class Blocks extends Service implements Kernel {
 			Lists::class,
 			ListItem::class,
 			Image::class,
-Details::class,
-Heading::class,
-Lists::class,
-ListItem::class,
-Image::class,
-Paragraph::class,
-Pullquote::class,
+			Details::class,
+			Heading::class,
+			Lists::class,
+			ListItem::class,
+			Image::class,
+			Paragraph::class,
+			Pullquote::class,
 		];
 	}
 
