@@ -50,6 +50,15 @@ abstract class Block {
 	/**
 	 * Get clean markup.
 	 *
+	 * This is useful for cleaning dirty markup
+	 * returned from block content.
+	 *
+	 * For e.g. This markup:
+	 * - <p><p>What a <span>wonderful</span> world!</p></p>
+	 *
+	 * cleans and returns:
+	 * - What a <span>wonderful</span> world!
+	 *
 	 * @since 1.3.0
 	 *
 	 * @param string $markup Dirty markup.
@@ -57,5 +66,30 @@ abstract class Block {
 	 */
 	public function get_clean_markup( $markup ) {
 		return preg_replace( sprintf( '/<\/?%s\b[^>]*>/', $this->tag ?? '' ), '', $markup );
+	}
+
+	/**
+	 * Get Tag content.
+	 *
+	 * This is useful for getting the text that is
+	 * nested within a specific tag.
+	 *
+	 * For e.g. This markup:
+	 * - <div><span> Hi </span><p>What a <span>wonderful</span> world!</p></div>
+	 *
+	 * for a `p` tag returns:
+	 * - What a <span>wonderful</span> world!
+	 *
+	 * @since 1.3.0
+	 *
+	 * @param string $markup Block markup.
+	 * @param string $tag    Specific tag.
+	 *
+	 * @return string
+	 */
+	public function get_tag_content( $markup, $tag ): string {
+		preg_match( sprintf( '/<%1$s>(.*?)<\/%1$s>/', $tag ), $markup, $match );
+
+		return $match[1] ?? '';
 	}
 }
