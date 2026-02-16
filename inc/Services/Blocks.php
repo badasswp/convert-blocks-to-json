@@ -10,6 +10,7 @@
 
 namespace ConvertBlocksToJSON\Services;
 
+use ConvertBlocksToJSON\Blocks\Heading;
 use ConvertBlocksToJSON\Blocks\Lists;
 use ConvertBlocksToJSON\Blocks\ListItem;
 use ConvertBlocksToJSON\Blocks\Image;
@@ -38,6 +39,7 @@ class Blocks extends Service implements Kernel {
 	 */
 	public function __construct() {
 		$this->blocks = [
+			Heading::class,
 			Lists::class,
 			ListItem::class,
 			Image::class,

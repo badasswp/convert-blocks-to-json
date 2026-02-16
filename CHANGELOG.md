@@ -7,6 +7,7 @@
 * Feat: Add Notification modal during import.
 * Fix: Import issues with `core/list` and `core/list-item` blocks.
 * Fix: Import issues with `core/pargraph` block.
+* Fix: Import issues with `core/heading` block.
 * Fix: Incorrectly quoted translation bits.
 * Refactor: Replace `get_400_response` with `get_error_response`.
 * Test: Add e2e tests for plugin codebase.
