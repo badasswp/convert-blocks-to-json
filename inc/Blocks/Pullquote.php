@@ -27,7 +27,7 @@ class Pullquote extends Block {
 			return $block;
 		}
 
-		// Decode attributes correctly
+		// Decode attributes correctly.
 		$block['attributes'] = json_decode( $block['attributes'] ?? '{}', true );
 
 		// Get the block content.
