@@ -14,7 +14,13 @@ use ConvertBlocksToJSON\Blocks\Heading;
 use ConvertBlocksToJSON\Blocks\Lists;
 use ConvertBlocksToJSON\Blocks\ListItem;
 use ConvertBlocksToJSON\Blocks\Image;
+use ConvertBlocksToJSON\Blocks\Details;
+use ConvertBlocksToJSON\Blocks\Heading;
+use ConvertBlocksToJSON\Blocks\Lists;
+use ConvertBlocksToJSON\Blocks\ListItem;
+use ConvertBlocksToJSON\Blocks\Image;
 use ConvertBlocksToJSON\Blocks\Paragraph;
+use ConvertBlocksToJSON\Blocks\Pullquote;
 
 /**
  * @covers \ConvertBlocksToJSON\Services\Blocks::__construct
