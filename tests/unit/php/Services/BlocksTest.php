@@ -8,12 +8,6 @@ use Badasswp\WPMockTC\WPMockTestCase;
 use ConvertBlocksToJSON\Abstracts\Block;
 use ConvertBlocksToJSON\Services\Blocks;
 
-use ConvertBlocksToJSON\Blocks\Pullquote;
-use ConvertBlocksToJSON\Blocks\Details;
-use ConvertBlocksToJSON\Blocks\Heading;
-use ConvertBlocksToJSON\Blocks\Lists;
-use ConvertBlocksToJSON\Blocks\ListItem;
-use ConvertBlocksToJSON\Blocks\Image;
 use ConvertBlocksToJSON\Blocks\Details;
 use ConvertBlocksToJSON\Blocks\Heading;
 use ConvertBlocksToJSON\Blocks\Lists;
@@ -44,12 +38,6 @@ class BlocksTest extends WPMockTestCase {
 	public function test_class_properties_are_defined_by_default() {
 		$this->assertSame(
 			[
-				Pullquote::class,
-				Details::class,
-				Heading::class,
-				Lists::class,
-				ListItem::class,
-				Image::class,
 				Details::class,
 				Heading::class,
 				Lists::class,
@@ -94,12 +82,6 @@ class BlocksTest extends WPMockTestCase {
 		WP_Mock::expectFilter(
 			'cbtj_blocks',
 			[
-				Pullquote::class,
-				Details::class,
-				Heading::class,
-				Lists::class,
-				ListItem::class,
-				Image::class,
 				Details::class,
 				Heading::class,
 				Lists::class,
