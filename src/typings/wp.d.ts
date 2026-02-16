@@ -12,3 +12,4 @@ declare namespace wp {
 }
 
 declare module '@wordpress/editor';
+declare module '@wordpress/block-editor';

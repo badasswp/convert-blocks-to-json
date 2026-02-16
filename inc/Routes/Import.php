@@ -144,13 +144,13 @@ class Import extends Route implements Router {
 			}
 		}
 
-		$block['attributes']['content'] = $block['filtered'] ?? '';
+		// Use innerHTML for block content.
+		$block['attributes']['content'] = trim( $block['content'] ?? '' );
 
 		$import_block = [
-			'name'            => $block['name'] ?? '',
-			'originalContent' => $block['content'] ?? '',
-			'attributes'      => wp_json_encode( $block['attributes'] ?? [] ),
-			'innerBlocks'     => $children ?? [],
+			'name'        => $block['name'] ?? '',
+			'attributes'  => wp_json_encode( $block['attributes'] ?? [] ),
+			'innerBlocks' => $children ?? [],
 		];
 
 		/**

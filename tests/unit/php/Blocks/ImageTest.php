@@ -28,18 +28,16 @@ class ImageTest extends WPMockTestCase {
 	public function test_import_block_returns_default_block_if_name_is_undefined() {
 		$block = $this->image->import_block(
 			[
-				'attributes'      => '{}',
-				'originalContent' => '',
-				'innerBlocks'     => [],
+				'attributes'  => '{"content":""}',
+				'innerBlocks' => [],
 			]
 		);
 
 		$this->assertSame(
 			$block,
 			[
-				'attributes'      => '{}',
-				'originalContent' => '',
-				'innerBlocks'     => [],
+				'attributes'  => '{"content":""}',
+				'innerBlocks' => [],
 			]
 		);
 	}
@@ -47,20 +45,18 @@ class ImageTest extends WPMockTestCase {
 	public function test_import_block_returns_default_block_if_block_is_not_paragraph() {
 		$block = $this->image->import_block(
 			[
-				'name'            => 'core/paragraph',
-				'attributes'      => '{}',
-				'originalContent' => '',
-				'innerBlocks'     => [],
+				'name'        => 'core/paragraph',
+				'attributes'  => '{"content":""}',
+				'innerBlocks' => [],
 			]
 		);
 
 		$this->assertSame(
 			$block,
 			[
-				'name'            => 'core/paragraph',
-				'attributes'      => '{}',
-				'originalContent' => '',
-				'innerBlocks'     => [],
+				'name'        => 'core/paragraph',
+				'attributes'  => '{"content":""}',
+				'innerBlocks' => [],
 			]
 		);
 	}
@@ -71,20 +67,18 @@ class ImageTest extends WPMockTestCase {
 
 		$block = $this->image->import_block(
 			[
-				'name'            => 'core/image',
-				'originalContent' => '<body><img src="https://www.example.com/wp-content/image.jpg"/></body>',
-				'attributes'      => '{}',
-				'innerBlocks'     => [],
+				'name'        => 'core/image',
+				'attributes'  => '{"content":"<body><img src=\"https:\/\/www.example.com\/wp-content\/image.jpg\"\/><\/body>"}',
+				'innerBlocks' => [],
 			]
 		);
 
 		$this->assertSame(
 			$block,
 			[
-				'name'            => 'core/image',
-				'originalContent' => '<body><img src="https://www.example.com/wp-content/image.jpg"/></body>',
-				'attributes'      => '{"url":"https:\/\/www.example.com\/wp-content\/image.jpg"}',
-				'innerBlocks'     => [],
+				'name'        => 'core/image',
+				'attributes'  => '{"content":"<body><img src=\"https:\/\/www.example.com\/wp-content\/image.jpg\"\/><\/body>","url":"https:\/\/www.example.com\/wp-content\/image.jpg"}',
+				'innerBlocks' => [],
 			]
 		);
 	}
@@ -108,20 +102,18 @@ class ImageTest extends WPMockTestCase {
 
 		$block = $image->import_block(
 			[
-				'name'            => 'core/image',
-				'originalContent' => '<body><img src="https://www.johndoe.com/wp-content/image.jpg"/></body>',
-				'attributes'      => '{}',
-				'innerBlocks'     => [],
+				'name'        => 'core/image',
+				'attributes'  => '{"content":"<body><img src=\"https:\/\/www.johndoe.com\/wp-content\/image.jpg\"\/><\/body>"}',
+				'innerBlocks' => [],
 			]
 		);
 
 		$this->assertSame(
 			$block,
 			[
-				'name'            => 'core/image',
-				'originalContent' => '<body><img src="https://www.johndoe.com/wp-content/image.jpg"/></body>',
-				'attributes'      => '{"url":"https:\/\/www.johndoe.com\/wp-content\/image.jpg"}',
-				'innerBlocks'     => [],
+				'name'        => 'core/image',
+				'attributes'  => '{"content":"<body><img src=\"https:\/\/www.johndoe.com\/wp-content\/image.jpg\"\/><\/body>","url":"https:\/\/www.johndoe.com\/wp-content\/image.jpg"}',
+				'innerBlocks' => [],
 			]
 		);
 	}
@@ -142,20 +134,18 @@ class ImageTest extends WPMockTestCase {
 
 		$block = $image->import_block(
 			[
-				'name'            => 'core/image',
-				'originalContent' => '<body><img src="https://www.johndoe.com/wp-content/image.jpg"/></body>',
-				'attributes'      => '{}',
-				'innerBlocks'     => [],
+				'name'        => 'core/image',
+				'attributes'  => '{"content":"<body><img src=\"https:\/\/www.johndoe.com\/wp-content\/image.jpg\"\/><\/body>"}',
+				'innerBlocks' => [],
 			]
 		);
 
 		$this->assertSame(
 			$block,
 			[
-				'name'            => 'core/image',
-				'originalContent' => '<body><img src="https://www.johndoe.com/wp-content/image.jpg"/></body>',
-				'attributes'      => '{"url":"https:\/\/www.example.com\/wp-content\/imported-image.jpg"}',
-				'innerBlocks'     => [],
+				'name'        => 'core/image',
+				'attributes'  => '{"content":"<body><img src=\"https:\/\/www.johndoe.com\/wp-content\/image.jpg\"\/><\/body>","url":"https:\/\/www.example.com\/wp-content\/imported-image.jpg"}',
+				'innerBlocks' => [],
 			]
 		);
 	}
