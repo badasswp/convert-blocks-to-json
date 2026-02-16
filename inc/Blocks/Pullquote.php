@@ -21,14 +21,14 @@ class Pullquote extends Block {
 	 * @param mixed[] $block Import Block.
 	 * @return mixed[]
 	 */
-	public function import_block( $block ):array {
+	public function import_block( $block ): array {
 		//Bail out, if undefined or not Pullquote block
-		if( empty( $block['name'] ) || 'core/pullquote' !== $block['name'] ){
+		if ( empty( $block['name'] ) || 'core/pullquote' !== $block['name'] ) {
 			return $block;
 		}
 
 		// Decode attributes correctly
-		$block['attributes'] = json_decode( $block['attributes'] ?? '{}' , true );
+		$block['attributes'] = json_decode( $block['attributes'] ?? '{}', true );
 
 		// Get the block content.
 		$content = $block['attributes']['content'] ?? '';
