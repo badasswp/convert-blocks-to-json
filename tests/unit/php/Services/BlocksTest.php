@@ -44,7 +44,13 @@ class BlocksTest extends WPMockTestCase {
 				Lists::class,
 				ListItem::class,
 				Image::class,
-				Paragraph::class,
+Details::class,
+Heading::class,
+Lists::class,
+ListItem::class,
+Image::class,
+Paragraph::class,
+Pullquote::class,
 			],
 			$this->blocks->blocks
 		);
