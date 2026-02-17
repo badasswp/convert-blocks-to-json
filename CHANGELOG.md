@@ -10,6 +10,7 @@
 * Fix: Import issues with `core/heading` block.
 * Fix: Import issues with `core/details` block.
 * Fix: Import issues with `core/pullquote` block.
+* Fix: Import issues with `core/cover` block.
 * Fix: Import issues with `core/quote` block.
 * Fix: Incorrectly quoted translation bits.
 * Refactor: Replace `get_400_response` with `get_error_response`.
