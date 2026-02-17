@@ -16,6 +16,7 @@ use ConvertBlocksToJSON\Blocks\Lists;
 use ConvertBlocksToJSON\Blocks\ListItem;
 use ConvertBlocksToJSON\Blocks\Image;
 use ConvertBlocksToJSON\Blocks\Paragraph;
+use ConvertBlocksToJSON\Blocks\Pullquote;
 use ConvertBlocksToJSON\Blocks\Table;
 
 use ConvertBlocksToJSON\Abstracts\Block;
@@ -47,6 +48,7 @@ class Blocks extends Service implements Kernel {
 			ListItem::class,
 			Image::class,
 			Paragraph::class,
+			Pullquote::class,
 			Table::class,
 		];
 	}
