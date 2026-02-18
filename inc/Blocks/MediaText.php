@@ -22,7 +22,7 @@ class MediaText extends Block {
 	 * @return mixed[]
 	 */
 	public function import_block( $block ): array {
-		//Bail out, if undefined OR not MediaText block.
+		// Bail out, if undefined OR not MediaText block.
 		if ( empty( $block['name'] ) || 'core/media-text' !== $block['name'] ) {
 			return $block;
 		}
