@@ -12,13 +12,13 @@ namespace ConvertBlocksToJSON\Services;
 
 use ConvertBlocksToJSON\Blocks\Details;
 use ConvertBlocksToJSON\Blocks\Heading;
+use ConvertBlocksToJSON\Blocks\Image;
 use ConvertBlocksToJSON\Blocks\Lists;
 use ConvertBlocksToJSON\Blocks\ListItem;
-use ConvertBlocksToJSON\Blocks\Image;
+use ConvertBlocksToJSON\Blocks\MediaText;
 use ConvertBlocksToJSON\Blocks\Paragraph;
 use ConvertBlocksToJSON\Blocks\Pullquote;
 use ConvertBlocksToJSON\Blocks\Table;
-
 use ConvertBlocksToJSON\Abstracts\Block;
 use ConvertBlocksToJSON\Abstracts\Service;
 use ConvertBlocksToJSON\Interfaces\Kernel;
@@ -44,9 +44,10 @@ class Blocks extends Service implements Kernel {
 		$this->blocks = [
 			Details::class,
 			Heading::class,
+			Image::class,
 			Lists::class,
 			ListItem::class,
-			Image::class,
+			MediaText::class,
 			Paragraph::class,
 			Pullquote::class,
 			Table::class,

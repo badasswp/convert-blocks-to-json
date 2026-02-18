@@ -19,6 +19,7 @@ addFilter( 'cbtj.innerBlocks', 'cbtj', ( innerBlocks, block ) => {
 		case 'core/list':
 		case 'core/quote':
 		case 'core/details':
+		case 'core/media-text':
 		case 'core/cover':
 			blocks = innerBlocks.map( ( { name, attributes } ) =>
 				createBlock( name, { ...JSON.parse( attributes ) } )
