@@ -53,7 +53,7 @@ class MediaText extends Block {
 	}
 
 	/**
-	 * Export Block
+	 * Export Block.
 	 *
 	 * @since 1.3.0
 	 *

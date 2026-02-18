@@ -55,7 +55,7 @@ class Pullquote extends Block {
 	 * @return mixed[]
 	 */
 	public function export_block( $block ): array {
-		//Bail out, if undefined OR not Details block.
+		// Bail out, if undefined OR not Details block.
 		if ( empty( $block['name'] ) || 'core/pullquote' !== $block['name'] ) {
 			return $block;
 		}

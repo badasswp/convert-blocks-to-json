@@ -22,7 +22,7 @@ class Details extends Block {
 	 * @return mixed[]
 	 */
 	public function import_block( $block ): array {
-		//Bail out, if undefined OR not Details block.
+		// Bail out, if undefined OR not Details block.
 		if ( empty( $block['name'] ) || 'core/details' !== $block['name'] ) {
 			return $block;
 		}
@@ -46,7 +46,7 @@ class Details extends Block {
 	}
 
 	/**
-	 * Export Block
+	 * Export Block.
 	 *
 	 * @since 1.3.0
 	 *
@@ -54,7 +54,7 @@ class Details extends Block {
 	 * @return mixed[]
 	 */
 	public function export_block( $block ): array {
-		//Bail out, if undefined OR not Details block.
+		// Bail out, if undefined OR not Details block.
 		if ( empty( $block['name'] ) || 'core/details' !== $block['name'] ) {
 			return $block;
 		}

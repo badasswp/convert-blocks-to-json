@@ -22,7 +22,7 @@ class Table extends Block {
 	 * @return mixed[]
 	 */
 	public function import_block( $block ): array {
-		//Bail out, if undefined OR not Table block.
+		// Bail out, if undefined OR not Table block.
 		if ( empty( $block['name'] ) || 'core/table' !== $block['name'] ) {
 			return $block;
 		}
@@ -48,7 +48,7 @@ class Table extends Block {
 	}
 
 	/**
-	 * Export Block
+	 * Export Block.
 	 *
 	 * @since 1.3.0
 	 *
@@ -56,7 +56,7 @@ class Table extends Block {
 	 * @return mixed[]
 	 */
 	public function export_block( $block ): array {
-		//Bail out, if undefined OR not Table block.
+		// Bail out, if undefined OR not Table block.
 		if ( empty( $block['name'] ) || 'core/table' !== $block['name'] ) {
 			return $block;
 		}

@@ -31,7 +31,7 @@ class Heading extends Block {
 	 * @return mixed[]
 	 */
 	public function import_block( $block ): array {
-		//Bail out, if undefined OR not Heading block.
+		// Bail out, if undefined OR not Heading block.
 		if ( empty( $block['name'] ) || 'core/heading' !== $block['name'] ) {
 			return $block;
 		}
@@ -52,7 +52,7 @@ class Heading extends Block {
 	}
 
 	/**
-	 * Export Block
+	 * Export Block.
 	 *
 	 * @since 1.3.0
 	 *
@@ -60,7 +60,7 @@ class Heading extends Block {
 	 * @return mixed[]
 	 */
 	public function export_block( $block ): array {
-		//Bail out, if undefined OR not Heading block.
+		// Bail out, if undefined OR not Heading block.
 		if ( empty( $block['name'] ) || 'core/heading' !== $block['name'] ) {
 			return $block;
 		}
