@@ -1,6 +1,6 @@
 <?php
 /**
- * Heading Block
+ * Heading Block.
  *
  * This class is responsible for customizing
  * the Heading block output.

@@ -1,6 +1,6 @@
 <?php
 /**
- * Pullquote Block
+ * Pullquote Block.
  *
  * This class is responsible for customizing
  * the Pullquote block output.

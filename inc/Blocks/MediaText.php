@@ -1,6 +1,6 @@
 <?php
 /**
- * MediaText Block
+ * MediaText Block.
  *
  * This class is responsible for customizing
  * the MediaText block output.

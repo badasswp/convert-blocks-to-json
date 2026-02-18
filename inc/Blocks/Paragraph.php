@@ -1,6 +1,6 @@
 <?php
 /**
- * Paragraph Block
+ * Paragraph Block.
  *
  * This class is responsible for customizing
  * the Paragraph block output.

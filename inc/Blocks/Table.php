@@ -1,6 +1,6 @@
 <?php
 /**
- * Table Block
+ * Table Block.
  *
  * This class is responsible for customizing
  * the Table block output.
@@ -98,7 +98,7 @@ class Table extends Block {
 	}
 
 	/**
-	 * Get Table Rows
+	 * Get Table Rows.
 	 *
 	 * @since 1.3.0
 	 *

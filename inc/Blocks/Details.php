@@ -1,6 +1,6 @@
 <?php
 /**
- * Details Block
+ * Details Block.
  *
  * This class is responsible for customizing
  * the Details block output.
