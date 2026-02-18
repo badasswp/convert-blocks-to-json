@@ -30,7 +30,6 @@ class MediaText extends Block {
 		// Decode attributes correctly.
 		$block['attributes'] = json_decode( $block['attributes'] ?? '{}', true );
 
-
 		// Ensure missing URL attribute is captured for image blocks.
 		preg_match( '/src="([^"]+)"/', $block['attributes']['content'] ?? '', $matches );
 		$block['attributes']['mediaUrl'] = esc_url( $matches[1] ?? '' );
@@ -43,7 +42,6 @@ class MediaText extends Block {
 				$block['attributes']['mediaUrl'] = $remote_image;
 			}
 		}
-
 
 		return [
 			'name'        => $block['name'] ?? '',
