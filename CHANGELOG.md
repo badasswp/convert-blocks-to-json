@@ -13,6 +13,7 @@
 * Fix: Import issues with `core/cover` block.
 * Fix: Import issues with `core/table` block.
 * Fix: Import issues with `core/quote` block.
+* Fix: Import issues with `core/media-text` block.
 * Fix: Incorrectly quoted translation bits.
 * Refactor: Replace `get_400_response` with `get_error_response`.
 * Test: Add e2e tests for plugin codebase.

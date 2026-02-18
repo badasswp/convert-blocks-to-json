@@ -47,9 +47,9 @@ class MediaText extends Block {
 		}
 
 		// Set the mediaId, mediaLink & mediaType.
-		$block['attributes']['mediaId'] = $attributes['mediaId'] ;
-		$block['attributes']['mediaLink'] = $attributes['mediaLink'] ;
-		$block['attributes']['mediaType'] = $attributes['mediaType'] ;
+		$block['attributes']['mediaId']   = $attributes['mediaId'];
+		$block['attributes']['mediaLink'] = $attributes['mediaLink'];
+		$block['attributes']['mediaType'] = $attributes['mediaType'];
 
 		return [
 			'name'        => $block['name'] ?? '',
