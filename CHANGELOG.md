@@ -15,6 +15,7 @@
 * Fix: Import issues with `core/quote` block.
 * Fix: Import issues with `core/media-text` block.
 * Fix: Import issues with `core/gallery` block.
+* Fix: Import issues with `core/audio` block.
 * Fix: Incorrectly quoted translation bits.
 * Refactor: Replace `get_400_response` with `get_error_response`.
 * Test: Add e2e tests for plugin codebase.
