@@ -9,6 +9,7 @@ use ConvertBlocksToJSON\Abstracts\Block;
 use ConvertBlocksToJSON\Services\Blocks;
 
 use ConvertBlocksToJSON\Blocks\Details;
+use ConvertBlocksToJSON\Blocks\Freeform;
 use ConvertBlocksToJSON\Blocks\Heading;
 use ConvertBlocksToJSON\Blocks\Image;
 use ConvertBlocksToJSON\Blocks\Lists;
@@ -41,6 +42,7 @@ class BlocksTest extends WPMockTestCase {
 		$this->assertSame(
 			[
 				Details::class,
+				Freeform::class,
 				Heading::class,
 				Image::class,
 				Lists::class,
@@ -87,6 +89,7 @@ class BlocksTest extends WPMockTestCase {
 			'cbtj_blocks',
 			[
 				Details::class,
+				Freeform::class,
 				Heading::class,
 				Image::class,
 				Lists::class,
