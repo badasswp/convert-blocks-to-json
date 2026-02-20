@@ -104,7 +104,7 @@ abstract class Block {
 	 * @param string $file_url Image URL.
 	 * @return string|\WP_Error
 	 */
-	public function get_remote_file( $file_url ) {
+	protected function get_remote_file( $file_url ) {
 		if ( ! function_exists( 'download_url' ) ) {
 			require_once ABSPATH . 'wp-admin/includes/file.php';
 		}
