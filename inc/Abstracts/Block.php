@@ -117,6 +117,10 @@ abstract class Block {
 			require_once ABSPATH . 'wp-admin/includes/image.php';
 		}
 
+		if ( ! function_exists( 'wp_read_audio_metadata' ) ) {
+			require_once ABSPATH . 'wp-admin/includes/media.php';
+		}
+
 		// Download the file to a temporary location.
 		$tmp_file = download_url( sanitize_url( $file_url ) );
 
