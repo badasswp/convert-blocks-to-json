@@ -96,7 +96,7 @@ class ImageTest extends WPMockTestCase {
 		WP_Mock::userFunction( 'is_wp_error' )
 			->andReturn( true );
 
-		$image->shouldReceive( 'get_remote_image' )
+		$image->shouldReceive( 'get_remote_file' )
 			->with( 'https://www.johndoe.com/wp-content/image.jpg' )
 			->andReturn( $wp_error );
 
@@ -128,7 +128,7 @@ class ImageTest extends WPMockTestCase {
 		WP_Mock::userFunction( 'is_wp_error' )
 			->andReturn( false );
 
-		$image->shouldReceive( 'get_remote_image' )
+		$image->shouldReceive( 'get_remote_file' )
 			->with( 'https://www.johndoe.com/wp-content/image.jpg' )
 			->andReturn( 'https://www.example.com/wp-content/imported-image.jpg' );
 
