@@ -187,7 +187,7 @@ abstract class Block {
 		} catch ( Throwable $e ) {
 			error_log( 'Fatal caught: ' . $e->getMessage() . ' in ' . $e->getFile() . ':' . $e->getLine() );
 			
-			return new \WP_Error( 'cbtj-metadata-error', $e->getMessage() );
+			return new WP_Error( 'cbtj-metadata-error', $e->getMessage() );
 		}
 
 		return wp_get_attachment_url( $attach_id );
