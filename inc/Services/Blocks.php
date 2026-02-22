@@ -10,6 +10,7 @@
 
 namespace ConvertBlocksToJSON\Services;
 
+use ConvertBlocksToJSON\Blocks\Audio;
 use ConvertBlocksToJSON\Blocks\Details;
 use ConvertBlocksToJSON\Blocks\Freeform;
 use ConvertBlocksToJSON\Blocks\Heading;
@@ -43,6 +44,7 @@ class Blocks extends Service implements Kernel {
 	 */
 	public function __construct() {
 		$this->blocks = [
+			Audio::class,
 			Details::class,
 			Freeform::class,
 			Heading::class,

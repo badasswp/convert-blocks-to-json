@@ -1,9 +1,9 @@
 <?php
 /**
- * Image Block.
+ * Audio Block.
  *
  * This class is responsible for customizing
- * the Image block output.
+ * the Audio block output.
  *
  * @package ConvertBlocksToJSON
  */
@@ -12,34 +12,34 @@ namespace ConvertBlocksToJSON\Blocks;
 
 use ConvertBlocksToJSON\Abstracts\Block;
 
-class Image extends Block {
+class Audio extends Block {
 	/**
 	 * Import Block.
 	 *
-	 * @since 1.2.0
+	 * @since 1.3.0
 	 *
 	 * @param mixed[] $block Import Block.
 	 * @return mixed[]
 	 */
 	public function import_block( $block ): array {
-		// Bail out, if undefined OR not Image block.
-		if ( empty( $block['name'] ) || 'core/image' !== $block['name'] ) {
+		// Bail out, if undefined OR not Audio block.
+		if ( empty( $block['name'] ) || 'core/audio' !== $block['name'] ) {
 			return $block;
 		}
 
 		// Decode attributes correctly.
 		$block['attributes'] = json_decode( $block['attributes'] ?? '', true );
 
-		// Ensure missing URL attribute is captured for image blocks.
+		// Ensure missing SRC attribute is captured for audio blocks.
 		preg_match( '/src="([^"]+)"/', $block['attributes']['content'] ?? '', $matches );
-		$block['attributes']['url'] = esc_url( $matches[1] ?? '' );
+		$block['attributes']['src'] = esc_url( $matches[1] ?? '' );
 
-		// If it's not same site, get remote image.
-		if ( false === strpos( $block['attributes']['url'] ?? '', home_url() ) ) {
-			$remote_image = $this->get_remote_file( $block['attributes']['url'] ?? '' );
+		// If it's not same site, get remote file.
+		if ( false === strpos( $block['attributes']['src'] ?? '', home_url() ) ) {
+			$remote_file = $this->get_remote_file( $block['attributes']['src'] ?? '' );
 
-			if ( ! is_wp_error( $remote_image ) ) {
-				$block['attributes']['url'] = $remote_image;
+			if ( ! is_wp_error( $remote_file ) ) {
+				$block['attributes']['src'] = $remote_file;
 			}
 		}
 
@@ -58,8 +58,8 @@ class Image extends Block {
 	 * @return mixed[]
 	 */
 	public function export_block( $block ): array {
-		// Bail out, if undefined OR not Image block.
-		if ( empty( $block['name'] ) || 'core/image' !== $block['name'] ) {
+		// Bail out, if undefined OR not Audio block.
+		if ( empty( $block['name'] ) || 'core/audio' !== $block['name'] ) {
 			return $block;
 		}
 
