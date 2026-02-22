@@ -42,11 +42,8 @@ class Paragraph extends Block {
 		// Set the content.
 		$block['attributes']['content'] = $this->get_clean_markup( $block['attributes']['content'] ?? '' );
 
-		return [
-			'name'        => $block['name'] ?? '',
-			'attributes'  => wp_json_encode( $block['attributes'] ?? [] ),
-			'innerBlocks' => $block['innerBlocks'] ?? [],
-		];
+		// Re-encode attributes correctly.
+		$block['attributes'] = wp_json_encode( $block['attributes'] ?? [] );
 
 		return $block;
 	}

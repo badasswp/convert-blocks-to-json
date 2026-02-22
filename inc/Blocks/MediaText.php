@@ -43,11 +43,8 @@ class MediaText extends Block {
 			}
 		}
 
-		return [
-			'name'        => $block['name'] ?? '',
-			'attributes'  => wp_json_encode( $block['attributes'] ?? [] ),
-			'innerBlocks' => $block['innerBlocks'] ?? [],
-		];
+		// Re-encode attributes correctly.
+		$block['attributes'] = wp_json_encode( $block['attributes'] ?? [] );
 
 		return $block;
 	}
