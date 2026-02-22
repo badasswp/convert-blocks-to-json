@@ -105,11 +105,7 @@ abstract class Block {
 	 * @return string|\WP_Error
 	 */
 	protected function get_remote_file( $file_url ) {
-		if ( ! function_exists( 'download_url' ) ) {
-			require_once ABSPATH . 'wp-admin/includes/file.php';
-		}
-
-		if ( ! function_exists( 'wp_handle_sideload' ) ) {
+		if ( ! function_exists( 'download_url' ) || ! function_exists( 'wp_handle_sideload' ) ) {
 			require_once ABSPATH . 'wp-admin/includes/file.php';
 		}
 
