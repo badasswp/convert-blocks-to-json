@@ -97,14 +97,15 @@ abstract class Block {
 	}
 
 	/**
-	 * Get File Url.
+	 * Get Remote File.
 	 *
 	 * This is specific to importing files from
-	 * an external or remote website.
+	 * an external or remote website. Just to clarify,
+	 * file could be an image, audio or video.
 	 *
 	 * @since 1.3.0
 	 *
-	 * @param string $file_url Image URL.
+	 * @param string $file_url File URL.
 	 * @return string|\WP_Error
 	 */
 	protected function get_remote_file( $file_url ) {
