@@ -10,6 +10,7 @@ use Badasswp\WPMockTC\WPMockTestCase;
 /**
  * @covers \ConvertBlocksToJSON\Blocks\Heading::import_block
  * @covers \ConvertBlocksToJSON\Blocks\Heading::export_block
+ * @covers \ConvertBlocksToJSON\Abstracts\Block::get_clean_markup
  */
 class HeadingTest extends WPMockTestCase {
 	public Heading $heading;
