@@ -10,6 +10,9 @@
 
 namespace ConvertBlocksToJSON\Abstracts;
 
+use WP_Error;
+use Throwable;
+
 /**
  * Block class.
  */
@@ -120,7 +123,7 @@ abstract class Block {
 		// Download the file to a temporary location.
 		$tmp_file = download_url( sanitize_url( $file_url ) );
 
-		// Bail out, if wp_error.
+		// Bail out, if is WP_Error.
 		if ( is_wp_error( $tmp_file ) ) {
 			error_log(
 				sprintf(
@@ -136,26 +139,24 @@ abstract class Block {
 		// Get the filename + extension from the URL.
 		$url_filename = basename( parse_url( $file_url, PHP_URL_PATH ) );
 
-		// Build an array that resembles a PHP file upload.
+		// Get the file type.
 		$filetype = wp_check_filetype( $url_filename );
 
-		// Build an array that resembles a PHP file upload.
-		$file = [
-			'name'     => $url_filename,
-			'type'     => $filetype['type'] ?? 'application/octet-stream',
-			'tmp_name' => $tmp_file,
-			'error'    => 0,
-			'size'     => filesize( $tmp_file ),
-		];
-
-		// Let WordPress handle the sideload.
-		$overrides = [
-			'test_form'   => false,
-			'test_size'   => true,
-			'test_upload' => true,
-		];
-
-		$results = wp_handle_sideload( $file, $overrides );
+		// Let WordPress handle the upload correctly.
+		$results = wp_handle_sideload(
+			[
+				'name'     => $url_filename,
+				'type'     => $filetype['type'] ?? 'application/octet-stream',
+				'tmp_name' => $tmp_file,
+				'error'    => 0,
+				'size'     => filesize( $tmp_file ),
+			],
+			[
+				'test_form'   => false,
+				'test_size'   => true,
+				'test_upload' => true,
+			]
+		);
 
 		// Bail out, if upload error.
 		if ( isset( $results['error'] ) ) {
@@ -166,23 +167,27 @@ abstract class Block {
 			return new WP_Error( 'cbtj-import-error', $error_message );
 		}
 
+		// The imported file url path.
+		$imported_file_url = $results['file'] ?? '';
+
 		// Now create attachment post for the image.
-		$attachment = [
-			'post_mime_type' => $results['type'],
-			'post_title'     => sanitize_file_name( pathinfo( $url_filename, PATHINFO_FILENAME ) ),
-			'post_content'   => '',
-			'post_status'    => 'inherit',
-		];
+		$attach_id = wp_insert_attachment(
+			[
+				'post_mime_type' => $results['type'] ?? '',
+				'post_title'     => sanitize_file_name( pathinfo( $url_filename, PATHINFO_FILENAME ) ),
+				'post_content'   => '',
+				'post_status'    => 'inherit',
+			],
+			$imported_file_url
+		);
 
-		$attach_id = wp_insert_attachment( $attachment, $results['file'] );
-
-		// Bail out, if wp_error.
+		// Bail out, if is WP_Error.
 		if ( is_wp_error( $attach_id ) ) {
 			return $attach_id;
 		}
 
 		try {
-			$metadata = wp_generate_attachment_metadata( $attach_id, $results['file'] );
+			$metadata = wp_generate_attachment_metadata( $attach_id, $imported_file_url );
 			wp_update_attachment_metadata( $attach_id, $metadata );
 		} catch ( Throwable $e ) {
 			error_log( 'Fatal caught: ' . $e->getMessage() . ' in ' . $e->getFile() . ':' . $e->getLine() );
