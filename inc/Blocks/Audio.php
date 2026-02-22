@@ -44,7 +44,7 @@ class Audio extends Block {
 		}
 
 		// Re-encode attributes correctly.
-		$block['attributes'] = wp_json_encode( $block['attributes'] );
+		$block['attributes'] = wp_json_encode( $block['attributes'] ?? [] );
 
 		return $block;
 	}
