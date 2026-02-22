@@ -11,6 +11,7 @@
 namespace ConvertBlocksToJSON\Services;
 
 use ConvertBlocksToJSON\Blocks\Details;
+use ConvertBlocksToJSON\Blocks\Freeform;
 use ConvertBlocksToJSON\Blocks\Heading;
 use ConvertBlocksToJSON\Blocks\Image;
 use ConvertBlocksToJSON\Blocks\Lists;
@@ -43,6 +44,7 @@ class Blocks extends Service implements Kernel {
 	public function __construct() {
 		$this->blocks = [
 			Details::class,
+			Freeform::class,
 			Heading::class,
 			Image::class,
 			Lists::class,

@@ -16,7 +16,7 @@ import { store as editorStore } from '@wordpress/editor';
  * @return {Promise<any[]>} Blocks.
  */
 export const getBlocks = async (): Promise< any[] > => {
-	const postID = select( editorStore ).getCurrentPostId();
+	const postID = ( select( editorStore ) as any ).getCurrentPostId();
 
 	return await apiFetch( {
 		path: `/cbtj/v1/${ postID }`,
