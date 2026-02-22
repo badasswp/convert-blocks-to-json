@@ -143,15 +143,18 @@ abstract class Block {
 		// Get the file type.
 		$filetype = wp_check_filetype( $url_filename );
 
+		// Build an array that resembles a PHP file upload.
+		$file = [
+			'name'     => $url_filename,
+			'type'     => $filetype['type'] ?? 'application/octet-stream',
+			'tmp_name' => $tmp_file,
+			'error'    => 0,
+			'size'     => filesize( $tmp_file ),
+		];
+
 		// Let WordPress handle the upload correctly.
 		$results = wp_handle_sideload(
-			[
-				'name'     => $url_filename,
-				'type'     => $filetype['type'] ?? 'application/octet-stream',
-				'tmp_name' => $tmp_file,
-				'error'    => 0,
-				'size'     => filesize( $tmp_file ),
-			],
+			$file,
 			[
 				'test_form'   => false,
 				'test_size'   => true,
