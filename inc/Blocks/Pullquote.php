@@ -37,11 +37,8 @@ class Pullquote extends Block {
 		$block['attributes']['value']    = $this->get_tag_content( $content, 'p' );
 		$block['attributes']['citation'] = $this->get_tag_content( $content, 'cite' );
 
-		return [
-			'name'        => $block['name'] ?? '',
-			'attributes'  => wp_json_encode( $block['attributes'] ?? [] ),
-			'innerBlocks' => $block['innerBlocks'] ?? [],
-		];
+		// Re-encode attributes correctly.
+		$block['attributes'] = wp_json_encode( $block['attributes'] ?? [] );
 
 		return $block;
 	}

@@ -10,6 +10,7 @@ use ConvertBlocksToJSON\Services\Blocks;
 
 use ConvertBlocksToJSON\Blocks\Audio;
 use ConvertBlocksToJSON\Blocks\Details;
+use ConvertBlocksToJSON\Blocks\Freeform;
 use ConvertBlocksToJSON\Blocks\Heading;
 use ConvertBlocksToJSON\Blocks\Image;
 use ConvertBlocksToJSON\Blocks\Lists;
@@ -43,6 +44,7 @@ class BlocksTest extends WPMockTestCase {
 			[
 				Audio::class,
 				Details::class,
+				Freeform::class,
 				Heading::class,
 				Image::class,
 				Lists::class,
@@ -90,6 +92,7 @@ class BlocksTest extends WPMockTestCase {
 			[
 				Audio::class,
 				Details::class,
+				Freeform::class,
 				Heading::class,
 				Image::class,
 				Lists::class,

@@ -30,17 +30,11 @@ class Details extends Block {
 		// Decode attributes correctly.
 		$block['attributes'] = json_decode( $block['attributes'] ?? '{}', true );
 
-		// Get the block content.
-		$content = $block['attributes']['content'] ?? '';
-
 		// Set the summary.
-		$block['attributes']['summary'] = $this->get_tag_content( $content, 'summary' );
+		$block['attributes']['summary'] = $this->get_tag_content( $block['attributes']['content'] ?? '', 'summary' );
 
-		return [
-			'name'        => $block['name'] ?? '',
-			'attributes'  => wp_json_encode( $block['attributes'] ?? [] ),
-			'innerBlocks' => $block['innerBlocks'] ?? [],
-		];
+		// Re-encode attributes correctly.
+		$block['attributes'] = wp_json_encode( $block['attributes'] ?? [] );
 
 		return $block;
 	}

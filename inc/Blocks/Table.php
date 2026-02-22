@@ -30,19 +30,11 @@ class Table extends Block {
 		// Decode attributes correctly.
 		$block['attributes'] = json_decode( $block['attributes'] ?? '{}', true );
 
-		// Get the block content.
-		$content = $block['attributes']['content'] ?? '';
-
 		// Set the body.
-		$block['attributes']['body'] = $this->get_table_body( $content );
+		$block['attributes']['body'] = $this->get_table_body( $block['attributes']['content'] ?? '' );
 
-		error_log( wp_json_encode( $block['attributes']['body'] ) );
-
-		return [
-			'name'        => $block['name'] ?? '',
-			'attributes'  => wp_json_encode( $block['attributes'] ?? [] ),
-			'innerBlocks' => $block['innerBlocks'] ?? [],
-		];
+		// Re-encode attributes correctly.
+		$block['attributes'] = wp_json_encode( $block['attributes'] ?? [] );
 
 		return $block;
 	}
