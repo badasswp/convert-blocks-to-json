@@ -85,15 +85,23 @@ abstract class Block {
 	 *
 	 * @since 1.3.0
 	 *
-	 * @param string $markup Block markup.
-	 * @param string $tag    Specific tag.
+	 * @param string  $markup Block markup.
+	 * @param string  $tag    Specific tag.
+	 * @param boolean $single True to match only a single element.
+	 *                        False to match all elements.
 	 *
-	 * @return string
+	 * @return string|array
 	 */
-	public function get_tag_content( $markup, $tag ): string {
-		preg_match( sprintf( '/<%1$s>(.*?)<\/%1$s>/', $tag ), $markup, $match );
+	public function get_tag_content( $markup, $tag, $single = true ) {
+		$reg_exp = sprintf( '/<%1$s>(.*?)<\/%1$s>/', $tag );
 
-		return $match[1] ?? '';
+		if ( $single ) {
+			preg_match( $reg_exp, $markup, $matches );
+			return $matches[1] ?? '';
+		}
+
+		preg_match_all( $reg_exp, $markup, $matches );
+		return $matches[1] ?? [];
 	}
 
 	/**

@@ -69,8 +69,6 @@ class Table extends Block {
 
 		return array_map(
 			function ( $tr ) {
-				preg_match_all( '/<td>(.*?)<\/td>/', $tr, $matches );
-
 				$cells = array_map(
 					function ( $td ) {
 						return [
@@ -78,28 +76,14 @@ class Table extends Block {
 							'tag'     => 'td',
 						];
 					},
-					$matches[0] ?? []
+					$this->get_tag_content( $tr, 'td', false )
 				);
 
 				return [
 					'cells' => $cells,
 				];
 			},
-			$this->get_table_rows( $tbody )
+			$this->get_tag_content( $tbody, 'tr', false )
 		);
-	}
-
-	/**
-	 * Get Table Rows.
-	 *
-	 * @since 1.3.0
-	 *
-	 * @param string $content Table markup nested in `tbody`.
-	 * @return mixed[]
-	 */
-	protected function get_table_rows( $content ): array {
-		preg_match_all( '/<tr>(.*?)<\/tr>/', $content, $matches );
-
-		return $matches[0] ?? [];
 	}
 }
