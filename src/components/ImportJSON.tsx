@@ -47,6 +47,7 @@ const ImportJSON = (): JSX.Element => {
 	 * @return {Promise<void>}
 	 */
 	const handleImport = async ( wpMediaModal: any ): Promise< void > => {
+		dispatch( noticeStore ).removeNotice( 'cbtj-info' );
 		const { editPost, savePost } = dispatch( editorStore ) as {
 			editPost: any;
 			savePost: any;
