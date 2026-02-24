@@ -1,5 +1,5 @@
 import { __ } from '@wordpress/i18n';
-import { dispatch } from '@wordpress/data';
+import { dispatch, select } from '@wordpress/data';
 import { Button } from '@wordpress/components';
 import { createBlock } from '@wordpress/blocks';
 import { store as editorStore } from '@wordpress/editor';
@@ -47,6 +47,16 @@ const ImportJSON = (): JSX.Element => {
 	 * @return {Promise<void>}
 	 */
 	const handleImport = async ( wpMediaModal: any ): Promise< void > => {
+		const notices = select( noticeStore ).getNotices();
+		notices
+			.filter(
+				( notice ) =>
+					notice.status === 'error' || notice.status === 'warning'
+			)
+			.forEach( ( notice ) => {
+				dispatch( noticeStore ).removeNotice( notice.id );
+			} );
+
 		const { editPost, savePost } = dispatch( editorStore ) as {
 			editPost: any;
 			savePost: any;

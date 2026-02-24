@@ -75,6 +75,7 @@ Want to add your personal touch? All of our documentation can be found [here](ht
 * Feat: Add Image import functionality across websites.
 * Feat: Add custom hook - `cbtj.innerBlocks`.
 * Feat: Add Notification modal during import.
+* Feat: Clear previous notifications before starting import.
 * Fix: Import issues with `core/list` and `core/list-item` blocks.
 * Fix: Import issues with `core/pargraph` block.
 * Fix: Import issues with `core/heading` block.
