@@ -10,6 +10,7 @@ use Badasswp\WPMockTC\WPMockTestCase;
 /**
  * @covers \ConvertBlocksToJSON\Blocks\Paragraph::import_block
  * @covers \ConvertBlocksToJSON\Blocks\Paragraph::export_block
+ * @covers \ConvertBlocksToJSON\Abstracts\Block::get_clean_markup
  */
 class ParagraphTest extends WPMockTestCase {
 	public Paragraph $paragraph;
