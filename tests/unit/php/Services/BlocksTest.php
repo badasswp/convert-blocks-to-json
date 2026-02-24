@@ -19,7 +19,6 @@ use ConvertBlocksToJSON\Blocks\MediaText;
 use ConvertBlocksToJSON\Blocks\Paragraph;
 use ConvertBlocksToJSON\Blocks\Pullquote;
 use ConvertBlocksToJSON\Blocks\Table;
-use ConvertBlocksToJSON\Blocks\Video;
 
 /**
  * @covers \ConvertBlocksToJSON\Services\Blocks::__construct
@@ -54,7 +53,6 @@ class BlocksTest extends WPMockTestCase {
 				Paragraph::class,
 				Pullquote::class,
 				Table::class,
-				Video::class,
 			],
 			$this->blocks->blocks
 		);
@@ -103,7 +101,6 @@ class BlocksTest extends WPMockTestCase {
 				Paragraph::class,
 				Pullquote::class,
 				Table::class,
-				Video::class,
 			]
 		);
 

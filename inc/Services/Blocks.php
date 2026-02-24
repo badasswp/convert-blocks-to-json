@@ -21,7 +21,6 @@ use ConvertBlocksToJSON\Blocks\MediaText;
 use ConvertBlocksToJSON\Blocks\Paragraph;
 use ConvertBlocksToJSON\Blocks\Pullquote;
 use ConvertBlocksToJSON\Blocks\Table;
-use ConvertBlocksToJSON\Blocks\Video;
 use ConvertBlocksToJSON\Abstracts\Block;
 use ConvertBlocksToJSON\Abstracts\Service;
 use ConvertBlocksToJSON\Interfaces\Kernel;
@@ -56,7 +55,6 @@ class Blocks extends Service implements Kernel {
 			Paragraph::class,
 			Pullquote::class,
 			Table::class,
-			Video::class,
 		];
 	}
 
