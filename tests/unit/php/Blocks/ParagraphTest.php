@@ -51,7 +51,7 @@ class ParagraphTest extends WPMockTestCase {
 	public function test_import_block_returns_modified_block_with_cleaned_content_attribute() {
 		$paragraph_block = [
 			'name'        => 'core/paragraph',
-			'attributes'  => '{"content":"<p>This content should be returned without the tags.</p>"}',
+			'attributes'  => '{"content":"<p><p>This content should be returned without the tags.<\/p><\/p>"}',
 			'innerBlocks' => [],
 		];
 
