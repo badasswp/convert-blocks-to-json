@@ -56,8 +56,8 @@ const ImportJSON = (): JSX.Element => {
 			.forEach( ( notice ) => {
 				dispatch( noticeStore ).removeNotice( notice.id );
 			} );
-			
-const { editPost, savePost } = dispatch( editorStore ) as {
+
+		const { editPost, savePost } = dispatch( editorStore ) as {
 			editPost: any;
 			savePost: any;
 		};
