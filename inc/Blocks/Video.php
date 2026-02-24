@@ -52,7 +52,7 @@ class Video extends Block {
 	/**
 	 * Export Block.
 	 *
-	 * @since 1.2.0
+	 * @since 1.3.0
 	 *
 	 * @param mixed[] $block Export Block.
 	 * @return mixed[]
