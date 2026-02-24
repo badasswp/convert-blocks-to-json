@@ -40,7 +40,7 @@ class Freeform extends Block {
 	 */
 	public function export_block( $block ): array {
 		// Treat as Freeform block.
-		if ( empty( $block['name'] ) && ! empty( $block['content'] ) ) {
+		if ( empty( $block['name'] ) && ! empty( trim( $block['content'] ) ) ) {
 			$block['name'] = 'core/freeform';
 		}
 
