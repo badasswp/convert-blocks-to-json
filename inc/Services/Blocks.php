@@ -22,6 +22,7 @@ use ConvertBlocksToJSON\Blocks\Paragraph;
 use ConvertBlocksToJSON\Blocks\Pullquote;
 use ConvertBlocksToJSON\Blocks\Table;
 use ConvertBlocksToJSON\Blocks\Video;
+
 use ConvertBlocksToJSON\Abstracts\Block;
 use ConvertBlocksToJSON\Abstracts\Service;
 use ConvertBlocksToJSON\Interfaces\Kernel;
