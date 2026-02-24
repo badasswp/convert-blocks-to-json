@@ -28,7 +28,7 @@ class Audio extends Block {
 		}
 
 		// Decode attributes correctly.
-		$block['attributes'] = json_decode( $block['attributes'] ?? '', true );
+		$block['attributes'] = json_decode( $block['attributes'] ?? '{}', true );
 
 		// Ensure missing SRC attribute is captured for audio blocks.
 		preg_match( '/src="([^"]+)"/', $block['attributes']['content'] ?? '', $matches );
@@ -52,7 +52,7 @@ class Audio extends Block {
 	/**
 	 * Export Block.
 	 *
-	 * @since 1.2.0
+	 * @since 1.3.0
 	 *
 	 * @param mixed[] $block Export Block.
 	 * @return mixed[]

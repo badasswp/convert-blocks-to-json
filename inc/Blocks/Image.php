@@ -28,7 +28,7 @@ class Image extends Block {
 		}
 
 		// Decode attributes correctly.
-		$block['attributes'] = json_decode( $block['attributes'] ?? '', true );
+		$block['attributes'] = json_decode( $block['attributes'] ?? '{}', true );
 
 		// Ensure missing URL attribute is captured for image blocks.
 		preg_match( '/src="([^"]+)"/', $block['attributes']['content'] ?? '', $matches );
