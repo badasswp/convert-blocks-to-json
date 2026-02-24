@@ -69,7 +69,9 @@ class ParagraphTest extends WPMockTestCase {
 
 	public function test_export_block_returns_original_block_if_name_is_undefined() {
 		$nameless_block = [
-			'attributes'  => '{}',
+			'content'     => '<h1>Block with name</h1>',
+			'filtered'    => 'Block with name',
+			'attributes'  => [],
 			'innerBlocks' => [],
 		];
 
@@ -80,8 +82,10 @@ class ParagraphTest extends WPMockTestCase {
 
 	public function test_export_block_returns_original_block_if_name_is_not_paragraph() {
 		$non_paragraph_block = [
-			'name'        => 'core/list',
-			'attributes'  => '{}',
+			'name'        => 'core/heading',
+			'content'     => '<h1>Block with name</h1>',
+			'filtered'    => 'Block with name',
+			'attributes'  => [],
 			'innerBlocks' => [],
 		];
 
@@ -93,7 +97,9 @@ class ParagraphTest extends WPMockTestCase {
 	public function test_export_block_returns_same_block_if_it_is_a_paragraph() {
 		$paragraph_block = [
 			'name'        => 'core/paragraph',
-			'attributes'  => '{"content":"<p>This content should be returned without the tags.</p>"}',
+			'content'     => '<p><p>This content should be returned without the tags.</p></p>',
+			'filtered'    => 'This content should be returned without the tags.',
+			'attributes'  => [],
 			'innerBlocks' => [],
 		];
 
@@ -103,7 +109,9 @@ class ParagraphTest extends WPMockTestCase {
 			$response,
 			[
 				'name'        => 'core/paragraph',
-				'attributes'  => '{"content":"<p>This content should be returned without the tags.</p>"}',
+				'content'     => '<p><p>This content should be returned without the tags.</p></p>',
+				'filtered'    => 'This content should be returned without the tags.',
+				'attributes'  => [],
 				'innerBlocks' => [],
 			]
 		);
