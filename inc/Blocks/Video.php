@@ -28,7 +28,7 @@ class Video extends Block {
 		}
 
 		// Decode attributes correctly.
-		$block['attributes'] = json_decode( $block['attributes'] ?? '', true );
+		$block['attributes'] = json_decode( $block['attributes'] ?? '{}', true );
 
 		// Ensure missing SRC attribute is captured for video blocks.
 		preg_match( '/src="([^"]+)"/', $block['attributes']['content'] ?? '', $matches );
