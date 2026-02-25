@@ -173,6 +173,30 @@ public function custom_namespace( $namespace ): array {
 - namespace _`{string}`_ REST Namespace. By default, this is a string which contains the Route namespace.
 <br/>
 
+#### `cbtj.afterImport`
+
+This custom hook (action) provides the ability to fire some logic after the import is completed like so:
+
+```js
+import { addAction } from '@wordpress/hooks';
+
+addFilter(
+    'cbtj.afterImport',
+    'yourNamespace',
+    ( { blocks } ) => {
+        if ( blocks.some( ( { name } === 'core/footnotes' ) ) ) {
+            editPost( { title: 'A footnote was imported' } );
+        }
+    }
+);
+```
+
+**Parameters**
+
+- title _`{string}`_ Post title.
+- blocks _`{any[]}`_ Array of imported blocks.
+<br/>
+
 #### `cbtj.innerBlocks`
 
 This custom hook (filter) provides the ability to filter the way we create the inner blocks like so:
