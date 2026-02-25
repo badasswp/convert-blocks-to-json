@@ -71,8 +71,8 @@ class MediaTextTest extends WPMockTestCase {
 	}
 
 	public function test_import_block_returns_modified_block_with_added_media_url_referencing_old_site_if_is_wp_error() {
-		$MediaText = Mockery::mock( MediaText::class )->makePartial();
-		$MediaText->shouldAllowMockingProtectedMethods();
+		$media_text = Mockery::mock( MediaText::class )->makePartial();
+		$media_text->shouldAllowMockingProtectedMethods();
 
 		$wp_error = Mockery::mock( WP_Error::class )->makePartial();
 		$wp_error->shouldAllowMockingProtectedMethods();
@@ -83,11 +83,11 @@ class MediaTextTest extends WPMockTestCase {
 		WP_Mock::userFunction( 'is_wp_error' )
 			->andReturn( true );
 
-		$MediaText->shouldReceive( 'get_remote_file' )
+		$media_text->shouldReceive( 'get_remote_file' )
 			->with( 'https://www.johndoe.com/wp-content/image.jpg' )
 			->andReturn( $wp_error );
 
-		$block = $MediaText->import_block(
+		$block = $media_text->import_block(
 			[
 				'name'        => 'core/media-text',
 				'attributes'  => '{"content":"<body><img src=\"https:\/\/www.johndoe.com\/wp-content\/image.jpg\"\/><\/body>"}',
@@ -106,8 +106,8 @@ class MediaTextTest extends WPMockTestCase {
 	}
 
 	public function test_import_block_returns_modified_block_with_newly_imported_media_from_remote_site() {
-		$MediaText = Mockery::mock( MediaText::class )->makePartial();
-		$MediaText->shouldAllowMockingProtectedMethods();
+		$media_text = Mockery::mock( MediaText::class )->makePartial();
+		$media_text->shouldAllowMockingProtectedMethods();
 
 		WP_Mock::userFunction( 'home_url' )
 			->andReturn( 'https://www.example.com' );
@@ -115,11 +115,11 @@ class MediaTextTest extends WPMockTestCase {
 		WP_Mock::userFunction( 'is_wp_error' )
 			->andReturn( false );
 
-		$MediaText->shouldReceive( 'get_remote_file' )
+		$media_text->shouldReceive( 'get_remote_file' )
 			->with( 'https://www.johndoe.com/wp-content/image.jpg' )
 			->andReturn( 'https://www.example.com/wp-content/imported-image.jpg' );
 
-		$block = $MediaText->import_block(
+		$block = $media_text->import_block(
 			[
 				'name'        => 'core/media-text',
 				'attributes'  => '{"content":"<body><img src=\"https:\/\/www.johndoe.com\/wp-content\/image.jpg\"\/><\/body>"}',
