@@ -1,5 +1,38 @@
-import { addFilter } from '@wordpress/hooks';
+import { dispatch } from '@wordpress/data';
 import { createBlock } from '@wordpress/blocks';
+import { addAction, addFilter } from '@wordpress/hooks';
+import { store as editorStore } from '@wordpress/editor';
+
+/**
+ * Fires the action after the import
+ * of the blocks is complete.
+ *
+ * @since 1.3.0
+ *
+ * @param {string} title   Post title.
+ * @param {any[]}  content Imported blocks.
+ *
+ * @return {void}
+ */
+addAction( 'cbtj.afterImport', 'cbtj', async ( { blocks } ) => {
+	const { editPost, savePost } = dispatch( editorStore ) as {
+		editPost: any;
+		savePost: any;
+	};
+
+	const footnote = blocks.filter( ( { name } ) => name === 'core/footnotes' );
+
+	// Update post meta for core/footnotes after import.
+	if ( footnote.length === 1 ) {
+		const { footnotes } = JSON.parse( footnote[ 0 ].attributes );
+		editPost( {
+			meta: {
+				footnotes,
+			},
+		} );
+		await savePost();
+	}
+} );
 
 /**
  * Filter the way we handle the innerBlocks
