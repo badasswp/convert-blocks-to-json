@@ -5,6 +5,7 @@ import { createBlock } from '@wordpress/blocks';
 import { store as editorStore } from '@wordpress/editor';
 import { store as noticeStore } from '@wordpress/notices';
 import { store as blockEditorStore } from '@wordpress/block-editor';
+import { doAction } from '@wordpress/hooks';
 
 import { getModalParams, getImport, getInnerBlocks } from '../utils';
 
@@ -83,13 +84,13 @@ const ImportJSON = (): JSX.Element => {
 
 		try {
 			// Get data.
-			const { title, content } = await getImport( attachment );
+			const { title, content: blocks } = await getImport( attachment );
 
 			// Add title.
 			editPost( { title, status: 'publish' } );
 
-			// Add content.
-			content.forEach( ( { name, attributes, innerBlocks } ) => {
+			// Add blocks.
+			blocks.forEach( ( { name, attributes, innerBlocks } ) => {
 				attributes = JSON.parse( attributes );
 				(
 					dispatch( blockEditorStore ) as { insertBlocks: any }
@@ -105,6 +106,19 @@ const ImportJSON = (): JSX.Element => {
 			// Save Post.
 			await savePost();
 			dispatch( noticeStore ).removeNotice( 'cbtj-info' );
+
+			/**
+			 * Fires the action after the import
+			 * of the blocks is complete.
+			 *
+			 * @since 1.3.0
+			 *
+			 * @param {string} title  Post title.
+			 * @param {any[]}  blocks Imported blocks.
+			 *
+			 * @return {void}
+			 */
+			doAction( 'cbtj.afterImport', { title, blocks } );
 		} catch ( e ) {
 			dispatch( noticeStore ).createWarningNotice( e.message );
 		}
