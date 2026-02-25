@@ -10,7 +10,6 @@ use Badasswp\WPMockTC\WPMockTestCase;
 /**
  * @covers \ConvertBlocksToJSON\Blocks\MediaText::import_block
  * @covers \ConvertBlocksToJSON\Blocks\MediaText::export_block
- * @covers \ConvertBlocksToJSON\Abstracts\Block::get_remote_file
  */
 class MediaTextTest extends WPMockTestCase {
 	public MediaText $mediatext;
