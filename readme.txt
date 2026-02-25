@@ -73,7 +73,7 @@ Want to add your personal touch? All of our documentation can be found [here](ht
 = 1.3.0 =
 * Feat: Add language translations for Japanese, Indonesia, Turkish, Polish, Dutch, Danish, Brazil, Portuguese.
 * Feat: Add Image import functionality across websites.
-* Feat: Add custom hook - `cbtj.innerBlocks`.
+* Feat: Add custom hooks - `cbtj.afterImport`, `cbtj.innerBlocks`.
 * Feat: Add Notification modal during import.
 * Feat: Clear previous notifications before starting import.
 * Fix: Import issues with `core/list` and `core/list-item` blocks.
@@ -88,6 +88,7 @@ Want to add your personal touch? All of our documentation can be found [here](ht
 * Fix: Import issues with `core/gallery` block.
 * Fix: Import issues with `core/audio` block.
 * Fix: Import issues with `core/video` block.
+* Fix: Import issues with `core/footnotes` block.
 * Fix: Incorrectly quoted translation bits.
 * Refactor: Replace `get_400_response` with `get_error_response`.
 * Test: Add e2e tests for plugin codebase.
