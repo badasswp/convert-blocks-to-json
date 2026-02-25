@@ -51,7 +51,7 @@ class PullquoteTest extends WPMockTestCase {
 	public function test_import_block_returns_modified_block_with_value_and_citation_attribute() {
 		$pullquote_block = [
 			'name'        => 'core/pullquote',
-			'attributes'  => '{"content":"<p>Don\'t be the Slave of Gold &amp; Silver<\/p><cite>Prophet Muhammad (s a w)<\/cite>"}',
+			'attributes'  => '{"content":"<p>This content should be returned<\/p><cite>John Doe<\/cite>"}',
 			'innerBlocks' => [],
 		];
 
@@ -61,7 +61,7 @@ class PullquoteTest extends WPMockTestCase {
 			$response,
 			[
 				'name'        => 'core/pullquote',
-				'attributes'  => '{"content":"<p>Don\'t be the Slave of Gold &amp; Silver<\/p><cite>Prophet Muhammad (s a w)<\/cite>","value":"Don\'t be the Slave of Gold &amp; Silver","citation":"Prophet Muhammad (s a w)"}',
+				'attributes'  => '{"content":"<p>This content should be returned<\/p><cite>John Doe<\/cite>","value":"This content should be returned","citation":"John Doe"}',
 				'innerBlocks' => [],
 			]
 		);
@@ -69,9 +69,9 @@ class PullquoteTest extends WPMockTestCase {
 
 	public function test_export_block_returns_original_block_if_name_is_undefined() {
 		$nameless_block = [
-			'content'	  => '',
+			'content'     => '',
 			'attributes'  => '{}',
-			'filtered'	  => '',
+			'filtered'    => '',
 			'innerBlocks' => [],
 		];
 
@@ -83,9 +83,9 @@ class PullquoteTest extends WPMockTestCase {
 	public function test_export_block_returns_original_block_if_name_is_not_pullquote() {
 		$non_pullquote_block = [
 			'name'        => 'core/paragraph',
-			'content'	  => '',
+			'content'     => '',
 			'attributes'  => '{}',
-			'filtered'	  => '',
+			'filtered'    => '',
 			'innerBlocks' => [],
 		];
 
@@ -97,8 +97,8 @@ class PullquoteTest extends WPMockTestCase {
 	public function test_export_block_returns_same_block_if_it_is_a_pullquote() {
 		$pullquote_block = [
 			'name'        => 'core/pullquote',
-			'content'	  => '<p>Don\'t be the Slave of Gold &amp; Silver<\/p><cite>Prophet Muhammad (s a w)<\/cite>',
-			'filtered'	  => 'Don\'t be the Slave of Gold &amp; SilverProphet Muhammad (s a w)',
+			'content'     => '<p>This content should be returned<\/p><cite>John Doe<\/cite>',
+			'filtered'    => 'This content should be returnedJohn Doe',
 			'attributes'  => [],
 			'innerBlocks' => [],
 		];
