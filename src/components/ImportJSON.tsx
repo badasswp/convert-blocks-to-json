@@ -83,13 +83,13 @@ const ImportJSON = (): JSX.Element => {
 
 		try {
 			// Get data.
-			const { title, content } = await getImport( attachment );
+			const { title, content: blocks } = await getImport( attachment );
 
 			// Add title.
 			editPost( { title, status: 'publish' } );
 
-			// Add content.
-			content.forEach( ( { name, attributes, innerBlocks } ) => {
+			// Add blocks.
+			blocks.forEach( ( { name, attributes, innerBlocks } ) => {
 				attributes = JSON.parse( attributes );
 				(
 					dispatch( blockEditorStore ) as { insertBlocks: any }
