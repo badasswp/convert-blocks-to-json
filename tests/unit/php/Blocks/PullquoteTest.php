@@ -97,7 +97,7 @@ class PullquoteTest extends WPMockTestCase {
 	public function test_export_block_returns_same_block_if_it_is_a_pullquote() {
 		$pullquote_block = [
 			'name'        => 'core/pullquote',
-			'content'     => '<p>This content should be returned<\/p><cite>John Doe<\/cite>',
+			'content'     => '<p>This content should be returned</p><cite>John Doe</cite>',
 			'filtered'    => 'This content should be returnedJohn Doe',
 			'attributes'  => [],
 			'innerBlocks' => [],
