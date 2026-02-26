@@ -93,7 +93,7 @@ abstract class Block {
 	 * @return string|array
 	 */
 	public function get_tag_content( $markup, $tag, $single = true ) {
-		$reg_exp = sprintf( '/<%1$s>(.*?)<\/%1$s>/', $tag );
+		$reg_exp = sprintf( '/<%1$s\b[^>]*>(.*?)<\/%1$s>/', $tag );
 
 		if ( $single ) {
 			preg_match( $reg_exp, $markup, $matches );
