@@ -151,8 +151,6 @@ class FootnotesTest extends WPMockTestCase {
 				'content'     => '',
 				'filtered'    => [],
 				'attributes'  => [
-					'content'   => 'Mr Zeks',
-					'id'        => '466e6cde-714f-412f-b95b-2a1852ff3471',
 					'footnotes' => '[{"content":"Mr Zeks","id":"466e6cde-714f-412f-b95b-2a1852ff3471"}]',
 				],
 				'innerBlocks' => [],
