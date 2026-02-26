@@ -10,7 +10,7 @@ use Badasswp\WPMockTC\WPMockTestCase;
 /**
  * @covers \ConvertBlocksToJSON\Blocks\Table::import_block
  * @covers \ConvertBlocksToJSON\Blocks\Table::export_block
- * @covers \ConvertBlocksToJSON\Blocks\Table::get_table_body
+ * @covers \ConvertBlocksToJSON\Blocks\Table::get_table_part
  * @covers \ConvertBlocksToJSON\Abstracts\Block::get_tag_content
  */
 class TableTest extends WPMockTestCase {
@@ -75,7 +75,7 @@ class TableTest extends WPMockTestCase {
 			$block,
 			[
 				'name'        => 'core/table',
-				'attributes'  => '{"content":"<table><tbody><tr><td>Cell 1a<\/td><td>Cell 1b<\/td><\/tr><tr><td>Cell 2a<\/td><td>Cell 2b<\/td><\/tr><\/tbody><\/table>","body":[{"cells":[{"content":"Cell 1a","tag":"td"},{"content":"Cell 1b","tag":"td"}]},{"cells":[{"content":"Cell 2a","tag":"td"},{"content":"Cell 2b","tag":"td"}]}]}',
+				'attributes'  => '{"content":"<table><tbody><tr><td>Cell 1a<\/td><td>Cell 1b<\/td><\/tr><tr><td>Cell 2a<\/td><td>Cell 2b<\/td><\/tr><\/tbody><\/table>","head":[],"body":[{"cells":[{"content":"Cell 1a","tag":"td"},{"content":"Cell 1b","tag":"td"}]},{"cells":[{"content":"Cell 2a","tag":"td"},{"content":"Cell 2b","tag":"td"}]}],"foot":[],"caption":""}',
 				'innerBlocks' => [],
 			]
 		);
