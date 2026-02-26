@@ -117,7 +117,7 @@ class FootnotesTest extends WPMockTestCase {
 	}
 
 	public function test_export_block_returns_same_block_if_block_is_footnotes() {
-		$_SERVER['REQUEST_URI'] = '/wp-json/wp/v2/posts/42';
+		$_SERVER['REQUEST_URI'] = 'https://example.com/wp-json/wp/v2/posts/42';
 
 		WP_Mock::userFunction( 'wp_parse_url' )
 			->andReturnUsing(
