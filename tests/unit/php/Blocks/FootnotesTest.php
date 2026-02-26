@@ -121,14 +121,10 @@ class FootnotesTest extends WPMockTestCase {
 
 		WP_Mock::userFunction( 'wp_parse_url' )
 			->andReturnUsing(
-				function( $arg1, $arg2 ) {
+				function ( $arg1, $arg2 ) {
 					return parse_url( $arg1, $arg2 );
 				}
 			);
-
-		WP_Mock::userFunction( 'absint' )
-			->with( '42' )
-			->andReturn( 42 );
 
 		WP_Mock::userFunction( 'get_post_meta' )
 			->with( 42, 'footnotes', true )
