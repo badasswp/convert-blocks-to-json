@@ -31,7 +31,7 @@ Our plugin comes with everything you need for your WP blocks.
 ✔️ <strong>Import & Export WP blocks</strong> across multiple WordPress websites.
 ✔️ <strong>Convert WP blocks to JSON</strong> easily & quickly.
 ✔️ Useful for <strong>Headless CMS websites</strong> or front-end projects working with React, Vue & so on.
-✔️ Available in <strong>mutiple langauges</strong> such as Arabic, Chinese, Hebrew, Hindi, Russian, German, Italian, Croatian, Spanish & French languages.
+✔️ Available in <strong>mutiple langauges</strong> such as Arabic, Chinese, Hebrew, Hindi, Russian, German, Italian, Croatian, Spanish, French, Japanese, Indonesia, Turkish, Polish, Dutch, Danish, Brazil & Portuguese languages.
 ✔️ <strong>Backward compatible</strong>, works with most WP versions.
 
 = ✨ Getting Started =
