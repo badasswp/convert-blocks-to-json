@@ -120,8 +120,11 @@ class FootnotesTest extends WPMockTestCase {
 		$_SERVER['REQUEST_URI'] = '/wp-json/wp/v2/posts/42';
 
 		WP_Mock::userFunction( 'wp_parse_url' )
-			->with( '/wp-json/wp/v2/posts/42', PHP_URL_PATH )
-			->andReturn( '/wp-json/wp/v2/posts/42' );
+			->andReturnUsing(
+				function( $arg1, $arg2 ) {
+					return parse_url( $arg1, $arg2 );
+				}
+			);
 
 		WP_Mock::userFunction( 'absint' )
 			->with( '42' )
