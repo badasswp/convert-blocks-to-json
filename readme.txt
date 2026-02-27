@@ -1,5 +1,5 @@
 === Convert Blocks to JSON ===
-Contributors: badasswp
+Contributors: badasswp, activist507
 Tags: convert, blocks, json, gutenberg, editor.
 Requires at least: 4.0
 Tested up to: 6.9
