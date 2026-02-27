@@ -1,9 +1,9 @@
 === Convert Blocks to JSON ===
-Contributors: badasswp
+Contributors: badasswp, activist507
 Tags: convert, blocks, json, gutenberg, editor.
 Requires at least: 4.0
 Tested up to: 6.9
-Stable tag: 1.2.1
+Stable tag: 1.3.0
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -31,7 +31,8 @@ Our plugin comes with everything you need for your WP blocks.
 ✔️ <strong>Import & Export WP blocks</strong> across multiple WordPress websites.
 ✔️ <strong>Convert WP blocks to JSON</strong> easily & quickly.
 ✔️ Useful for <strong>Headless CMS websites</strong> or front-end projects working with React, Vue & so on.
-✔️ Available in <strong>mutiple langauges</strong> such as Arabic, Chinese, Hebrew, Hindi, Russian, German, Italian, Croatian, Spanish & French languages.
+✔️ Available in <strong>mutiple langauges</strong> such as Arabic, Chinese, Hebrew, Hindi, Russian, German, Italian, Croatian, Spanish, French, Japanese, Indonesia, Turkish, Polish, Dutch, Danish, Brazil & Portuguese languages.
+✔️ Multiple <strong>custom hooks</strong> to enable you customize plugin to your heart's delight.
 ✔️ <strong>Backward compatible</strong>, works with most WP versions.
 
 = ✨ Getting Started =
@@ -69,6 +70,32 @@ Want to add your personal touch? All of our documentation can be found [here](ht
 3. Convert Blocks to JSON sidebar - See Convert Blocks to JSON on sidebar.
 
 == Changelog ==
+
+= 1.3.0 =
+* Feat: Add language translations for Japanese, Indonesia, Turkish, Polish, Dutch, Danish, Brazil, Portuguese.
+* Feat: Add Image import functionality across websites.
+* Feat: Add custom hooks - `cbtj.afterImport`, `cbtj.innerBlocks`.
+* Feat: Add Notification modal during import.
+* Feat: Clear previous notifications before starting import.
+* Fix: Import issues with `core/list` and `core/list-item` blocks.
+* Fix: Import issues with `core/pargraph` block.
+* Fix: Import issues with `core/heading` block.
+* Fix: Import issues with `core/details` block.
+* Fix: Import issues with `core/pullquote` block.
+* Fix: Import issues with `core/cover` block.
+* Fix: Import issues with `core/table` block.
+* Fix: Import issues with `core/quote` block.
+* Fix: Import issues with `core/media-text` block.
+* Fix: Import issues with `core/gallery` block.
+* Fix: Import issues with `core/audio` block.
+* Fix: Import issues with `core/video` block.
+* Fix: Import issues with `core/footnotes` block.
+* Fix: Incorrectly quoted translation bits.
+* Refactor: Replace `get_400_response` with `get_error_response`.
+* Test: Add e2e tests for plugin codebase.
+* Chore: Add pull request template to repo.
+* Docs: Update README docs.
+* Tested up to WP 6.9.
 
 = 1.2.1 =
 * Specify `wordpress-plugin` as Composer package type.

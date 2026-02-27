@@ -1,0 +1,51 @@
+{
+  "translation-revision-date": "2024-08-29 02:16+0100",
+  "generator": "WP-CLI\/2.6.0",
+  "source": "dist\/app.js",
+  "domain": "messages",
+  "locale_data": {
+    "messages": {
+      "": {
+        "domain": "messages",
+        "lang": "ja",
+        "plural-forms": "nplurals=2; plural=(n != 1);"
+      },
+      "Convert Blocks to JSON": [
+        "ブロックをJSONに変換する"
+      ],
+      "View JSON": [
+        "JSON を表示する"
+      ],
+      "Import Blocks by JSON": [
+        "JSONによるブロックのインポート"
+      ],
+      "Import Blocks": [
+        "ブロックのインポート"
+      ],
+      "Import": [
+        "輸入"
+      ],
+      "Export Blocks to JSON": [
+        "ブロックをJSONにエクスポート"
+      ],
+      "Export Blocks": [
+        "ブロックのエクスポート"
+      ],
+      "Export": [
+        "輸出"
+      ],
+      "Importing blocks...": [
+        "ブロックをインポートしています..."
+      ],
+      "Unable to import blocks by JSON": [
+        "JSONでブロックをインポートできません"
+      ],
+      "Select JSON File": [
+        "JSONファイルを選択"
+      ],
+      "Use JSON": [
+        "JSONを使用する"
+      ]
+    }
+  }
+}

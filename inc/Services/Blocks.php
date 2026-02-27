@@ -10,7 +10,20 @@
 
 namespace ConvertBlocksToJSON\Services;
 
+use ConvertBlocksToJSON\Blocks\Audio;
+use ConvertBlocksToJSON\Blocks\Details;
+use ConvertBlocksToJSON\Blocks\Footnotes;
+use ConvertBlocksToJSON\Blocks\Freeform;
+use ConvertBlocksToJSON\Blocks\Heading;
 use ConvertBlocksToJSON\Blocks\Image;
+use ConvertBlocksToJSON\Blocks\Lists;
+use ConvertBlocksToJSON\Blocks\ListItem;
+use ConvertBlocksToJSON\Blocks\MediaText;
+use ConvertBlocksToJSON\Blocks\Paragraph;
+use ConvertBlocksToJSON\Blocks\Pullquote;
+use ConvertBlocksToJSON\Blocks\Table;
+use ConvertBlocksToJSON\Blocks\Video;
+
 use ConvertBlocksToJSON\Abstracts\Block;
 use ConvertBlocksToJSON\Abstracts\Service;
 use ConvertBlocksToJSON\Interfaces\Kernel;
@@ -34,7 +47,19 @@ class Blocks extends Service implements Kernel {
 	 */
 	public function __construct() {
 		$this->blocks = [
+			Audio::class,
+			Details::class,
+			Footnotes::class,
+			Freeform::class,
+			Heading::class,
 			Image::class,
+			Lists::class,
+			ListItem::class,
+			MediaText::class,
+			Paragraph::class,
+			Pullquote::class,
+			Table::class,
+			Video::class,
 		];
 	}
 

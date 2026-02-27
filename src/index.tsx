@@ -2,12 +2,13 @@ import { __ } from '@wordpress/i18n';
 import { Fragment } from '@wordpress/element';
 import { PanelBody } from '@wordpress/components';
 import { registerPlugin } from '@wordpress/plugins';
-import { PluginSidebar, PluginSidebarMoreMenuItem } from '@wordpress/edit-post';
+import { PluginSidebar, PluginSidebarMoreMenuItem } from '@wordpress/editor';
 
 import ViewJSON from './components/ViewJSON';
 import ImportJSON from './components/ImportJSON';
 import ExportJSON from './components/ExportJSON';
 
+import './filters';
 import './styles/app.scss';
 
 /**

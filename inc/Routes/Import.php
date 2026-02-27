@@ -58,7 +58,7 @@ class Import extends Route implements Router {
 
 		// Bail out, if it does NOT exists.
 		if ( ! file_exists( $json_file ) ) {
-			return $this->get_400_response(
+			return $this->get_error_response(
 				sprintf(
 					'File does not exists for ID: %s',
 					$post_id
@@ -68,7 +68,7 @@ class Import extends Route implements Router {
 
 		// Bail out, if it is not JSON.
 		if ( 'json' !== wp_check_filetype( $json_file )['ext'] ?? '' ) {
-			return $this->get_400_response(
+			return $this->get_error_response(
 				sprintf(
 					'Fatal Error: Wrong file type: %s',
 					$args['filename'] ?? ''
@@ -144,13 +144,13 @@ class Import extends Route implements Router {
 			}
 		}
 
-		$block['attributes']['content'] = $block['filtered'] ?? '';
+		// Use innerHTML for block content.
+		$block['attributes']['content'] = trim( $block['content'] ?? '' );
 
 		$import_block = [
-			'name'            => $block['name'] ?? '',
-			'originalContent' => $block['content'] ?? '',
-			'attributes'      => wp_json_encode( $block['attributes'] ?? [] ),
-			'innerBlocks'     => $children ?? [],
+			'name'        => $block['name'] ?? '',
+			'attributes'  => wp_json_encode( $block['attributes'] ?? [] ),
+			'innerBlocks' => $children ?? [],
 		];
 
 		/**

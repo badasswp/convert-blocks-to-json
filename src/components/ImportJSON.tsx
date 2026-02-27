@@ -1,12 +1,13 @@
 import { __ } from '@wordpress/i18n';
-import { dispatch } from '@wordpress/data';
+import { dispatch, select } from '@wordpress/data';
 import { Button } from '@wordpress/components';
 import { createBlock } from '@wordpress/blocks';
 import { store as editorStore } from '@wordpress/editor';
 import { store as noticeStore } from '@wordpress/notices';
 import { store as blockEditorStore } from '@wordpress/block-editor';
+import { doAction } from '@wordpress/hooks';
 
-import { getModalParams, getImport } from '../utils';
+import { getModalParams, getImport, getInnerBlocks } from '../utils';
 
 /**
  * Import JSON.
@@ -47,6 +48,34 @@ const ImportJSON = (): JSX.Element => {
 	 * @return {Promise<void>}
 	 */
 	const handleImport = async ( wpMediaModal: any ): Promise< void > => {
+		const notices = select( noticeStore ).getNotices();
+		notices
+			.filter(
+				( notice ) =>
+					notice.status === 'error' || notice.status === 'warning'
+			)
+			.forEach( ( notice ) => {
+				dispatch( noticeStore ).removeNotice( notice.id );
+			} );
+
+		const { editPost, savePost } = dispatch( editorStore ) as {
+			editPost: any;
+			savePost: any;
+		};
+
+		dispatch( noticeStore ).createNotice(
+			'info',
+			__(
+				'Importing blocks into new Post. Please wait…',
+				'convert-blocks-to-json'
+			),
+			{
+				isDismissible: true,
+				id: 'cbtj-info',
+				type: 'snackbar',
+			}
+		);
+
 		const attachment = wpMediaModal
 			.state()
 			.get( 'selection' )
@@ -55,23 +84,41 @@ const ImportJSON = (): JSX.Element => {
 
 		try {
 			// Get data.
-			const { title, content } = await getImport( attachment );
+			const { title, content: blocks } = await getImport( attachment );
 
 			// Add title.
-			dispatch( editorStore ).editPost( { title, status: 'publish' } );
+			editPost( { title, status: 'publish' } );
 
-			// Add content.
-			content.forEach( ( { name, attributes, innerBlocks } ) => {
+			// Add blocks.
+			blocks.forEach( ( { name, attributes, innerBlocks } ) => {
 				attributes = JSON.parse( attributes );
 				(
 					dispatch( blockEditorStore ) as { insertBlocks: any }
 				 ).insertBlocks(
-					createBlock( name, { ...attributes }, innerBlocks )
+					createBlock(
+						name,
+						{ ...attributes },
+						getInnerBlocks( { name, innerBlocks } )
+					)
 				);
 			} );
 
 			// Save Post.
-			await dispatch( editorStore ).savePost();
+			await savePost();
+			dispatch( noticeStore ).removeNotice( 'cbtj-info' );
+
+			/**
+			 * Fires the action after the import
+			 * of the blocks is complete.
+			 *
+			 * @since 1.3.0
+			 *
+			 * @param {string} title  Post title.
+			 * @param {any[]}  blocks Imported blocks.
+			 *
+			 * @return {void}
+			 */
+			doAction( 'cbtj.afterImport', { title, blocks } );
 		} catch ( e ) {
 			dispatch( noticeStore ).createWarningNotice( e.message );
 		}

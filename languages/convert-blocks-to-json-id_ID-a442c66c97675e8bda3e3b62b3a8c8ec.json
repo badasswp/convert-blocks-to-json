@@ -1,0 +1,51 @@
+{
+  "translation-revision-date": "2024-08-29 02:16+0100",
+  "generator": "WP-CLI\/2.6.0",
+  "source": "dist\/app.js",
+  "domain": "messages",
+  "locale_data": {
+    "messages": {
+      "": {
+        "domain": "messages",
+        "lang": "id_ID",
+        "plural-forms": "nplurals=2; plural=(n != 1);"
+      },
+      "Convert Blocks to JSON": [
+        "Konversi Blok ke JSON"
+      ],
+      "View JSON": [
+        "Lihat JSON"
+      ],
+      "Import Blocks by JSON": [
+        "Impor Blok melalui JSON"
+      ],
+      "Import Blocks": [
+        "Impor Blok"
+      ],
+      "Import": [
+        "Impor"
+      ],
+      "Export Blocks to JSON": [
+        "Mengekspor Blok ke JSON"
+      ],
+      "Export Blocks": [
+        "Ekspor Blok"
+      ],
+      "Export": [
+        "Ekspor"
+      ],
+      "Importing blocks...": [
+        "Mengimpor blok..."
+      ],
+      "Unable to import blocks by JSON": [
+        "Tidak dapat mengimpor blok melalui JSON."
+      ],
+      "Select JSON File": [
+        "Pilih File JSON"
+      ],
+      "Use JSON": [
+        "Gunakan JSON"
+      ]
+    }
+  }
+}

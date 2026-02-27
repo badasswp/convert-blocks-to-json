@@ -28,14 +28,23 @@ class Image extends Block {
 		}
 
 		// Decode attributes correctly.
-		$block['attributes'] = json_decode( $block['attributes'] ?? '', true );
+		$block['attributes'] = json_decode( $block['attributes'] ?? '{}', true );
 
 		// Ensure missing URL attribute is captured for image blocks.
-		preg_match( '/src="([^"]+)"/', $block['originalContent'] ?? '', $matches );
+		preg_match( '/src="([^"]+)"/', $block['attributes']['content'] ?? '', $matches );
 		$block['attributes']['url'] = esc_url( $matches[1] ?? '' );
 
+		// If it's not same site, get remote image.
+		if ( false === strpos( $block['attributes']['url'] ?? '', home_url() ) ) {
+			$remote_image = $this->get_remote_file( $block['attributes']['url'] ?? '' );
+
+			if ( ! is_wp_error( $remote_image ) ) {
+				$block['attributes']['url'] = $remote_image;
+			}
+		}
+
 		// Re-encode attributes correctly.
-		$block['attributes'] = wp_json_encode( $block['attributes'] );
+		$block['attributes'] = wp_json_encode( $block['attributes'] ?? [] );
 
 		return $block;
 	}

@@ -1,0 +1,51 @@
+{
+  "translation-revision-date": "2024-08-29 02:16+0100",
+  "generator": "WP-CLI\/2.6.0",
+  "source": "dist\/app.js",
+  "domain": "messages",
+  "locale_data": {
+    "messages": {
+      "": {
+        "domain": "messages",
+        "lang": "tr_TR",
+        "plural-forms": "nplurals=2; plural=(n != 1);"
+      },
+      "Convert Blocks to JSON": [
+        "Blokları JSON'a dönüştür"
+      ],
+      "View JSON": [
+        "JSON'u görüntüle"
+      ],
+      "Import Blocks by JSON": [
+        "JSON ile Blokları İçe Aktar"
+      ],
+      "Import Blocks": [
+        "İthalat Blokları"
+      ],
+      "Import": [
+        "İçe Aktar"
+      ],
+      "Export Blocks to JSON": [
+        "Blokları JSON'a Aktar"
+      ],
+      "Export Blocks": [
+        "Blokları Dışa Aktar"
+      ],
+      "Export": [
+        "İhracat"
+      ],
+      "Importing blocks...": [
+        "Bloklar içe aktarılıyor..."
+      ],
+      "Unable to import blocks by JSON": [
+        "JSON ile blokları içe aktarmak mümkün değil."
+      ],
+      "Select JSON File": [
+        "JSON Dosyasını Seçin"
+      ],
+      "Use JSON": [
+        "JSON'u kullan"
+      ]
+    }
+  }
+}

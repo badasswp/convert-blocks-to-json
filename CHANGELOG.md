@@ -1,5 +1,31 @@
 # Changelog
 
+## 1.3.0
+* Feat: Add language translations for Japanese, Indonesia, Turkish, Polish, Dutch, Danish, Brazil, Portuguese.
+* Feat: Add Image import functionality across websites.
+* Feat: Add custom hooks - `cbtj.afterImport`, `cbtj.innerBlocks`.
+* Feat: Add Notification modal during import.
+* Feat: Clear previous notifications before starting import.
+* Fix: Import issues with `core/list` and `core/list-item` blocks.
+* Fix: Import issues with `core/pargraph` block.
+* Fix: Import issues with `core/heading` block.
+* Fix: Import issues with `core/details` block.
+* Fix: Import issues with `core/pullquote` block.
+* Fix: Import issues with `core/cover` block.
+* Fix: Import issues with `core/table` block.
+* Fix: Import issues with `core/quote` block.
+* Fix: Import issues with `core/media-text` block.
+* Fix: Import issues with `core/gallery` block.
+* Fix: Import issues with `core/audio` block.
+* Fix: Import issues with `core/video` block.
+* Fix: Import issues with `core/footnotes` block.
+* Fix: Incorrectly quoted translation bits.
+* Refactor: Replace `get_400_response` with `get_error_response`.
+* Test: Add e2e tests for plugin codebase.
+* Chore: Add pull request template to repo.
+* Docs: Update README docs.
+* Tested up to WP 6.9.
+
 ## 1.2.1
 * Specify `wordpress-plugin` as Composer package type.
 * Tested up to WP 6.9.
