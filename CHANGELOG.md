@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.3.2
+* Tested up to WP 7.0
+
+## 1.3.1
+* Chore: Update CI/CD pipeline.
+
 ## 1.3.0
 * Feat: Add language translations for Japanese, Indonesia, Turkish, Polish, Dutch, Danish, Brazil, Portuguese.
 * Feat: Add Image import functionality across websites.
