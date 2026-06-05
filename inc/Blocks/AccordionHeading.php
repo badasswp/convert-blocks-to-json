@@ -22,18 +22,6 @@ class AccordionHeading extends Block {
 	 * @param mixed[] $block Import Block.
 	 * @return mixed[]
 	 */
-	// public function import_block( $block ): array {
-	// 	if ( empty( $block['name'] ) || 'core/accordion-heading' !== $block['name'] ) {
-	// 		return $block;
-	// 	}
-
-	// 	// Title lives in `filtered`. Put it into attributes so JS can read it.
-	// 	$block['attributes'] = wp_json_encode( [
-	// 		'content' => $block['filtered'] ?? '',
-	// 	] );
-
-	// 	return $block;
-	// }
 	public function import_block( $block ): array {
 		// Bail out, if undefined OR not accordionHeading block.
 		if ( empty( $block['name'] ) || 'core/accordion-heading' !== $block['name'] ) {
@@ -44,7 +32,7 @@ class AccordionHeading extends Block {
 		$block['attributes'] = json_decode( $block['attributes'] ?? '{}', true );
 
 		$block['attributes']['content'] = $this->get_tag_content( $block['content'] ?? '', 'span' );
-		
+
 		// Re-encode attributes correctly.
 		$block['attributes'] = wp_json_encode( $block['attributes'] ?? [] );
 
