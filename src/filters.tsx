@@ -35,6 +35,20 @@ addAction( 'cbtj.afterImport', 'cbtj', async ( { blocks } ) => {
 } );
 
 /**
+ * Recursively creates blocks from a block definition,
+ * including nested innerBlocks at any depth.
+ * @param blockDef
+ */
+const createBlockRecursive = ( blockDef: any ): any => {
+	const { name, attributes, innerBlocks = [] } = blockDef;
+
+	const parsedAttributes = attributes ? JSON.parse( attributes ) : {};
+	const children = innerBlocks.map( createBlockRecursive );
+
+	return createBlock( name, parsedAttributes, children );
+};
+
+/**
  * Filter the way we handle the innerBlocks
  * depending on the type of block.
  *
@@ -58,6 +72,9 @@ addFilter( 'cbtj.innerBlocks', 'cbtj', ( innerBlocks, block ) => {
 			blocks = innerBlocks.map( ( { name, attributes } ) =>
 				createBlock( name, { ...JSON.parse( attributes ) } )
 			);
+			break;
+		case 'core/accordion':
+			blocks = innerBlocks.map( createBlockRecursive );
 			break;
 
 		default:
