@@ -1,9 +1,9 @@
 <?php
 /**
- * AccordionHeading Block.
+ * Accordion Block.
  *
  * This class is responsible for customizing
- * the AccordionHeading block output.
+ * the Accordion block output.
  *
  * @package ConvertBlocksToJSON
  */
@@ -12,7 +12,7 @@ namespace ConvertBlocksToJSON\Blocks;
 
 use ConvertBlocksToJSON\Abstracts\Block;
 
-class AccordionHeading extends Block {
+class Accordion extends Block {
 
 	/**
 	 * Import Block.
