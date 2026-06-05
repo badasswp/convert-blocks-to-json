@@ -48,8 +48,8 @@ class Blocks extends Service implements Kernel {
 	 */
 	public function __construct() {
 		$this->blocks = [
-			Audio::class,
 			Accordion::class,
+			Audio::class,
 			Details::class,
 			Footnotes::class,
 			Freeform::class,
