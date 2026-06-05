@@ -8,6 +8,7 @@ use Badasswp\WPMockTC\WPMockTestCase;
 use ConvertBlocksToJSON\Abstracts\Block;
 use ConvertBlocksToJSON\Services\Blocks;
 
+use ConvertBlocksToJSON\Blocks\Accordion;
 use ConvertBlocksToJSON\Blocks\Audio;
 use ConvertBlocksToJSON\Blocks\Details;
 use ConvertBlocksToJSON\Blocks\Footnotes;
@@ -44,6 +45,7 @@ class BlocksTest extends WPMockTestCase {
 	public function test_class_properties_are_defined_by_default() {
 		$this->assertSame(
 			[
+				Accordion::class,
 				Audio::class,
 				Details::class,
 				Footnotes::class,
@@ -94,6 +96,7 @@ class BlocksTest extends WPMockTestCase {
 		WP_Mock::expectFilter(
 			'cbtj_blocks',
 			[
+				Accordion::class,
 				Audio::class,
 				Details::class,
 				Footnotes::class,
