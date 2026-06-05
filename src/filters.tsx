@@ -68,8 +68,12 @@ addFilter( 'cbtj.innerBlocks', 'cbtj', ( innerBlocks, block ) => {
 		case 'core/details':
 		case 'core/media-text':
 		case 'core/gallery':
-		case 'core/accordion':
 		case 'core/cover':
+			blocks = innerBlocks.map( ( { name, attributes } ) =>
+				createBlock( name, { ...JSON.parse( attributes ) } )
+			);
+			break;
+		case 'core/accordion':
 			blocks = innerBlocks.map( createBlockRecursive );
 			break;
 
