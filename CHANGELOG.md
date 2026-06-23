@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.4.0
+* Feat: Restrict `non-json` files during import.
+
 ## 1.3.2
 * Tested up to WP 7.0
 

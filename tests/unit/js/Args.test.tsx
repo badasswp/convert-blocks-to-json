@@ -89,6 +89,9 @@ describe( 'Utilities', () => {
 				text: 'Use JSON',
 			},
 			multiple: false,
+			library: {
+				type: 'application/json',
+			},
 		} );
 	} );
 
