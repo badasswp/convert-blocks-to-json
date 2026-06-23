@@ -62,6 +62,9 @@ export const getModalParams = (): any => {
 			text: __( 'Use JSON', 'convert-blocks-to-json' ),
 		},
 		multiple: false,
+		library: {
+			type: 'application/json',
+		},
 	};
 };
 
